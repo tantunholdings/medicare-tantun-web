@@ -1,4 +1,6 @@
 // components/AssistanceSection.js
+import Card from './Card';
+
 export default function AssistanceSection() {
     return (
       <section className="mt-8 bg-white p-8 rounded-lg shadow-md">
