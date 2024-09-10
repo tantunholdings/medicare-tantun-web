@@ -1,7 +1,10 @@
 "use client"; // Ensure this is a client-side component
 
 import { useState } from "react";
-import DetailsPopup from "./DetailsPopup"; // Make sure DetailsPopup is correctly imported
+import Link from "next/link"; // Import Link for routing
+import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
@@ -16,38 +19,40 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto flex justify-between items-center py-4 px-6">
-          <nav className="flex space-x-4">
-            <a href="#" className="text-green-500 font-semibold">
+      <nav className="bg-white border-b border-gray-200">
+        <div className="container mx-auto flex justify-between items-center py-4">
+          <div className="flex space-x-8">
+            <Link href="/" className="text-green-500 font-semibold">
               Home
-            </a>
-            <a href="#" className="text-gray-600">
+            </Link>
+            <Link href="/blog" className="text-gray-500">
               Blog
-            </a>
-            <a href="#" className="text-gray-600">
+            </Link>
+            <Link href="/faq" className="text-gray-500">
               FAQ
-            </a>
-          </nav>
+            </Link>
+          </div>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <i className="fas fa-phone-alt text-white bg-blue-500 p-2 rounded-full"></i>
+              <div className="bg-secondary p-2 rounded">
+                <FontAwesomeIcon icon={faPhone} className="text-white" />
+              </div>
               <div>
-                <span className="text-gray-500 text-sm">CALL US</span>
-                <span className="text-gray-800 font-semibold">
+                <div className="text-xs text-gray-500">CALL US</div>
+                <div className="text-lg font-semibold text-gray-800">
                   2334 5666 667
-                </span>
+                </div>
               </div>
             </div>
             <button
               onClick={handleContactUsClick}
-              className="bg-green-500 text-white px-4 py-2 rounded-md"
+              className="bg-green-500 text-white px-4 py-2 rounded"
             >
               Contact us
             </button>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* Render DetailsPopup as a modal if showDetailsPopup is true */}
       {showDetailsPopup && (

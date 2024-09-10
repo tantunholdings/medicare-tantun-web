@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#00AFCA",
         primaryBlack: "#1F4552",
         line: "#EDEDED",
+        textGray: "#8B8B8B",
       },
     },
   },

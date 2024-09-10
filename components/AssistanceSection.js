@@ -1,6 +1,7 @@
 // components/AssistanceSection.js
 import Card from "./Card";
 import ChatPopup from "./ChatPopup";
+import QuestionCard from "./QuestionCard";
 
 export default function AssistanceSection() {
   return (
