@@ -1,5 +1,6 @@
 // components/AssistanceSection.js
 import Card from "./Card";
+import ChatPopup from "./ChatPopup";
 
 export default function AssistanceSection() {
   return (
@@ -21,17 +22,8 @@ export default function AssistanceSection() {
           description="How much will I need to pay?"
         />
       </div>
-      <div className="flex items-center border border-green-500 rounded-md p-4">
-        <i className="fas fa-paperclip text-green-500 mr-4"></i>
-        <input
-          type="text"
-          placeholder="Ask a question or make a request"
-          className="flex-grow outline-none"
-        />
-        <button className="text-green-500">
-          <i className="fas fa-paper-plane"></i>
-        </button>
-      </div>
+
+      <ChatPopup />
     </section>
   );
 }

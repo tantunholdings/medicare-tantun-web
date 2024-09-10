@@ -1,8 +1,10 @@
 // pages/index.js
-import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import HeroSection from '../components/HeroSection';
-import AssistanceSection from '../components/AssistanceSection';
+import Head from "next/head";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
+import AssistanceSection from "../components/AssistanceSection";
+import DetailsPopup from "../components/DetailsPopup";
+import ChatPopup from "../components/ChatPopup";
 
 export default function InsuranceAdvisor() {
   return (
