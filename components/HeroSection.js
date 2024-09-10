@@ -30,11 +30,11 @@ export default function HeroSection() {
         <div className="flex space-x-4">
           <button
             onClick={handleContactUsClick}
-            className="bg-green-500 text-white px-6 py-3 rounded-md"
+            className="bg-primary text-white px-6 py-3 rounded-md"
           >
             Contact us
           </button>
-          <button className="bg-blue-500 text-white px-6 py-3 rounded-md">
+          <button className="bg-secondary text-white px-6 py-3 rounded-md">
             Call us
           </button>
         </div>
