@@ -1,13 +1,15 @@
 "use client"; // Ensure this is a client-side component
 
 import { useState } from "react";
-import Link from "next/link"; // Import Link for routing
+import Link from "next/link";
+import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
 import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
+  const pathname = usePathname(); // Get the current path
 
   const handleContactUsClick = () => {
     setShowDetailsPopup(true); // Show the popup when Contact Us is clicked
@@ -22,13 +24,34 @@ export default function Navbar() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto flex justify-between items-center py-4">
           <div className="flex space-x-8">
-            <Link href="/" className="text-green-500 font-semibold">
+            <Link
+              href="/"
+              className={`${
+                pathname === "/"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
               Home
             </Link>
-            <Link href="/blog" className="text-gray-500">
+            <Link
+              href="/blog"
+              className={`${
+                pathname === "/blog"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
               Blog
             </Link>
-            <Link href="/faq" className="text-gray-500">
+            <Link
+              href="/faq"
+              className={`${
+                pathname === "/faq"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
               FAQ
             </Link>
           </div>
