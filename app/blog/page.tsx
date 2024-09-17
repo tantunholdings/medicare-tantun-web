@@ -49,42 +49,43 @@ export default function BlogPage() {
     return blog.tags.includes(selectedTag);
   });
 
-  const tags = ["All", "Latest", "AI", "Insurance", "Doctor"];
+  const tags = ["All", "Latest", "AI", "Insurance", "Doctor"]; // Removed duplicate 'All'
 
   return (
     <>
       <Navbar /> {/* Add Navbar component */}
       <div className="container mx-auto mt-8 px-6">
-        {/* Search Bar goes first */}
-        <div className="mb-4">
-          <div className="relative">
+        {/* Search Bar and Tags in Desktop View */}
+        <div className="flex flex-col md:flex-row justify-between mb-6">
+          {/* Tags with vertical and horizontal spacing */}
+          <div className="flex flex-wrap justify-center space-x-4 space-y-0.5 ">
+            {tags.map((tag) => (
+              <button
+                key={tag}
+                className={`px-5 py-2 rounded-full border text-sm font-medium ${
+                  selectedTag === tag
+                    ? "bg-green-100 text-gray-500 border-primary"
+                    : "bg-white text-gray-500 border-gray-300"
+                } hover:border-primary hover:text-primary`}
+                onClick={() => setSelectedTag(tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Bar aligned to the right in Desktop view */}
+          <div className="relative mt-4 md:mt-0 w-full md:w-1/3 lg:w-1/4">
             <input
-              className="w-full px-4 py-2 pl-10 bg-white border border-gray-300 rounded-lg focus:outline-none"
+              className="w-full px-8 py-2 pl-12 bg-white border border-gray-300 rounded-full focus:outline-none"
               placeholder="Search"
               type="text"
             />
             <FontAwesomeIcon
               icon={faSearch}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              className="absolute left-4 top-5 -translate-y-1/2 text-gray-400"
             />
           </div>
-        </div>
-
-        {/* Filter buttons with spacing between tags */}
-        <div className="flex flex-wrap justify-center space-x-4 space-y-4 mb-6">
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              className={`px-6 py-3 rounded-full border ${
-                selectedTag === tag
-                  ? "bg-primary text-white border-green-500"
-                  : "bg-white text-gray-500 border-gray-300"
-              }`}
-              onClick={() => setSelectedTag(tag)}
-            >
-              {tag}
-            </button>
-          ))}
         </div>
 
         {/* Blog cards */}
