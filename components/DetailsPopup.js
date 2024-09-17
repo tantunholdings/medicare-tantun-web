@@ -16,7 +16,7 @@ const DetailsPopup = ({ closePopup }) => {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl h-[500px] flex flex-col relative">
+    <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl h-[500px] flex flex-col relative mx-4">
       <div className="flex justify-between items-center p-4">
         <div className="flex items-center bg-gray-200 rounded-full p-1">
           <button
