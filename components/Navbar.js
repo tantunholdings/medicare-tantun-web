@@ -1,14 +1,15 @@
 "use client"; // Ensure this is a client-side component
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
 import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon
+import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon and hamburger icon
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Manage mobile menu state
   const pathname = usePathname(); // Get the current path
 
   const handleContactUsClick = () => {
@@ -19,11 +20,55 @@ export default function Navbar() {
     setShowDetailsPopup(false); // Close the popup when requested
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu state
+  };
+
+  // Define the page title based on the path
+  const getPageTitle = () => {
+    switch (pathname) {
+      case "/blog":
+        return "Blog";
+      case "/faq":
+        return "FAQ";
+      default:
+        return "Home";
+    }
+  };
+
+  // Close the mobile menu when clicking outside of it
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const handleClickOutside = (event) => {
+        if (!event.target.closest(".mobile-menu")) {
+          setIsMobileMenuOpen(false);
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <>
-      <nav className="bg-white border-b border-gray-200">
-        <div className="container mx-auto flex justify-between items-center py-4">
-          <div className="flex space-x-8">
+      <nav className="bg-white border-b border-gray-200 relative">
+        <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-0">
+          {/* Centered Page Title in Mobile View */}
+          <div className="text-2xl font-bold text-primaryBlack md:hidden absolute left-1/2 transform -translate-x-1/2">
+            {getPageTitle()}
+          </div>
+
+          {/* Logo in Desktop View
+          <div className="text-2xl font-bold hidden md:block">
+            <Link href="/">Brand</Link>
+          </div> */}
+
+          {/* Desktop Links */}
+          <div className="hidden md:flex space-x-8">
             <Link
               href="/"
               className={`${
@@ -55,7 +100,16 @@ export default function Navbar() {
               FAQ
             </Link>
           </div>
-          <div className="flex items-center space-x-4">
+
+          {/* Mobile Menu Button - Aligned to the Right */}
+          <div className="md:hidden flex items-center ml-auto">
+            <button onClick={toggleMobileMenu}>
+              <FontAwesomeIcon icon={faBars} className="text-primary text-xl" />
+            </button>
+          </div>
+
+          {/* Contact Information (Visible on all views) */}
+          <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <div className="bg-secondary p-2 rounded">
                 <FontAwesomeIcon icon={faPhone} className="text-white" />
@@ -75,6 +129,64 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu Links */}
+        {isMobileMenuOpen && (
+          <div className="mobile-menu fixed top-0 right-0 w-2/3 bg-white shadow-md rounded-bl-lg md:hidden flex flex-col items-start py-4 px-6 z-50">
+            <Link
+              href="/"
+              className={`w-full text-left py-2 border-b ${
+                pathname === "/"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={toggleMobileMenu} // Close menu on link click
+            >
+              Home
+            </Link>
+            <Link
+              href="/blog"
+              className={`w-full text-left py-2 border-b ${
+                pathname === "/blog"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/faq"
+              className={`w-full text-left py-2 border-b ${
+                pathname === "/faq"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              FAQ
+            </Link>
+
+            {/* Contact Information in Mobile Menu */}
+            <div className="flex items-center space-x-2 w-full py-2 border-b">
+              <div className="bg-secondary p-2 rounded">
+                <FontAwesomeIcon icon={faPhone} className="text-white" />
+              </div>
+              <div>
+                <div className="text-xs text-gray-500">CALL US</div>
+                <div className="text-lg font-semibold text-gray-800">
+                  2334 5666 667
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleContactUsClick}
+              className="bg-primary text-white px-4 py-2 mt-4 w-full text-center rounded"
+            >
+              Contact us
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Render DetailsPopup as a modal if showDetailsPopup is true */}

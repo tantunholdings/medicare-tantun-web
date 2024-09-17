@@ -1,4 +1,3 @@
-// pages/blog/page.tsx
 "use client"; // Ensure this is a client-side component
 
 import React, { useState } from "react";
@@ -56,26 +55,11 @@ export default function BlogPage() {
     <>
       <Navbar /> {/* Add Navbar component */}
       <div className="container mx-auto mt-8 px-6">
-        {/* Filter buttons */}
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex space-x-4">
-            {tags.map((tag) => (
-              <button
-                key={tag}
-                className={`px-4 py-2 rounded-full border ${
-                  selectedTag === tag
-                    ? "bg-primary text-white border-green-500"
-                    : "bg-white text-gray-500 border-gray-300"
-                }`}
-                onClick={() => setSelectedTag(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
+        {/* Search Bar goes first */}
+        <div className="mb-4">
           <div className="relative">
             <input
-              className="px-4 py-2 pl-10 bg-white border border-gray-300 rounded-lg focus:outline-none"
+              className="w-full px-4 py-2 pl-10 bg-white border border-gray-300 rounded-lg focus:outline-none"
               placeholder="Search"
               type="text"
             />
@@ -84,6 +68,23 @@ export default function BlogPage() {
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
             />
           </div>
+        </div>
+
+        {/* Filter buttons with spacing between tags */}
+        <div className="flex flex-wrap justify-center space-x-4 space-y-4 mb-6">
+          {tags.map((tag) => (
+            <button
+              key={tag}
+              className={`px-6 py-3 rounded-full border ${
+                selectedTag === tag
+                  ? "bg-primary text-white border-green-500"
+                  : "bg-white text-gray-500 border-gray-300"
+              }`}
+              onClick={() => setSelectedTag(tag)}
+            >
+              {tag}
+            </button>
+          ))}
         </div>
 
         {/* Blog cards */}
