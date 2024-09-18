@@ -10,8 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Add faSpinner for loading icon
 import { useState, useEffect, useRef } from "react";
 
-const ChatPopup = () => {
-  const [message, setMessage] = useState("");
+const ChatPopup = ({ initialMessage }) => {
+  const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
   const [files, setFiles] = useState([]); // Store multiple attached files
@@ -22,6 +22,7 @@ const ChatPopup = () => {
   const recognitionTimeout = useRef(null); // For handling the delay to send the message
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
 
+  // Initialize speech recognition
   useEffect(() => {
     if (typeof window !== "undefined") {
       const SpeechRecognition =
@@ -57,6 +58,20 @@ const ChatPopup = () => {
     }
   }, [message]);
 
+  // Automatically send message when initialMessage prop changes
+  useEffect(() => {
+    if (initialMessage) {
+      sendMessageFromProp(initialMessage);
+    }
+  }, [initialMessage]);
+
+  // Function to send message from prop
+  const sendMessageFromProp = (message) => {
+    const newMessage = { text: message, files: [] };
+    setChatMessages((prevMessages) => [...prevMessages, newMessage]);
+    // Clear any other state if necessary, like file uploads
+  };
+
   // Adjust the height of the textarea dynamically based on content
   useEffect(() => {
     if (textareaRef.current) {
@@ -69,12 +84,12 @@ const ChatPopup = () => {
     if (message.trim() || files.length > 0) {
       const newMessage = { text: message.trim(), files: filePreviews };
       setChatMessages([...chatMessages, newMessage]);
-      setMessage("");
+      setMessage(""); // Clear the message after sending
       setFiles([]); // Clear the files array after sending
       setFilePreviews([]); // Clear file previews
       setUploadProgress([]); // Clear the upload progress array
       setIsUploading(false); // Stop the loading indicator
-      clearTimeout(recognitionTimeout.current);
+      clearTimeout(recognitionTimeout.current); // Clear the timeout
     }
   };
 
@@ -152,35 +167,42 @@ const ChatPopup = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex-grow p-4">
+      <div className="flex-grow p-4 space-y-2">
+        {" "}
+        {/* Added space between messages */}
         {chatMessages.map((msg, index) => (
-          <div
-            key={index}
-            className="mb-2 bg-line p-2 rounded-lg lg:w-2/3 w-full ml-auto"
-          >
-            {/* Display the uploaded files */}
-            {msg.files && msg.files.length > 0 && (
-              <div className="mb-2">
-                {msg.files.map((file, idx) => (
-                  <div key={idx} className="mb-1">
-                    {file.url ? (
-                      <img
-                        src={file.url}
-                        alt={file.name}
-                        className="max-w-xs rounded-lg mb-1"
-                      />
-                    ) : (
-                      <span className="text-gray-700">{file.name}</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-            {/* Display the text message */}
-            <div>{msg.text}</div>
+          <div key={index} className="flex justify-end">
+            {" "}
+            {/* Aligns each message to the right */}
+            <div className="bg-gray-200 p-2 rounded-lg max-w-full lg:max-w-2/3 break-words">
+              {" "}
+              {/* Added break-words */}
+              {/* Display the uploaded files */}
+              {msg.files && msg.files.length > 0 && (
+                <div className="mb-2 flex justify-end">
+                  {msg.files.map((file, idx) => (
+                    <div key={idx} className="mb-1">
+                      {file.url ? (
+                        <img
+                          src={file.url}
+                          alt={file.name}
+                          className="max-w-xs rounded-lg mb-1"
+                        />
+                      ) : (
+                        <span className="text-gray-700">{file.name}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+              {/* Display the text message */}
+              <div className="whitespace-pre-wrap break-words">
+                {msg.text}
+              </div>{" "}
+              {/* Added break-words here too */}
+            </div>
           </div>
         ))}
-
         {/* Show loading icon if uploading */}
         {isUploading && (
           <div className="flex justify-center">
@@ -192,11 +214,15 @@ const ChatPopup = () => {
         )}
       </div>
 
-      <div className="flex flex-col p-2 w-full mb-4 relative">
-        <div className="flex items-center border border-line-400 rounded-full p-2 w-full mx-auto relative">
-          <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full relative">
+      <div className="flex flex-col w-full mb-4 relative">
+        <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative">
+          {/* Paperclip Button */}
+          <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0">
             <label htmlFor="file-upload" className="cursor-pointer">
-              <FontAwesomeIcon icon={faPaperclip} className="text-primary" />
+              <FontAwesomeIcon
+                icon={faPaperclip}
+                className="text-primary text-lg sm:text-sm"
+              />
               <input
                 id="file-upload"
                 type="file"
@@ -205,17 +231,15 @@ const ChatPopup = () => {
                 onChange={handleFileUpload}
               />
             </label>
-          </div> 
+          </div>
           <div className="flex-grow flex flex-col">
             {/* Show uploaded files with delete button inside input area */}
             {files.length > 0 && (
               <div className="flex flex-wrap mt-2 space-x-2">
-                {" "}
-                {/* Added space between elements */}
                 {files.map((file, index) => (
                   <div
                     key={index}
-                    className="flex items-center text-sm text-gray-700 bg-gray-200 rounded-full px-2 py-1 mr-2 mb-2 pl-4 ml-4" // Added `ml-4` for left margin
+                    className="flex items-center text-sm text-gray-700 bg-gray-200 rounded-full px-2 py-1 mr-2 mb-2 pl-4 ml-4"
                   >
                     <span className="mr-2">{file.name}</span>
                     <button
@@ -244,34 +268,43 @@ const ChatPopup = () => {
                 </div>
               )}
 
+            {/* Text Input */}
             <textarea
               ref={textareaRef}
-              placeholder="Ask a question or make a request"
-              className="flex-grow mx-4 text-gray-500 focus:outline-none resize-none overflow-hidden rounded-md p-2"
+              placeholder="Ask ..."
+              className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               rows={1} // Initial number of rows, adjusts dynamically
-              style={{ minHeight: "40px", maxHeight: "150px" }}
+              style={{ minHeight: "40px", maxHeight: "200px" }}
             />
           </div>
 
+          {/* Microphone Button */}
           <div
-            className={`flex items-center justify-center w-10 h-10 bg-green-100 rounded-full ${
+            className={`flex items-center justify-center w-10 h-10 mx-2 bg-green-100 rounded-full flex-shrink-0 ${
               isRecording ? "bg-red-100" : ""
             }`}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
           >
             <FontAwesomeIcon
               icon={faMicrophone}
-              className={`text-primary ${isRecording ? "text-red-500" : ""}`}
+              className={`text-primary text-lg sm:text-sm ${
+                isRecording ? "text-red-500" : ""
+              }`}
             />
           </div>
+
+          {/* Send Button */}
           <div
-            className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full ml-2"
+            className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0"
             onClick={handleSendMessage}
           >
-            <FontAwesomeIcon icon={faPlay} className="text-primary" />
+            <FontAwesomeIcon
+              icon={faPlay}
+              className="text-primary text-lg sm:text-sm"
+            />
           </div>
         </div>
       </div>
