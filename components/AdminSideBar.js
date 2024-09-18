@@ -27,12 +27,12 @@ const AdminSideBar = () => {
           </a>
         </li>
         <li>
-          <a href="/blog/list" className="hover:text-gray-400">
+          <a href="/blog/edit" className="hover:text-gray-400">
             Edit Blogs
           </a>
         </li>
         <li>
-          <a href="/faq/list" className="hover:text-gray-400">
+          <a href="/faq/edit" className="hover:text-gray-400">
             Edit FAQs
           </a>
         </li>

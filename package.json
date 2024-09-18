@@ -20,7 +20,8 @@
     "next": "14.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-draft-wysiwyg": "^1.15.0"
+    "react-draft-wysiwyg": "^1.15.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
