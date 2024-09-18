@@ -205,8 +205,7 @@ const ChatPopup = () => {
                 onChange={handleFileUpload}
               />
             </label>
-          </div>
-
+          </div> 
           <div className="flex-grow flex flex-col">
             {/* Show uploaded files with delete button inside input area */}
             {files.length > 0 && (
