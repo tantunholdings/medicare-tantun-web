@@ -4,7 +4,7 @@ import AdminSideBar from "../../../components/AdminSideBar";
 import { v4 as uuidv4 } from "uuid";
 import { useSearchParams } from 'next/navigation'
 
-const FAQEditorPage = (props) => {
+const FAQEditorPage = () => {
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
 
@@ -137,14 +137,14 @@ const FAQEditorPage = (props) => {
               className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600"
               disabled={loading} // Disable button while loading
             >
-              {loading ? "Posting..." : "Post FAQ"}
+              {loading ? "Loading..." : "Post FAQ"}
             </button>
             <button
               onClick={() => saveFaq(true)} // Save as draft
               className="bg-gray-500 text-white px-4 py-2 rounded-md shadow hover:bg-gray-600"
               disabled={loading} // Disable button while loading
             >
-              {loading ? "Saving Draft..." : "Save as Draft"}
+              {loading ? "Loading..." : "Save as Draft"}
             </button>
           </div>
 
