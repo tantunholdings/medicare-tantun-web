@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation"; // Use usePathname instead of use
 import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon and hamburger icon
+import Image from "next/image"; // Import Next.js Image component
+import logo from "/public/assets/Logo.png"; // Import the logo
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
@@ -57,15 +59,18 @@ export default function Navbar() {
     <>
       <nav className="bg-white border-b border-gray-200 relative">
         <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-0">
+          {/* Logo (Visible on all views) */}
+          <div className="flex items-center">
+            <Link href="/">
+              <Image src={logo} alt="Brand Logo" width={50} height={50} />{" "}
+              {/* Set your desired width and height */}
+            </Link>
+          </div>
+
           {/* Centered Page Title in Mobile View */}
           <div className="text-2xl font-bold text-primaryBlack md:hidden absolute left-1/2 transform -translate-x-1/2">
             {getPageTitle()}
           </div>
-
-          {/* Logo in Desktop View
-          <div className="text-2xl font-bold hidden md:block">
-            <Link href="/">Brand</Link>
-          </div> */}
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-8">

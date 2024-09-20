@@ -17,7 +17,7 @@ export default function HeroSection() {
   return (
     <>
       <section
-        className="bg-primaryBlack text-white rounded-lg p-8 w-full max-w-6xl mx-auto"
+        className="bg-primaryBlack text-white rounded-lg p-4 w-full max-w-6xl mx-auto"
         style={{
           backgroundImage: 'url("/assets/Vector.svg")', // Correct vector path
           backgroundSize: "cover", // Adjust size based on your requirements
@@ -36,7 +36,9 @@ export default function HeroSection() {
               height="100"
             />
             <div className="text-left">
-              <h1 className="text-xl font-bold mb-4">
+              <h1 className="text-lg sm:text-xl font-bold mb-4 leading-tight">
+                {" "}
+                {/* Adjusted text size for small screens */}
                 Welcome to Insurance Advisor, where understanding insurance is
                 simple and easy.
               </h1>
@@ -45,17 +47,18 @@ export default function HeroSection() {
 
           {/* Text Section */}
           <div className="md:w-2/3 text-left">
-            <h1 className="hidden md:block text-xl md:text-3xl font-bold mb-4">
+            <h1 className="hidden md:block text-xl md:text-2xl lg:text-3xl font-bold mb-4 leading-tight px-2">
               Welcome to Insurance Advisor, where understanding insurance is
               simple and easy.
             </h1>
-            <p className="text-sm md:text-base mb-6">
+
+            <p className="text-sm md:text-base mb-6 px-2">
               Discover a wealth of information tailored to guide you through the
               complexities of insurance, ensuring you make informed decisions
               with confidence. Our comprehensive resources break down various
               insurance types.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 px-2">
               <button className="bg-primary hover:bg-green-600 text-white font-semibold py-2 px-4 rounded w-32">
                 Contact us
               </button>
@@ -66,7 +69,7 @@ export default function HeroSection() {
           </div>
 
           {/* Image Section for larger screens */}
-          <div className="hidden md:block md:w-1/3 mt-6 md:mt-0">
+          <div className="hidden md:block md:w-1/3 mt-6 md:mt-0 px-2">
             <img
               alt="Placeholder image representing insurance information"
               className="rounded-lg h-40 md:h-48 w-full"
