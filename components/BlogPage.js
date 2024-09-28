@@ -13,7 +13,7 @@ export default function BlogPage({ blogId }) {
     const fetchBlogData = async () => {
       try {
         const response = await fetch(
-          `http://192.168.43.84:8000/blog/${blogId}`
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blog/${blogId}`
         );
         const data = await response.json();
         if (data && data.blog) {
@@ -32,7 +32,7 @@ export default function BlogPage({ blogId }) {
     const fetchRecentPosts = async () => {
       try {
         const response = await fetch(
-          "http://192.168.43.84:8000/blogs?page=1&page_size=18"
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=1&page_size=18`
         );
         const data = await response.json();
         if (data && data.posts) {

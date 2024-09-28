@@ -18,7 +18,7 @@ export default function FAQ() {
   const fetchFaqs = async (page: number) => {
     try {
       const response = await fetch(
-        `http://192.168.43.84:8000/faqs?page=${page}&page_size=${pageSize}`
+        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/faqs?page=${page}&page_size=${pageSize}`
       );
       const data = await response.json();
 

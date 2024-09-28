@@ -29,7 +29,7 @@ export default function BlogPage() {
   // Fetch blogs from your API
   const fetchBlogs = async (page) => {
     const response = await fetch(
-      `http://192.168.43.84:8000/blogs?page=${page}&page_size=6`
+      `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=${page}&page_size=6`
     );
     const data = await response.json();
     setBlogs(data.posts);
