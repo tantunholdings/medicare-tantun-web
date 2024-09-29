@@ -7,6 +7,7 @@ import BlogCard from "../../components/BlogCard";
 import PaginationComponent from "../../components/Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import TawkMessengerReact from "@/components/TawkMessengerReact";
 
 export default function BlogPage() {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -62,6 +63,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
+      <TawkMessengerReact />
       <div className="container mx-auto mt-8 px-6">
         <div className="flex flex-col md:flex-row justify-between mb-6">
           {/* Tags Filter */}

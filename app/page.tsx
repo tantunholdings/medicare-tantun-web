@@ -3,6 +3,9 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AssistanceSection from "../components/AssistanceSection";
+import TawkMessengerReact from "../components/TawkMessengerReact";
+
+import Script from "next/script";
 
 export default function InsuranceAdvisor() {
   return (
@@ -30,6 +33,7 @@ export default function InsuranceAdvisor() {
       <main className="container mx-auto mt-8 px-6">
         <HeroSection />
         <AssistanceSection />
+        <TawkMessengerReact />
       </main>
     </>
   );
