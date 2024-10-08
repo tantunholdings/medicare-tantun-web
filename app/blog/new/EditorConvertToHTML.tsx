@@ -19,6 +19,8 @@ class EditorConvertToHTML extends Component {
       const { contentBlocks, entityMap } = blocksFromHtml;
       const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
       editorState = EditorState.createWithContent(contentState);
+
+      props.setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     }
 
     this.state = {
@@ -30,9 +32,7 @@ class EditorConvertToHTML extends Component {
     this.setState({
       editorState,
     });
-
-    // Call the parent method to pass the content
-    this.props.setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    
   };
 
   componentDidUpdate(prevProps) {
