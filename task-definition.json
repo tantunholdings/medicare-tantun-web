@@ -18,7 +18,7 @@
             "environment": [
                 {
                     "name": "NEXT_PUBLIC_FASTAPI_URL",
-                    "value": "http://medicare-api-248423643.us-east-1.elb.amazonaws.com/"
+                    "value": "http://medicare-api-248423643.us-east-1.elb.amazonaws.com"
                 }
             ],
             "environmentFiles": [],

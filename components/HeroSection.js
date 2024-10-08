@@ -42,7 +42,6 @@ export default function HeroSection() {
                 Welcome to Insurance Advisor, where understanding insurance is
                 simple and easy.
               </h1>
-              {JSON.stringify(process.env.NEXT_PUBLIC_FASTAPI_URL)}
             </div>
           </div>
 
