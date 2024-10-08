@@ -5,6 +5,7 @@ import Head from "next/head";
 import Navbar from "../../components/Navbar";
 import QuestionCard from "../../components/QuestionCard";
 import PaginationComponent from "../../components/Pagination";
+import TawkMessengerReact from "@/components/TawkMessengerReact";
 
 export default function FAQ() {
   // State to track which questions are expanded and the current FAQ data
@@ -74,6 +75,7 @@ export default function FAQ() {
         `}</style>
       </Head>
       <Navbar /> {/* Include Navbar */}
+      <TawkMessengerReact /> 
       <main className="container mx-auto mt-8 px-6">
         <h1 className="text-3xl font-bold text-primaryBlack mb-10">
           Frequently Asked Questions
