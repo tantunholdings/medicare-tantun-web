@@ -13,8 +13,7 @@ export default function InsuranceAdvisor() {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Insurance Advisor-</title>
-        {JSON.stringify(process.env.NEXT_PUBLIC_FASTAPI_URL)}
+        <title>Insurance Advisor</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link
           rel="stylesheet"
