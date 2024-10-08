@@ -8,7 +8,7 @@ const AdminSideBar = () => {
 
   const handleLogout = () => {
     // Clear the authentication token from cookies
-    Cookies.remove("token");
+    Cookies.remove("authToken");
     router.push("/login"); // Redirect to login after logout
   };
 

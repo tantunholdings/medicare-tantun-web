@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from 'next/navigation';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './cropImageHelper'; // Helper function to get cropped image
+import Cookies from 'js-cookie';
+
 
 const EditorConvertToHTML = dynamic(() => import('./EditorConvertToHTML'), {
   ssr: false,
@@ -119,9 +121,15 @@ const BlogEditorPage = () => {
     }
 
     try {
+      const token = Cookies.get('authToken');
+      console.log('Token:', token);
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/add-blog`, {
         method: 'POST',
         body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.ok) {
