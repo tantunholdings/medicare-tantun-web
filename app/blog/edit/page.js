@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import AdminSideBar from "../../../components/AdminSideBar";
 import DataTable from "../../../components/DataTable";
-import { useRouter } from 'next/navigation';
-
+import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 const BlogListPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const BlogListPage = () => {
         if (response.ok) {
           const data = await response.json();
           setBlogs(data.posts);
-          setTotalPages(data.total_pages); 
+          setTotalPages(data.total_pages);
         } else {
           setError("Failed to fetch blogs");
         }
@@ -44,13 +44,21 @@ const BlogListPage = () => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this blog?"
     );
-    
+
     if (confirmed) {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/blog/${blogId}`, {
-          method: 'DELETE',
-        });
-  
+        const token = Cookies.get("authToken");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blog/${blogId}`,
+          {
+            method: "DELETE",
+
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         if (response.ok) {
           setBlogs(blogs.filter((blog) => blog.id !== blogId));
         } else {
@@ -71,15 +79,23 @@ const BlogListPage = () => {
         {loading && <p>Loading blogs...</p>}
 
         {error && <p className="text-red-600">{error}</p>}
-        {!loading && !error && blogs?.length === 0 && <p>No blogs available.</p>}
+        {!loading && !error && blogs?.length === 0 && (
+          <p>No blogs available.</p>
+        )}
 
         {!loading && !error && blogs?.length > 0 && (
           <>
-            <DataTable data={blogs} onEdit={handleEdit} onDelete={handleDelete} />
+            <DataTable
+              data={blogs}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
             {/* Pagination controls */}
             <div className="flex justify-between mt-4">
               <button
-                onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+                onClick={() =>
+                  currentPage > 1 && setCurrentPage(currentPage - 1)
+                }
                 disabled={currentPage === 1}
                 className={`bg-gray-300 text-gray-800 px-3 py-1 rounded ${
                   currentPage === 1
@@ -95,7 +111,9 @@ const BlogListPage = () => {
               </span>
 
               <button
-                onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+                onClick={() =>
+                  currentPage < totalPages && setCurrentPage(currentPage + 1)
+                }
                 disabled={currentPage === totalPages}
                 className={`bg-gray-300 text-gray-800 px-3 py-1 rounded ${
                   currentPage === totalPages

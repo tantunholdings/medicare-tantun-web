@@ -101,23 +101,25 @@ export default function BlogPage() {
 
         {/* Blog Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredBlogs.map((blog, index) => (
-            <div
-              key={index}
-              onClick={() => handleBlogClick(blog)} // Handle the click event
-            >
-              <BlogCard
-                image_url={blog.image_url}
-                title={blog.title}
-                date={blog.date}
-                subtitle={blog.subtitle}
-                author={blog.author}
-                tags={blog.tags}
-                id={blog.id} // Pass the blog ID
-              />
-            </div>
-          ))}
-        </div>
+  {filteredBlogs.map((blog, index) => (
+    <div
+      key={index}
+      className="h-full"  // Make sure each grid item stretches to full height
+      onClick={() => handleBlogClick(blog)}
+    >
+      <BlogCard
+        image_url={blog.image_url}
+        title={blog.title}
+        date={blog.date}
+        subtitle={blog.subtitle}
+        author={blog.author}
+        tags={blog.tags}
+        id={blog.id} // Pass the blog ID
+      />
+    </div>
+  ))}
+</div>
+
 
         {/* Pagination */}
         {totalPages > 1 && (

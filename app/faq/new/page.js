@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AdminSideBar from "../../../components/AdminSideBar";
 import { v4 as uuidv4 } from "uuid";
 import { useSearchParams } from 'next/navigation'
-
+import Cookies from 'js-cookie';
 const FAQEditorPage = () => {
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
@@ -72,9 +72,13 @@ const FAQEditorPage = () => {
     }
 
     try {
+      const token = Cookies.get('authToken');
       const response = await fetch("http://localhost:8000/add-faq", {
         method: "POST",
-        body: formData, // Send FormData instead of JSON
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.ok) {
@@ -89,6 +93,12 @@ const FAQEditorPage = () => {
     } catch (error) {
       setStatusMessage(`Error: ${error.message}`);
       console.error("Error:", error);
+    }
+
+    finally {
+      setFaqTitle("");
+      setFaqAnswer("");
+      setFaqID("");
     }
 
     setLoading(false);

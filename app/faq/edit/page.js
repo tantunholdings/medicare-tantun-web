@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import AdminSideBar from "../../../components/AdminSideBar";
 import DataTable from "../../../components/DataTable";
 import { useRouter } from 'next/navigation';
-
+import Cookies from 'js-cookie';
 const FAQListPage = () => {
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,8 +47,12 @@ const FAQListPage = () => {
     
     if (confirmed) {
       try {
+        const token = Cookies.get('authToken');
         const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/faq/${faqId}`, {
           method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
   
         if (response.ok) {

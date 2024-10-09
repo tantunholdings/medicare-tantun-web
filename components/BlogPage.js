@@ -32,12 +32,14 @@ export default function BlogPage({ blogId }) {
     const fetchRecentPosts = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=1&page_size=18`
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=1&page_size=3`
         );
         const data = await response.json();
         if (data && data.posts) {
           // Set the first two posts from the fetched data
-          setRecentPosts(data.posts.slice(0, 2));
+          setRecentPosts(
+            data.posts.filter((blog) => blog.id !== blogId).slice(0, 2)
+          );
         }
       } catch (error) {
         console.error("Error fetching recent posts:", error);
@@ -77,11 +79,13 @@ export default function BlogPage({ blogId }) {
                 {subtitle}
               </h2>
               <div className="flex justify-between items-center pb-4">
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 overflow-x-auto mt-auto">
+                  {" "}
+                  {/* Ensure tags are at the bottom */}
                   {tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-gray-200 text-gray-600 text-xs rounded-full"
+                      className="px-2 py-1 bg-gray-200 text-gray-600 text-xs rounded-full whitespace-nowrap"
                     >
                       {tag}
                     </span>

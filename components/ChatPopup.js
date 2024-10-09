@@ -9,8 +9,8 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons"; // Add faSpinner for loading icon
 import { useState, useEffect, useRef } from "react";
-
-const ChatPopup = ({ initialMessage }) => {
+import Card from "./Card"; // Import the Card component from the new file
+const ChatPopup = () => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
@@ -58,18 +58,8 @@ const ChatPopup = ({ initialMessage }) => {
     }
   }, [message]);
 
-  // Automatically send message when initialMessage prop changes
-  useEffect(() => {
-    if (initialMessage) {
-      sendMessageFromProp(initialMessage);
-    }
-  }, [initialMessage]);
-
-  // Function to send message from prop
-  const sendMessageFromProp = (message) => {
-    const newMessage = { text: message, files: [] };
-    setChatMessages((prevMessages) => [...prevMessages, newMessage]);
-    // Clear any other state if necessary, like file uploads
+  const handleCardClick = (question) => {
+    handleSendMessage(question);
   };
 
   // Adjust the height of the textarea dynamically based on content
@@ -80,16 +70,84 @@ const ChatPopup = ({ initialMessage }) => {
     }
   }, [message]);
 
-  const handleSendMessage = () => {
-    if (message.trim() || files.length > 0) {
-      const newMessage = { text: message.trim(), files: filePreviews };
+  const handleSendMessage = async (msg) => {
+    const userMessage = message || msg;
+    console.log("Sending message:", userMessage);
+    if (userMessage.trim() || files.length > 0) {
+      const newMessage = {
+        text: userMessage.trim(),
+        files: filePreviews,
+        isFromBackend: false,
+      };
+
+      // Append the user's message to the chat
       setChatMessages([...chatMessages, newMessage]);
-      setMessage(""); // Clear the message after sending
-      setFiles([]); // Clear the files array after sending
-      setFilePreviews([]); // Clear file previews
-      setUploadProgress([]); // Clear the upload progress array
-      setIsUploading(false); // Stop the loading indicator
-      clearTimeout(recognitionTimeout.current); // Clear the timeout
+
+      // Prepare form data for the API call
+      const formData = new FormData();
+      formData.append("question", userMessage.trim());
+      formData.append("previous_messages", JSON.stringify(chatMessages));
+
+      // If there are files, append the first one (assuming single file upload)
+      if (files.length > 0) {
+        formData.append("file", files[0]); // Assuming only the first file
+      }
+
+      try {
+        // Send API call to the backend
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/ask-question`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        // Handle the API response
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        let backendMessage = {
+          text: "",
+          isFromBackend: true,
+        };
+
+        if (data.is_valid) {
+          backendMessage = {
+            text: data.response_from_openai,
+            isFromBackend: true,
+          };
+        } else {
+          backendMessage = {
+            text: "I'm sorry, I don't understand that question.",
+            isError: true,
+            isFromBackend: true,
+          };
+        }
+
+        setChatMessages((prevMessages) => [...prevMessages, backendMessage]);
+      } catch (error) {
+        console.error("Error sending message:", error);
+        // Optionally, append an error message to the chat
+        setChatMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            text: "Failed to get a response from the server.",
+            isError: true,
+            isFromBackend: true,
+          },
+        ]);
+      } finally {
+        // Clear the input and files
+        setMessage(""); // Clear the message after sending
+        setFiles([]); // Clear the files array after sending
+        setFilePreviews([]); // Clear file previews
+        setUploadProgress([]); // Clear the upload progress array
+        setIsUploading(false); // Stop the loading indicator
+        clearTimeout(recognitionTimeout.current); // Clear the timeout
+      }
     }
   };
 
@@ -171,10 +229,20 @@ const ChatPopup = ({ initialMessage }) => {
         {" "}
         {/* Added space between messages */}
         {chatMessages.map((msg, index) => (
-          <div key={index} className="flex justify-end">
-            {" "}
+          <div
+            key={index}
+            className={msg.isFromBackend ? "flex" : "flex justify-end"}
+          >
+            {msg.isFromBackend ? (
+              <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex-shrink-0 mr-1"></div>
+            ) : null}{" "}
             {/* Aligns each message to the right */}
-            <div className="bg-gray-200 p-2 rounded-lg max-w-full lg:max-w-2/3 break-words">
+            <div
+              className={
+                (msg.isFromBackend ? "bg-gray-100" : "bg-gray-200") +
+                " p-2 rounded-lg max-w-full lg:max-w-2/3 break-words"
+              }
+            >
               {" "}
               {/* Added break-words */}
               {/* Display the uploaded files */}
@@ -189,7 +257,15 @@ const ChatPopup = ({ initialMessage }) => {
                           className="max-w-xs rounded-lg mb-1"
                         />
                       ) : (
-                        <span className="text-gray-700">{file.name}</span>
+                        <span
+                          className={
+                            msg.isFromBackend
+                              ? "text-gray-100"
+                              : "text-gray-700"
+                          }
+                        >
+                          {file.name}
+                        </span>
                       )}
                     </div>
                   ))}
@@ -201,6 +277,9 @@ const ChatPopup = ({ initialMessage }) => {
               </div>{" "}
               {/* Added break-words here too */}
             </div>
+            {!msg.isFromBackend ? (
+              <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex-shrink-0 ml-1"></div>
+            ) : null}
           </div>
         ))}
         {/* Show loading icon if uploading */}
@@ -307,6 +386,28 @@ const ChatPopup = ({ initialMessage }) => {
             />
           </div>
         </div>
+      </div>
+
+      <div className="flex space-x-4 overflow-x-auto mb-6">
+        <Card
+          title="Company Search"
+          description="Which company is providing the best Services?"
+          onClick={() =>
+            handleCardClick("Which company is providing the best services?")
+          }
+        />
+        <Card
+          title="Policy Guidance"
+          description="What type of insurance is right for me?"
+          onClick={() =>
+            handleCardClick("What type of insurance is right for me?")
+          }
+        />
+        <Card
+          title="Premium Estimates"
+          description="How much will I need to pay?"
+          onClick={() => handleCardClick("How much will I need to pay?")}
+        />
       </div>
     </div>
   );

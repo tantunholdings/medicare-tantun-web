@@ -23,6 +23,7 @@ const BlogEditorPage = () => {
   const [blogAuthor, setBlogAuthor] = useState('');
   const [blogTags, setBlogTags] = useState('');
   const [blogImage, setBlogImage] = useState(null);
+  const [prevImageUrl, setPrevImageUrl] = useState('');
   const [editorContent, setEditorContent] = useState(''); 
   const [statusMessage, setStatusMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -85,6 +86,7 @@ const BlogEditorPage = () => {
         setBlogAuthor(data.blog.author);
         setBlogTags(data.blog.tags ? data.blog.tags.join(',') : '');
         setEditorContent(data.blog.content);
+        setPrevImageUrl(data.blog.image_url);
         setStatusMessage('Blog details loaded successfully.');
       } else {
         const errorData = await response.json();
@@ -110,6 +112,8 @@ const BlogEditorPage = () => {
     formData.append('draft', isDraft);
     formData.append('id', blogID);
 
+    console.log('Blog ID:', editorContent);
+
     if (!blogID) {
       const newblogID = uuidv4();
       setBlogID(newblogID);
@@ -119,10 +123,12 @@ const BlogEditorPage = () => {
     if (blogImage) {
       formData.append('image', blogImage);
     }
+    else {
+      formData.append('prev_image_url', prevImageUrl);
+    }
 
     try {
       const token = Cookies.get('authToken');
-      console.log('Token:', token);
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/add-blog`, {
         method: 'POST',
