@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"; // Use useRouter from next/navigati
 import Navbar from "../../components/Navbar";
 import BlogCard from "../../components/BlogCard";
 import PaginationComponent from "../../components/Pagination";
+import BlogSkeleton from "../../components/skeleton/BlogSkeleton"; // Import the skeleton loader
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TawkMessengerReact from "@/components/TawkMessengerReact";
@@ -16,6 +17,7 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true); // Loading state to handle fetch status
   const [tags, setTags] = useState(["All", "Latest"]); // Initialize with "All"
 
   const router = useRouter(); // Use the router from next/navigation
@@ -30,17 +32,24 @@ export default function BlogPage() {
 
   // Fetch blogs from your API
   const fetchBlogs = async (page) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=${page}&page_size=6`
-    );
-    const data = await response.json();
-    setBlogs(data.posts);
-    setTotalPages(data.total_pages);
-    setCurrentPage(data.current_page);
+    setLoading(true); // Set loading to true before fetching data
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=${page}&page_size=6`
+      );
+      const data = await response.json();
+      setBlogs(data.posts);
+      setTotalPages(data.total_pages);
+      setCurrentPage(data.current_page);
 
-    // Extract tags from the fetched posts and set the tags state
-    const uniqueTags = extractTags(data.posts);
-    setTags(uniqueTags);
+      // Extract tags from the fetched posts and set the tags state
+      const uniqueTags = extractTags(data.posts);
+      setTags(uniqueTags);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoading(false); // Set loading to false after fetching is done
+    }
   };
 
   // Fetch blogs on initial render and when the page changes
@@ -106,25 +115,29 @@ export default function BlogPage() {
         </div>
 
         {/* Blog Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredBlogs.map((blog, index) => (
-            <div
-              key={index}
-              className="h-full" // Make sure each grid item stretches to full height
-              onClick={() => handleBlogClick(blog)}
-            >
-              <BlogCard
-                image_url={blog.image_url}
-                title={blog.title}
-                date={blog.date}
-                subtitle={blog.subtitle}
-                author={blog.author}
-                tags={blog.tags}
-                id={blog.id} // Pass the blog ID
-              />
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <BlogSkeleton /> // Show the skeleton loader while loading
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredBlogs.map((blog, index) => (
+              <div
+                key={index}
+                className="h-full" // Make sure each grid item stretches to full height
+                onClick={() => handleBlogClick(blog)}
+              >
+                <BlogCard
+                  image_url={blog.image_url}
+                  title={blog.title}
+                  date={blog.date}
+                  subtitle={blog.subtitle}
+                  author={blog.author}
+                  tags={blog.tags}
+                  id={blog.id} // Pass the blog ID
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Pagination */}
         {totalPages > 1 && (
