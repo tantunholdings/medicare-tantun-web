@@ -8,6 +8,7 @@ import PaginationComponent from "../../components/Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TawkMessengerReact from "@/components/TawkMessengerReact";
+import "../../components/main.css";
 
 export default function BlogPage() {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -64,14 +65,30 @@ export default function BlogPage() {
     <>
       <Navbar />
       <TawkMessengerReact />
-      <div className="container mx-auto mt-8 px-6">
-        <div className="flex flex-col md:flex-row justify-between mb-6">
-          {/* Tags Filter */}
-          <div className="flex flex-wrap justify-center space-x-4 space-y-0.5">
-            {tags.map((tag) => (
+      <div className="container mx-auto mt-8 px-6 ">
+        {/* Search Box */}
+        <div className="relative mt-6 md:mt-0 w-full md:w-1/3 lg:w-1/4 md:ml-auto">
+          <input
+            className="w-full px-8 py-2 pl-12 bg-white border border-gray-300 rounded-full focus:outline-none"
+            placeholder="Search"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <FontAwesomeIcon
+            icon={faSearch}
+            className="absolute left-4 top-5 -translate-y-1/2 text-gray-400"
+          />
+        </div>
+
+        <div className="relative">
+          {/* Scrollable container for swipeable tags */}
+          <div className="flex space-x-2 overflow-x-auto mt-auto custom-scrollbar large py-2">
+            <span className="py-2 rounded-full whitespace-nowrap flex-shrink-0" />
+            {tags.map((tag, index) => (
               <button
-                key={tag}
-                className={`px-5 py-2 rounded-full border text-sm font-medium ${
+                key={index}
+                className={`px-5 py-2 bg-gray-200 text-gray-600 text-xs rounded-full whitespace-nowrap flex-shrink-0 border ${
                   selectedTag === tag
                     ? "bg-green-100 text-gray-500 border-primary"
                     : "bg-white text-gray-500 border-gray-300"
@@ -81,45 +98,33 @@ export default function BlogPage() {
                 {tag}
               </button>
             ))}
+            <span className="py-2 rounded-full whitespace-nowrap flex-shrink-0" />
           </div>
 
-          {/* Search Box */}
-          <div className="relative mt-4 md:mt-0 w-full md:w-1/3 lg:w-1/4">
-            <input
-              className="w-full px-8 py-2 pl-12 bg-white border border-gray-300 rounded-full focus:outline-none"
-              placeholder="Search"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <FontAwesomeIcon
-              icon={faSearch}
-              className="absolute left-4 top-5 -translate-y-1/2 text-gray-400"
-            />
-          </div>
+          <div className="absolute top-0 left-0 h-full w-8 pointer-events-none bg-gradient-to-r from-white"></div>
+          <div className="absolute top-0 right-0 h-full w-8 pointer-events-none bg-gradient-to-l from-white"></div>
         </div>
 
         {/* Blog Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {filteredBlogs.map((blog, index) => (
-    <div
-      key={index}
-      className="h-full"  // Make sure each grid item stretches to full height
-      onClick={() => handleBlogClick(blog)}
-    >
-      <BlogCard
-        image_url={blog.image_url}
-        title={blog.title}
-        date={blog.date}
-        subtitle={blog.subtitle}
-        author={blog.author}
-        tags={blog.tags}
-        id={blog.id} // Pass the blog ID
-      />
-    </div>
-  ))}
-</div>
-
+          {filteredBlogs.map((blog, index) => (
+            <div
+              key={index}
+              className="h-full" // Make sure each grid item stretches to full height
+              onClick={() => handleBlogClick(blog)}
+            >
+              <BlogCard
+                image_url={blog.image_url}
+                title={blog.title}
+                date={blog.date}
+                subtitle={blog.subtitle}
+                author={blog.author}
+                tags={blog.tags}
+                id={blog.id} // Pass the blog ID
+              />
+            </div>
+          ))}
+        </div>
 
         {/* Pagination */}
         {totalPages > 1 && (

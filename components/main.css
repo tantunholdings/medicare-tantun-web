@@ -23,10 +23,16 @@
 
   /* Custom scrollbar styling */
 .custom-scrollbar {
-    height: 36px; /* Height of the scrollable area */
     overflow-y: hidden; /* Disable vertical scrolling */
   }
-  
+  .custom-scrollbar.tiny {
+    height: 36px; /* Height of the scrollable area for tiny tags */
+    }
+
+    .custom-scrollbar.large {
+        height: 60px; /* Height of the scrollable area for large tags */
+    }
+    
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent; /* Transparent background for the scrollbar track */
   }
