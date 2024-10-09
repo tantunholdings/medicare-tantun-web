@@ -11,7 +11,6 @@ import {
 import { useState, useEffect, useRef } from "react";
 import Card from "./Card"; // Import the Card component from the new file
 const ChatPopup = () => {
-  
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
@@ -22,8 +21,6 @@ const ChatPopup = () => {
   const textareaRef = useRef(null); // Reference to the textarea for dynamic resizing
   const recognitionTimeout = useRef(null); // For handling the delay to send the message
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
-
-
 
   // Initialize speech recognition
   useEffect(() => {
@@ -61,12 +58,9 @@ const ChatPopup = () => {
     }
   }, [message]);
 
-
-
   const handleCardClick = (question) => {
     handleSendMessage(question);
   };
-  
 
   // Adjust the height of the textarea dynamically based on content
   useEffect(() => {
@@ -77,65 +71,73 @@ const ChatPopup = () => {
   }, [message]);
 
   const handleSendMessage = async (msg) => {
-    const  userMessage = message || msg;
+    const userMessage = message || msg;
     console.log("Sending message:", userMessage);
     if (userMessage.trim() || files.length > 0) {
-      const newMessage = { text: userMessage.trim(), files: filePreviews, isFromBackend: false };
-  
+      const newMessage = {
+        text: userMessage.trim(),
+        files: filePreviews,
+        isFromBackend: false,
+      };
+
       // Append the user's message to the chat
       setChatMessages([...chatMessages, newMessage]);
-  
+
       // Prepare form data for the API call
       const formData = new FormData();
       formData.append("question", userMessage.trim());
       formData.append("previous_messages", JSON.stringify(chatMessages));
-  
+
       // If there are files, append the first one (assuming single file upload)
       if (files.length > 0) {
         formData.append("file", files[0]); // Assuming only the first file
       }
-  
+
       try {
         // Send API call to the backend
-        const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/ask-question`, {
-          method: "POST",
-          body: formData,
-        });
-  
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_FASTAPI_URL}/ask-question`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
         // Handle the API response
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
-  
+
         const data = await response.json();
         let backendMessage = {
           text: "",
           isFromBackend: true,
-        }
+        };
 
         if (data.is_valid) {
           backendMessage = {
             text: data.response_from_openai,
             isFromBackend: true,
           };
-
-        }
-        else {
+        } else {
           backendMessage = {
             text: "I'm sorry, I don't understand that question.",
             isError: true,
             isFromBackend: true,
           };
         }
-  
+
         setChatMessages((prevMessages) => [...prevMessages, backendMessage]);
-  
       } catch (error) {
         console.error("Error sending message:", error);
         // Optionally, append an error message to the chat
         setChatMessages((prevMessages) => [
           ...prevMessages,
-          { text: "Failed to get a response from the server.", isError: true, isFromBackend: true },
+          {
+            text: "Failed to get a response from the server.",
+            isError: true,
+            isFromBackend: true,
+          },
         ]);
       } finally {
         // Clear the input and files
@@ -148,7 +150,6 @@ const ChatPopup = () => {
       }
     }
   };
-  
 
   const handleFileUpload = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -224,38 +225,24 @@ const ChatPopup = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <Card
-          title="Company Search"
-          description="Which company is providing the best Services?"
-          onClick={() =>
-            handleCardClick("Which company is providing the best services?")
-          }
-        />
-        <Card
-          title="Policy Guidance"
-          description="What type of insurance is right for me?"
-          onClick={() =>
-            handleCardClick("What type of insurance is right for me?")
-          }
-        />
-        <Card
-          title="Premium Estimates"
-          description="How much will I need to pay?"
-          onClick={() => handleCardClick("How much will I need to pay?")}
-        />
-      </div>
       <div className="flex-grow p-4 space-y-2">
         {" "}
         {/* Added space between messages */}
         {chatMessages.map((msg, index) => (
-          
-          <div key={index} className={ msg.isFromBackend ? "flex" : "flex justify-end"}>
-            {msg.isFromBackend ? (<div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex-shrink-0 mr-1"></div>) : null}
-
-            {" "}
+          <div
+            key={index}
+            className={msg.isFromBackend ? "flex" : "flex justify-end"}
+          >
+            {msg.isFromBackend ? (
+              <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex-shrink-0 mr-1"></div>
+            ) : null}{" "}
             {/* Aligns each message to the right */}
-            <div className= {(msg.isFromBackend ? "bg-gray-100" : "bg-gray-200" ) + " p-2 rounded-lg max-w-full lg:max-w-2/3 break-words"}>
+            <div
+              className={
+                (msg.isFromBackend ? "bg-gray-100" : "bg-gray-200") +
+                " p-2 rounded-lg max-w-full lg:max-w-2/3 break-words"
+              }
+            >
               {" "}
               {/* Added break-words */}
               {/* Display the uploaded files */}
@@ -270,7 +257,15 @@ const ChatPopup = () => {
                           className="max-w-xs rounded-lg mb-1"
                         />
                       ) : (
-                        <span className= {msg.isFromBackend ? "text-gray-100" : "text-gray-700"}>{file.name}</span>
+                        <span
+                          className={
+                            msg.isFromBackend
+                              ? "text-gray-100"
+                              : "text-gray-700"
+                          }
+                        >
+                          {file.name}
+                        </span>
                       )}
                     </div>
                   ))}
@@ -282,8 +277,9 @@ const ChatPopup = () => {
               </div>{" "}
               {/* Added break-words here too */}
             </div>
-
-            {!msg.isFromBackend ? (<div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex-shrink-0 ml-1"></div>) : null}
+            {!msg.isFromBackend ? (
+              <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex-shrink-0 ml-1"></div>
+            ) : null}
           </div>
         ))}
         {/* Show loading icon if uploading */}
@@ -390,6 +386,28 @@ const ChatPopup = () => {
             />
           </div>
         </div>
+      </div>
+
+      <div className="flex space-x-4 overflow-x-auto mb-6">
+        <Card
+          title="Company Search"
+          description="Which company is providing the best Services?"
+          onClick={() =>
+            handleCardClick("Which company is providing the best services?")
+          }
+        />
+        <Card
+          title="Policy Guidance"
+          description="What type of insurance is right for me?"
+          onClick={() =>
+            handleCardClick("What type of insurance is right for me?")
+          }
+        />
+        <Card
+          title="Premium Estimates"
+          description="How much will I need to pay?"
+          onClick={() => handleCardClick("How much will I need to pay?")}
+        />
       </div>
     </div>
   );
