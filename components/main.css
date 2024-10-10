@@ -1,0 +1,59 @@
+.carousel {
+    scroll-behavior: smooth;
+  }
+
+
+
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+
+
+
+  /* ====================================== */
+
+
+  /* Custom scrollbar styling */
+.custom-scrollbar {
+    overflow-y: hidden; /* Disable vertical scrolling */
+  }
+  .custom-scrollbar.tiny {
+    height: 36px; /* Height of the scrollable area for tiny tags */
+    }
+
+    .custom-scrollbar.large {
+        height: 60px; /* Height of the scrollable area for large tags */
+    }
+    
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* Transparent background for the scrollbar track */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Thumb styling */
+    border-radius: 10px; /* Rounded scrollbar */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Darken on hover */
+  }
+  
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin; /* Thin scrollbar for Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.0) transparent; /* Thumb color */
+  }
+  
+  .custom-scrollbar:hover {
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Darken on hover */
+  }
+  

@@ -10,6 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Add faSpinner for loading icon
 import { useState, useEffect, useRef } from "react";
 import Card from "./Card"; // Import the Card component from the new file
+
+import "./main.css";
+
 const ChatPopup = () => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
@@ -90,7 +93,9 @@ const ChatPopup = () => {
 
       // If there are files, append the first one (assuming single file upload)
       if (files.length > 0) {
-        formData.append("file", files[0]); // Assuming only the first file
+        for (let i = 0; i < files.length; i++) {
+          formData.append("files", files[i]);  // Append each file individually
+        }
       }
 
       try {
@@ -225,6 +230,86 @@ const ChatPopup = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
+      {/* <div className="flex space-x-4 overflow-x-auto mb-6">
+        <Card
+          title="Company Search"
+          description="Which company is providing the best Services?"
+          onClick={() =>
+            handleCardClick("Which company is providing the best services?")
+          }
+        />
+        <Card
+          title="Policy Guidance"
+          description="What type of insurance is right for me?"
+          onClick={() =>
+            handleCardClick("What type of insurance is right for me?")
+          }
+        />
+        <Card
+          title="Premium Estimates"
+          description="How much will I need to pay?"
+          onClick={() => handleCardClick("How much will I need to pay?")}
+        />
+      </div> */}
+
+      <div>
+        {/* Carousel for small screens */}
+        <div className="block md:hidden">
+          <div className="carousel flex overflow-x-scroll snap-x snap-mandatory gap-4 mb-6 scrollbar-hide">
+            <div className="flex-shrink-0 w-64 snap-center">
+              <Card
+                title="Company Search"
+                description="Which company is providing the best Services?"
+                onClick={() =>
+                  handleCardClick(
+                    "Which company is providing the best services?"
+                  )
+                }
+              />
+            </div>
+            <div className="flex-shrink-0 w-64 snap-center">
+              <Card
+                title="Policy Guidance"
+                description="What type of insurance is right for me?"
+                onClick={() =>
+                  handleCardClick("What type of insurance is right for me?")
+                }
+              />
+            </div>
+            <div className="flex-shrink-0 w-64 snap-center">
+              <Card
+                title="Premium Estimates"
+                description="How much will I need to pay?"
+                onClick={() => handleCardClick("How much will I need to pay?")}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Grid for medium and larger screens */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <Card
+            title="Company Search"
+            description="Which company is providing the best Services?"
+            onClick={() =>
+              handleCardClick("Which company is providing the best services?")
+            }
+          />
+          <Card
+            title="Policy Guidance"
+            description="What type of insurance is right for me?"
+            onClick={() =>
+              handleCardClick("What type of insurance is right for me?")
+            }
+          />
+          <Card
+            title="Premium Estimates"
+            description="How much will I need to pay?"
+            onClick={() => handleCardClick("How much will I need to pay?")}
+          />
+        </div>
+      </div>
+
       <div className="flex-grow p-4 space-y-2">
         {" "}
         {/* Added space between messages */}
@@ -234,8 +319,13 @@ const ChatPopup = () => {
             className={msg.isFromBackend ? "flex" : "flex justify-end"}
           >
             {msg.isFromBackend ? (
-              <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex-shrink-0 mr-1"></div>
-            ) : null}{" "}
+              <img
+                src="/assets/inschat.png"
+                alt="Inschat"
+                className="flex-shrink-0 w-10 h-10 rounded-full mr-1"
+              />
+            ) : null}
+
             {/* Aligns each message to the right */}
             <div
               className={
@@ -278,7 +368,11 @@ const ChatPopup = () => {
               {/* Added break-words here too */}
             </div>
             {!msg.isFromBackend ? (
-              <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex-shrink-0 ml-1"></div>
+              <img
+                src="/assets/guestchat.png"
+                alt="Inschat"
+                className="flex-shrink-0 w-10 h-10 rounded-full ml-1"
+              />
             ) : null}
           </div>
         ))}
@@ -305,6 +399,7 @@ const ChatPopup = () => {
               <input
                 id="file-upload"
                 type="file"
+                accept="image/*"
                 className="hidden"
                 multiple
                 onChange={handleFileUpload}
@@ -377,37 +472,15 @@ const ChatPopup = () => {
 
           {/* Send Button */}
           <div
-            className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0"
+            className={"flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " + (message ? "cursor-pointer bg-green-100" : "cursor-not-allowed bg-gray-50")}
             onClick={handleSendMessage}
           >
             <FontAwesomeIcon
               icon={faPlay}
-              className="text-primary text-lg sm:text-sm"
+              className={"text-lg sm:text-sm" + (message ? " text-primary" : " text-gray-300")}
             />
           </div>
         </div>
-      </div>
-
-      <div className="flex space-x-4 overflow-x-auto mb-6">
-        <Card
-          title="Company Search"
-          description="Which company is providing the best Services?"
-          onClick={() =>
-            handleCardClick("Which company is providing the best services?")
-          }
-        />
-        <Card
-          title="Policy Guidance"
-          description="What type of insurance is right for me?"
-          onClick={() =>
-            handleCardClick("What type of insurance is right for me?")
-          }
-        />
-        <Card
-          title="Premium Estimates"
-          description="How much will I need to pay?"
-          onClick={() => handleCardClick("How much will I need to pay?")}
-        />
       </div>
     </div>
   );
