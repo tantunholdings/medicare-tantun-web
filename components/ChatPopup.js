@@ -93,7 +93,9 @@ const ChatPopup = () => {
 
       // If there are files, append the first one (assuming single file upload)
       if (files.length > 0) {
-        formData.append("file", files[0]); // Assuming only the first file
+        for (let i = 0; i < files.length; i++) {
+          formData.append("files", files[i]);  // Append each file individually
+        }
       }
 
       try {
@@ -397,6 +399,7 @@ const ChatPopup = () => {
               <input
                 id="file-upload"
                 type="file"
+                accept="image/*"
                 className="hidden"
                 multiple
                 onChange={handleFileUpload}
@@ -469,12 +472,12 @@ const ChatPopup = () => {
 
           {/* Send Button */}
           <div
-            className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0"
+            className={"flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " + (message ? "cursor-pointer bg-green-100" : "cursor-not-allowed bg-gray-50")}
             onClick={handleSendMessage}
           >
             <FontAwesomeIcon
               icon={faPlay}
-              className="text-primary text-lg sm:text-sm"
+              className={"text-lg sm:text-sm" + (message ? " text-primary" : " text-gray-300")}
             />
           </div>
         </div>
