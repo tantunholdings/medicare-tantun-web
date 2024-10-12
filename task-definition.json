@@ -1,10 +1,12 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:521896913840:task-definition/medicare-web:18",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:521896913840:task-definition/medicare-web:20",
     "containerDefinitions": [
         {
             "name": "medicare-web",
-            "image": "521896913840.dkr.ecr.us-east-1.amazonaws.com/medicare/website:0ab9d5da097b1f66f9285705b94dc7bef3903682",
-            "cpu": 0,
+            "image": "521896913840.dkr.ecr.us-east-1.amazonaws.com/medicare/website:0d654b3d8ff4c4fe402b746f8f3798a18f8a5391",
+            "cpu": 2048,
+            "memory": 4096,
+            "memoryReservation": 1024,
             "portMappings": [
                 {
                     "name": "medicare-web-3000-tcp",
@@ -58,7 +60,8 @@
                     "max-buffer-size": "25m",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                }
+                },
+                "secretOptions": []
             },
             "systemControls": []
         }
@@ -66,7 +69,7 @@
     "family": "medicare-web",
     "executionRoleArn": "arn:aws:iam::521896913840:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 18,
+    "revision": 20,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -84,6 +87,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -106,13 +112,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "1024",
-    "memory": "3072",
+    "cpu": "2048",
+    "memory": "4096",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-10-12T23:30:40.022Z",
+    "registeredAt": "2024-10-12T23:38:11.837Z",
     "registeredBy": "arn:aws:sts::521896913840:assumed-role/AWSReservedSSO_medicare-s3_65b56463e802a56c/sahiruwrcg",
     "tags": []
 }
