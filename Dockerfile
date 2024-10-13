@@ -34,4 +34,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
 
 # Start the Next.js application in production mode
-CMD ["npm", "start"]
+CMD ["npm", "start", "--", "-p", "80"]
