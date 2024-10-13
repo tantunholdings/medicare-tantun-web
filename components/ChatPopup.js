@@ -21,6 +21,7 @@ const ChatPopup = () => {
   const [filePreviews, setFilePreviews] = useState([]); // Store previews of files (for images)
   const [uploadProgress, setUploadProgress] = useState([]); // Track file upload progress for multiple files
   const [isUploading, setIsUploading] = useState(false); // Track if files are uploading
+  const [loadingResponse, setLoadingResponse] = useState(false); // Track if waiting for a response
   const textareaRef = useRef(null); // Reference to the textarea for dynamic resizing
   const recognitionTimeout = useRef(null); // For handling the delay to send the message
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
@@ -86,15 +87,26 @@ const ChatPopup = () => {
       // Append the user's message to the chat
       setChatMessages([...chatMessages, newMessage]);
 
+      // Immediately clear the input fields (message and files)
+      setMessage(""); // Clear the message after sending
+      setFiles([]); // Clear the files array after sending
+      setFilePreviews([]); // Clear file previews
+      setUploadProgress([]); // Clear the upload progress array
+      setIsUploading(false); // Stop the loading indicator
+      clearTimeout(recognitionTimeout.current); // Clear the timeout
+
+      // Start loading indicator for response
+      setLoadingResponse(true);
+
       // Prepare form data for the API call
       const formData = new FormData();
       formData.append("question", userMessage.trim());
       formData.append("previous_messages", JSON.stringify(chatMessages));
 
-      // If there are files, append the first one (assuming single file upload)
+      // If there are files, append them
       if (files.length > 0) {
         for (let i = 0; i < files.length; i++) {
-          formData.append("files", files[i]);  // Append each file individually
+          formData.append("files", files[i]); // Append each file individually
         }
       }
 
@@ -145,13 +157,8 @@ const ChatPopup = () => {
           },
         ]);
       } finally {
-        // Clear the input and files
-        setMessage(""); // Clear the message after sending
-        setFiles([]); // Clear the files array after sending
-        setFilePreviews([]); // Clear file previews
-        setUploadProgress([]); // Clear the upload progress array
-        setIsUploading(false); // Stop the loading indicator
-        clearTimeout(recognitionTimeout.current); // Clear the timeout
+        // Stop loading indicator for response
+        setLoadingResponse(false);
       }
     }
   };
@@ -230,28 +237,6 @@ const ChatPopup = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      {/* <div className="flex space-x-4 overflow-x-auto mb-6">
-        <Card
-          title="Company Search"
-          description="Which company is providing the best Services?"
-          onClick={() =>
-            handleCardClick("Which company is providing the best services?")
-          }
-        />
-        <Card
-          title="Policy Guidance"
-          description="What type of insurance is right for me?"
-          onClick={() =>
-            handleCardClick("What type of insurance is right for me?")
-          }
-        />
-        <Card
-          title="Premium Estimates"
-          description="How much will I need to pay?"
-          onClick={() => handleCardClick("How much will I need to pay?")}
-        />
-      </div> */}
-
       <div>
         {/* Carousel for small screens */}
         <div className="block md:hidden">
@@ -385,6 +370,16 @@ const ChatPopup = () => {
             />
           </div>
         )}
+        {/* Show loading icon while waiting for API response */}
+        {loadingResponse && (
+          <div className="flex justify-center">
+            <FontAwesomeIcon
+              icon={faSpinner}
+              className="text-primary animate-spin"
+              size="2x"
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col w-full mb-4 relative">
@@ -472,12 +467,20 @@ const ChatPopup = () => {
 
           {/* Send Button */}
           <div
-            className={"flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " + (message ? "cursor-pointer bg-green-100" : "cursor-not-allowed bg-gray-50")}
+            className={
+              "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
+              (message
+                ? "cursor-pointer bg-green-100"
+                : "cursor-not-allowed bg-gray-50")
+            }
             onClick={handleSendMessage}
           >
             <FontAwesomeIcon
               icon={faPlay}
-              className={"text-lg sm:text-sm" + (message ? " text-primary" : " text-gray-300")}
+              className={
+                "text-lg sm:text-sm" +
+                (message ? " text-primary" : " text-gray-300")
+              }
             />
           </div>
         </div>
