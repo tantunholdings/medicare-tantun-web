@@ -3,8 +3,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
+    "strict": false,
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/FaqList.js", "components/FaqList.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/FaqList.js", "components/FaqList.js", "app/blog/new/page.js", "app/blog/page.js", "app/blog/page.js", "app/faq/page.js", "app/blog/new/EditorConvertToHTML.js", "app/blog/[id]/page.js"],
   "exclude": ["node_modules"]
 }

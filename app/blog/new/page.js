@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './cropImageHelper'; // Helper function to get cropped image
 import Cookies from 'js-cookie';
-
+import {Suspense} from "react";
 
 const EditorConvertToHTML = dynamic(() => import('./EditorConvertToHTML'), {
   ssr: false,
@@ -305,4 +305,13 @@ const BlogEditorPage = () => {
   );
 };
 
-export default BlogEditorPage;
+const Page = () => {
+  return (
+    <Suspense>
+      <BlogEditorPage/>
+    </Suspense>
+  )
+}
+
+
+export default Page;

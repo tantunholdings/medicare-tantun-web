@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import AdminSideBar from "../../../components/AdminSideBar";
 import { v4 as uuidv4 } from "uuid";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';
+
 const FAQEditorPage = () => {
-  const searchParams = useSearchParams()
-  const id = searchParams.get('id')
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
 
   const [faqID, setFaqID] = useState("");
   const [faqTitle, setFaqTitle] = useState("");
@@ -22,7 +23,6 @@ const FAQEditorPage = () => {
     }
   }, [id]);
 
-  // Function to fetch the FAQ details from the backend
   const fetchFaqDetails = async (id) => {
     setLoading(true);
     setStatusMessage("");
@@ -58,7 +58,6 @@ const FAQEditorPage = () => {
       return;
     }
 
-    // Use FormData to send data
     const formData = new FormData();
     formData.append("title", faqTitle);
     formData.append("answer", faqAnswer);
@@ -72,7 +71,7 @@ const FAQEditorPage = () => {
     }
 
     try {
-      const token = Cookies.get('authToken');
+      const token = Cookies.get("authToken");
       const response = await fetch("http://localhost:8000/add-faq", {
         method: "POST",
         body: formData,
@@ -84,24 +83,18 @@ const FAQEditorPage = () => {
       if (response.ok) {
         const data = await response.json();
         setStatusMessage("FAQ saved successfully!");
-        console.log("FAQ saved successfully", data);
       } else {
         const errorData = await response.json();
         setStatusMessage(`Failed to save FAQ: ${errorData.detail}`);
-        console.error("Failed to save FAQ", errorData);
       }
     } catch (error) {
       setStatusMessage(`Error: ${error.message}`);
-      console.error("Error:", error);
-    }
-
-    finally {
+    } finally {
       setFaqTitle("");
       setFaqAnswer("");
       setFaqID("");
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -110,7 +103,6 @@ const FAQEditorPage = () => {
       <div className="flex-1 p-10">
         <section className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
           <h2 className="text-lg font-semibold mb-4">Write New FAQ</h2>
-
           <div className="space-y-4">
             <div className="mb-4">
               <label htmlFor="faqTitle" className="block text-gray-700 mb-1">
@@ -143,22 +135,21 @@ const FAQEditorPage = () => {
 
           <div className="flex justify-between mt-4">
             <button
-              onClick={() => saveFaq(false)} // Save as published FAQ
+              onClick={() => saveFaq(false)}
               className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600"
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
               {loading ? "Loading..." : "Post FAQ"}
             </button>
             <button
-              onClick={() => saveFaq(true)} // Save as draft
+              onClick={() => saveFaq(true)}
               className="bg-gray-500 text-white px-4 py-2 rounded-md shadow hover:bg-gray-600"
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
               {loading ? "Loading..." : "Save as Draft"}
             </button>
           </div>
 
-          {/* Status message */}
           {statusMessage && (
             <div
               className={`mt-4 text-${
@@ -174,4 +165,10 @@ const FAQEditorPage = () => {
   );
 };
 
-export default FAQEditorPage;
+const FAQEditorPageWithSuspense = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <FAQEditorPage />
+  </Suspense>
+);
+
+export default FAQEditorPageWithSuspense;
