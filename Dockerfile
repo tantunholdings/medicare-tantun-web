@@ -22,10 +22,6 @@ ENV NODE_ENV=production
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Create non-root user for better security
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-USER nextjs
 
 # Copy necessary files from the builder stage
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
