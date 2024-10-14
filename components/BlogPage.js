@@ -3,10 +3,34 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import BlogCard from "./BlogCard";
+import BlogPageSkeleton from "./skeleton/BlogPageSkeleton"; // Import the skeleton
 
 export default function BlogPage({ blogId }) {
   const [blogData, setBlogData] = useState(null);
   const [recentPosts, setRecentPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
+
+  function reformatBlogContent(content) {
+    // Step 1: Remove new lines
+    let formattedContent = content.replace(/\r\n/g, ""); // Remove \r\n new lines
+
+    // Step 2: Add top margin to heading tags (h1, h2, h3, h4, h5, h6)
+    formattedContent = formattedContent.replace(
+      /<h([1-6])>/g,
+      '<h$1 style="margin-top: 1.5em;">'
+    );
+
+    // Step 3: Indent list items (li)
+    formattedContent = formattedContent.replace(
+      /<li>/g,
+      '<li style="padding-left: 20px;">'
+    );
+
+    // Step 4: Add small margin before and after paragraphs (p)
+    formattedContent = formattedContent.replace(/<p>/g, "");
+
+    return formattedContent;
+  }
 
   // Fetch blog data by ID
   useEffect(() => {
@@ -17,10 +41,16 @@ export default function BlogPage({ blogId }) {
         );
         const data = await response.json();
         if (data && data.blog) {
-          setBlogData(data.blog);
+          // Reformat the content
+          const formattedContent = reformatBlogContent(data.blog.content);
+
+          // Set the blog data with the formatted content
+          setBlogData({ ...data.blog, content: formattedContent });
         }
       } catch (error) {
         console.error("Error fetching blog data:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
@@ -49,8 +79,9 @@ export default function BlogPage({ blogId }) {
     fetchRecentPosts();
   }, []);
 
-  if (!blogData) {
-    return <div>Loading...</div>;
+  // Show skeleton if loading
+  if (loading) {
+    return <BlogPageSkeleton />; // Show skeleton loader while data is loading
   }
 
   const { title, subtitle, author, tags, content, date, image_url } = blogData;
