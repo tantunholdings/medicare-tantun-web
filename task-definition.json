@@ -1,124 +1,117 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:521896913840:task-definition/medicare-web:20",
-    "containerDefinitions": [
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:521896913840:task-definition/medicare-web:20",
+  "containerDefinitions": [
+    {
+      "name": "medicare-web",
+      "image": "521896913840.dkr.ecr.us-east-1.amazonaws.com/medicare/website:0d654b3d8ff4c4fe402b746f8f3798a18f8a5391",
+      "cpu": 2048,
+      "memory": 4096,
+      "memoryReservation": 1024,
+      "portMappings": [
         {
-            "name": "medicare-web",
-            "image": "521896913840.dkr.ecr.us-east-1.amazonaws.com/medicare/website:0d654b3d8ff4c4fe402b746f8f3798a18f8a5391",
-            "cpu": 2048,
-            "memory": 4096,
-            "memoryReservation": 1024,
-            "portMappings": [
-                {
-                    "name": "medicare-web-3000-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
-                }
-            ],
-            "essential": true,
-            "environment": [
-                {
-                    "name": "NEXT_PUBLIC_FASTAPI_URL",
-                    "value": "http://medicare-api-248423643.us-east-1.elb.amazonaws.com"
-                }
-            ],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/medicare-web",
-                    "mode": "non-blocking",
-                    "awslogs-create-group": "true",
-                    "max-buffer-size": "25m",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "systemControls": []
-        },
-        {
-            "name": "aws-otel-collector",
-            "image": "public.ecr.aws/aws-observability/aws-otel-collector:v0.40.2",
-            "cpu": 0,
-            "portMappings": [],
-            "essential": true,
-            "command": [
-                "--config=/etc/ecs/ecs-cloudwatch.yaml"
-            ],
-            "environment": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/ecs-aws-otel-sidecar-collector",
-                    "mode": "non-blocking",
-                    "awslogs-create-group": "true",
-                    "max-buffer-size": "25m",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "systemControls": []
+          "name": "medicare-web-3000-tcp",
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp",
+          "appProtocol": "http"
         }
-    ],
-    "family": "medicare-web",
-    "executionRoleArn": "arn:aws:iam::521896913840:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "revision": 20,
-    "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
+      ],
+      "essential": true,
+      "environment": [
         {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+          "name": "NEXT_PUBLIC_FASTAPI_URL",
+          "value": "http://medicare-api-248423643.us-east-1.elb.amazonaws.com"
         }
-    ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "cpu": "2048",
-    "memory": "4096",
-    "runtimePlatform": {
-        "cpuArchitecture": "X86_64",
-        "operatingSystemFamily": "LINUX"
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/medicare-web",
+          "mode": "non-blocking",
+          "awslogs-create-group": "true",
+          "max-buffer-size": "25m",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "systemControls": []
     },
-    "registeredAt": "2024-10-12T23:38:11.837Z",
-    "registeredBy": "arn:aws:sts::521896913840:assumed-role/AWSReservedSSO_medicare-s3_65b56463e802a56c/sahiruwrcg",
-    "tags": []
+    {
+      "name": "aws-otel-collector",
+      "image": "public.ecr.aws/aws-observability/aws-otel-collector:v0.40.2",
+      "cpu": 0,
+      "portMappings": [],
+      "essential": true,
+      "command": ["--config=/etc/ecs/ecs-cloudwatch.yaml"],
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ecs-aws-otel-sidecar-collector",
+          "mode": "non-blocking",
+          "awslogs-create-group": "true",
+          "max-buffer-size": "25m",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "systemControls": []
+    }
+  ],
+  "family": "medicare-web",
+  "executionRoleArn": "arn:aws:iam::521896913840:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 20,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": ["EC2", "FARGATE"],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "2048",
+  "memory": "4096",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2024-10-12T23:38:11.837Z",
+  "registeredBy": "arn:aws:sts::521896913840:assumed-role/AWSReservedSSO_medicare-s3_65b56463e802a56c/sahiruwrcg",
+  "tags": []
 }
