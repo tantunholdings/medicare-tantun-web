@@ -18,10 +18,6 @@
       ],
       "essential": true,
       "environment": [
-        {
-          "name": "NEXT_PUBLIC_FASTAPI_URL",
-          "value": "http://medicare-api-248423643.us-east-1.elb.amazonaws.com"
-        }
       ],
       "mountPoints": [],
       "volumesFrom": [],
