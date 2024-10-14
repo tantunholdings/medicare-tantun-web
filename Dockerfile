@@ -29,9 +29,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
 
 # Start the Next.js application in production mode
-# Change the exposed port to 3000 or any non-privileged port
-EXPOSE 3000
+# Change the exposed port to 80 or any non-privileged port
+EXPOSE 80
 
-# Update the start command to use port 3000
-CMD ["npm", "start", "--", "-p", "3000"]
+# Update the start command to use port 80
+CMD ["npm", "start", "--", "-p", "80"]
 
