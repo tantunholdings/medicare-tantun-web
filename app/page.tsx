@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AssistanceSection from "../components/AssistanceSection";
 import TawkMessengerReact from "../components/TawkMessengerReact";
-
+import Disclaimer from "../components/Disclaimer";
 import Script from "next/script";
 
 export default function InsuranceAdvisor() {
@@ -30,11 +30,13 @@ export default function InsuranceAdvisor() {
         `}</style>
       </Head>
       <Navbar />
-      <main className="container mx-auto mt-8 px-6">
+      <main className="container mx-auto my-8 px-6 ">
         <HeroSection />
         <AssistanceSection />
         <TawkMessengerReact />
+        
       </main>
+      <Disclaimer />
     </>
   );
 }

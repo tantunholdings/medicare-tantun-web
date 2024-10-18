@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TawkMessengerReact from "@/components/TawkMessengerReact";
 import "../../components/main.css";
+import Disclaimer from "@/components/Disclaimer";
 
 export default function BlogPage() {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -74,7 +75,7 @@ export default function BlogPage() {
     <>
       <Navbar />
       <TawkMessengerReact />
-      <div className="container mx-auto mt-8 px-6 ">
+      <div className="container mx-auto my-8 px-6  min-h-screen">
         {/* Search Box */}
         <div className="relative mt-6 md:mt-0 w-full md:w-1/3 lg:w-1/4 md:ml-auto">
           <input
@@ -150,6 +151,7 @@ export default function BlogPage() {
           </div>
         )}
       </div>
+      <Disclaimer />
     </>
   );
 }
