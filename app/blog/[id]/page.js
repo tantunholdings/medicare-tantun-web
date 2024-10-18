@@ -3,6 +3,7 @@
 import Navbar from "../../../components/Navbar";
 import { useParams } from "next/navigation"; // Use useParams from next/navigation
 import BlogPage from "../../../components/BlogPage";
+import Disclaimer from "@/components/Disclaimer";
 
 export default function BlogDetails() {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -11,9 +12,10 @@ export default function BlogDetails() {
   return (
     <>
       <Navbar />
-      <div>
+      <div className=" min-h-screen">
         <BlogPage blogId={id} />
       </div>
+      <Disclaimer />
     </>
   );
 }
