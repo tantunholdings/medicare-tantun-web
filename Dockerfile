@@ -4,7 +4,7 @@ RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
 COPY package*.json ./
 
-ENV NEXT_PUBLIC_FASTAPI_URL=http://medicare-api-248423643.us-east-1.elb.amazonaws.com
+ENV NEXT_PUBLIC_FASTAPI_URL=https://api.tantunai.com
 
 # Builder stage - Builds the application
 FROM base as builder
