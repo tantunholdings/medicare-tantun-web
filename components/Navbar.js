@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
 import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import the phone icon and hamburger icon
+import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import icons
 import Image from "next/image"; // Import Next.js Image component
 import logo from "/public/assets/Logo.png"; // Import the logo
 
@@ -33,6 +33,8 @@ export default function Navbar() {
         return "Blog";
       case "/faq":
         return "FAQ";
+      case "/about":
+        return "About Us";
       default:
         return "Home";
     }
@@ -62,8 +64,7 @@ export default function Navbar() {
           {/* Logo (Visible on all views) */}
           <div className="flex items-center">
             <Link href="/">
-              <Image src={logo} alt="Brand Logo" width={50} height={50} />{" "}
-              {/* Set your desired width and height */}
+              <Image src={logo} alt="Brand Logo" width={50} height={50} />
             </Link>
           </div>
 
@@ -83,6 +84,16 @@ export default function Navbar() {
               }`}
             >
               Home
+            </Link>
+            <Link
+              href="/about"
+              className={`${
+                pathname === "/about"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
+              About Us
             </Link>
             <Link
               href="/blog"
@@ -145,9 +156,20 @@ export default function Navbar() {
                   ? "text-primary font-semibold"
                   : "text-gray-500"
               }`}
-              onClick={toggleMobileMenu} // Close menu on link click
+              onClick={toggleMobileMenu}
             >
               Home
+            </Link>
+            <Link
+              href="/about"
+              className={`w-full text-left py-2 border-b ${
+                pathname === "/about"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              About Us
             </Link>
             <Link
               href="/blog"
@@ -197,8 +219,7 @@ export default function Navbar() {
       {/* Render DetailsPopup as a modal if showDetailsPopup is true */}
       {showDetailsPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <DetailsPopup closePopup={closeDetailsPopup} />{" "}
-          {/* Pass the close function */}
+          <DetailsPopup closePopup={closeDetailsPopup} />
         </div>
       )}
     </>
