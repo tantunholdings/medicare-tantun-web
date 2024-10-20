@@ -3,80 +3,127 @@
 import { useState } from "react";
 
 const DetailsPopup = ({ closePopup }) => {
-  const [isChatMode, setIsChatMode] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
-  const toggleToDetailsMode = () => {
-    setIsChatMode(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent form refresh
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/contact-us`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            name,
+            email,
+            message,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setSuccess(true); // Display success message
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        const data = await response.json();
+        setError("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl h-[500px] flex flex-col relative mx-4">
       <div className="flex justify-between items-center p-4">
-        <div className="flex items-center bg-gray-200 rounded-full p-1">
-          <button
-            onClick={toggleToDetailsMode}
-            className="bg-white text-gray-800 font-semibold py-2 px-4 rounded-full focus:outline-none"
-          >
-            Leave Your Details
-          </button>
+        <div className="text-gray-800 font-semibold">
+          Leave Your Details
         </div>
 
         {/* Close Button */}
         <button
-          onClick={closePopup} // Trigger the passed close function
-          className="ml-4 w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full focus:outline-none"
+          onClick={closePopup}
+          className="ml-4 w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full"
         >
           <span className="text-gray-500 text-xl">&times;</span>
         </button>
       </div>
 
-      {/* Container for details form */}
+      {/* Form Section */}
       <div className="p-4 flex-grow overflow-y-auto">
-        <div id="detailsForm" className="flex flex-col justify-between h-full">
-          <form className="flex flex-col justify-between flex-grow space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Type here"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="Type here"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
-                />
-              </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                required
+              />
             </div>
             <div>
               <label className="block text-gray-700 font-semibold mb-2">
-                Your Message
+                Email
               </label>
-              <textarea
+              <input
+                type="email"
                 placeholder="Type here"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
-                rows="4"
-              ></textarea>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                required
+              />
             </div>
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                Send Message
-              </button>
-            </div>
-            <div></div>
-          </form>
-        </div>
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Your Message
+            </label>
+            <textarea
+              placeholder="Type here"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-green-600"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+          </div>
+          {error && <p className="text-red-500 text-center">{error}</p>}
+          {success && (
+            <p className="text-green-500 text-center">
+              Message sent successfully!
+            </p>
+          )}
+        </form>
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ export default function HeroSection() {
       >
         <div className="flex flex-col items-center md:flex-row">
           {/* Mobile Carousel Section */}
-          <div className="md:hidden mb-4 w-full flex items-center justify-center">
+          <div className="md:hidden w-full flex items-center justify-center">
             {/* Carousel container with a larger fixed height and transition */}
             <div
               className="relative w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out"

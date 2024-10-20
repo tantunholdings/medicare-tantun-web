@@ -72,7 +72,7 @@ const FAQEditorPage = () => {
 
     try {
       const token = Cookies.get("authToken");
-      const response = await fetch("http://localhost:8000/add-faq", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_FASTAPI_URL}/add-faq`, {
         method: "POST",
         body: formData,
         headers: {

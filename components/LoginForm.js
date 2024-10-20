@@ -31,7 +31,6 @@ export default function LoginForm() {
         // Successful login, set cookies and redirect
         Cookies.set("authToken", data.access_token, {
           expires: 1,
-          secure: process.env.NODE_ENV === "production",
           sameSite: "strict",
           path: "/",
         });
