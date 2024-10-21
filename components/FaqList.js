@@ -44,7 +44,7 @@ export default function FaqList({ activePage, setActivePage }) {
   return (
     <>
       {loading ? (
-        <FaqSkeleton /> // Show the skeleton loader while loading
+        <FaqSkeleton perPage={pageSize} /> // Show the skeleton loader while loading
       ) : (
         <div className="space-y-6 mx-auto">
           {faqs.length > 0 ? (

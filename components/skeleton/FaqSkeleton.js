@@ -1,8 +1,8 @@
 // In FaqSkeleton.js (or .jsx)
-const FaqSkeleton = () => {
+const FaqSkeleton = ({perPage}) => {
   return (
     <div className="space-y-6 mx-auto animate-pulse">
-      {[...Array(5)].map((_, index) => (
+      {[...Array(perPage)].map((_, index) => (
         <div key={index} className="bg-gray-200 p-4 rounded-lg shadow-md">
           <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
           <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
