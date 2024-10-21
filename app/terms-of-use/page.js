@@ -4,8 +4,8 @@ import TawkMessengerReact from '@/components/TawkMessengerReact'
 
 const page = () => {
   return (
-    <TermsOfUse />
-    <TawkMessengerReact />
+    <><TermsOfUse />
+    <TawkMessengerReact /></>
   )
 }
 
