@@ -200,10 +200,12 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faPhone} className="text-white" />
               </div>
               <div>
+              <a href="tel:2334-5666-667">
                 <div className="text-xs text-gray-500">CALL US</div>
                 <div className="text-lg font-semibold text-gray-800">
                   2334 5666 667
                 </div>
+              </a>
               </div>
             </div>
             <button
