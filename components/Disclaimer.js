@@ -50,7 +50,7 @@ const Footer = () => {
         <hr className="my-1 border-line sm:mx-auto  lg:my-3" />
 
         {/* Disclaimer Section */}
-        <div className="text-xs text-primaryBlack mb-4 space-y-0 text-justify">
+        <div className="text-3xs md:text-2xs 2xl:text-xs text-primaryBlack mb-4 space-y-0 text-justify">
           <p>
             The Medicare plans represented are PDP, HMO, PPO, or PFFS plans with
             a Medicare contract. Enrollment in plans depends on contract

@@ -14,6 +14,10 @@ module.exports = {
         line: "#EDEDED",
         textGray: "#8B8B8B",
       },
+      fontSize: {
+        "3xs": ".4rem",
+        "2xs": ".6rem",
+      },
     },
   },
   plugins: [],
