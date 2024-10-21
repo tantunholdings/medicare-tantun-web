@@ -34,7 +34,7 @@ export default function HeroSection() {
               src="/assets/placeholder-image.jpg" // Correct placeholder image path
             />
             <div className="text-left">
-              <h1 className="text-base sm:text-xl font-bold mb-4 leading-tight">
+              <h1 className="text-sm sm:text-xl font-bold mb-4 leading-tight">
                 {" "}
                 {/* Adjusted text size for small screens */}
                 Welcome to Insurance Advisor, where understanding insurance is
