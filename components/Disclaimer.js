@@ -31,8 +31,18 @@ const Footer = () => {
                 href="/terms-of-use"
                 className="hover:underline me-4 md:me-6"
               >
-                Privacy Policy
+                Terms of Use
               </Link>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html"
+                className="hover:underline me-4 md:me-6"
+              >
+                Privacy Policy
+              </a>
             </li>
             <li>
               <Link href="/faq" className="hover:underline me-4 md:me-6">
@@ -91,7 +101,12 @@ const Footer = () => {
               Terms of Use
             </Link>
             {" and "}
-            <a target="_blank"  rel="noopener noreferrer" href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html" className="hover:underline text-primary">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html"
+              className="hover:underline text-primary"
+            >
               Privacy Policy
             </a>
             .
