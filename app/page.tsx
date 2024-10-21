@@ -30,7 +30,7 @@ export default function InsuranceAdvisor() {
         `}</style>
       </Head>
       <Navbar />
-      <main className="container mx-auto my-8 px-6 ">
+      <main className="container mx-auto my-8 px-6 min-h-screen">
         <HeroSection />
         <AssistanceSection />
         <TawkMessengerReact />

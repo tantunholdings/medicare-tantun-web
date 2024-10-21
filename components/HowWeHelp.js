@@ -55,7 +55,7 @@ const HowWeHelp = () => {
                   {step.title}
                 </h3>
               </div>
-              <p className="text-lg text-gray-600 text-justify">
+              <p className="text-base text-gray-600 text-justify">
                 {step.description}
               </p>
             </div>

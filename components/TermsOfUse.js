@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { ArrowUp } from "lucide-react";
+import Disclaimer from "./Disclaimer";
+import Navbar from "./Navbar";
 
 const TermsOfUse = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -153,69 +155,76 @@ const TermsOfUse = () => {
   };
 
   return (
-    <div className="mx-12 text-sm text-justify p-6 bg-white">
-      <h1 className="text-3xl font-bold text-primary mb-6">Terms of Use</h1>
-      <p className="text-primaryBlack mb-4">Updated Oct 12, 2024</p>
+    <>
+      <Navbar />
+      <div className="container mx-auto my-8 px-6  min-h-screen">
+        <div className="mx-12 text-sm text-justify p-6 bg-white">
+          <h1 className="text-3xl font-bold text-primary mb-6">Terms of Use</h1>
+          <p className="text-primaryBlack mb-4">Updated Oct 12, 2024</p>
 
-      <div className="mb-4 border-b border-[#EDEDED]">
-        <div className="flex justify-between items-center w-full py-4 text-left text-primaryBlack font-semibold">
-          Introduction
-        </div>
-        <div className="pb-4 text-textGray mb-4 space-y-2">
-          <p>
-            Welcome and thank you for your interest in Tantun Holdings (Tantun,
-            or us) and our websites at TantunHoldings.com, and other websites
-            where we post this document as the applicable terms of use along
-            with any related websites, networks, applications, insurance agent
-            and representative services, and communication channels (including
-            online chat and telephone call centers), and other services provided
-            by us (collectively our Service). These Terms of Use are a legally
-            binding contract between you and Tantun regarding your use of the
-            Service.
-          </p>
-          <p>
-            PLEASE READ THE FOLLOWING TERMS CAREFULLY...
-          </p>
-        </div>
-      </div>
+          <div className="mb-4 border-b border-[#EDEDED]">
+            <div className="flex justify-between items-center w-full py-4 text-left text-primaryBlack font-semibold">
+              Introduction
+            </div>
+            <div className="pb-4 text-textGray mb-4 space-y-2">
+              <p>
+                Welcome and thank you for your interest in Tantun Holdings
+                (Tantun, or us) and our websites at TantunHoldings.com, and
+                other websites where we post this document as the applicable
+                terms of use along with any related websites, networks,
+                applications, insurance agent and representative services, and
+                communication channels (including online chat and telephone call
+                centers), and other services provided by us (collectively our
+                Service). These Terms of Use are a legally binding contract
+                between you and Tantun regarding your use of the Service.
+              </p>
+              <p>PLEASE READ THE FOLLOWING TERMS CAREFULLY...</p>
+            </div>
+          </div>
 
-      {sections.map((section, index) => (
-        <div key={index} className="mb-4 border-b border-[#EDEDED]">
-          <button
-            className="flex justify-between items-center w-full py-4 text-left text-primary font-semibold"
-            onClick={() => toggleSection(index)}
-          >
-            {section.title}
-            {expandedSection === index ? (
-              <ChevronUp className="text-primary" />
-            ) : (
-              <ChevronDown className="text-primary" />
-            )}
-          </button>
-          {expandedSection === index && (
-            <div
-              className="pb-4 text-textGray space-y-2"
-              dangerouslySetInnerHTML={{ __html: section.content }}
-            />
+          {sections.map((section, index) => (
+            <div key={index} className="mb-4 border-b border-[#EDEDED]">
+              <button
+                className="flex justify-between items-center w-full py-4 text-left text-primary font-semibold"
+                onClick={() => toggleSection(index)}
+              >
+                {section.title}
+                {expandedSection === index ? (
+                  <ChevronUp className="text-primary" />
+                ) : (
+                  <ChevronDown className="text-primary" />
+                )}
+              </button>
+              {expandedSection === index && (
+                <div
+                  className="pb-4 text-textGray space-y-2"
+                  dangerouslySetInnerHTML={{ __html: section.content }}
+                />
+              )}
+            </div>
+          ))}
+
+          <div className="mt-8 text-sm text-primaryBlack space-y-2">
+            <p>
+              This website and its contents are for informational purposes
+              only...
+            </p>
+            <p>Tantun Medicare website is operated by Tantun Holdings...</p>
+          </div>
+
+          {/* Floating "Go to Top" Button */}
+          {showButton && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primaryDark focus:outline-none"
+            >
+              <ArrowUp />
+            </button>
           )}
         </div>
-      ))}
-
-      <div className="mt-8 text-sm text-primaryBlack space-y-2">
-        <p>This website and its contents are for informational purposes only...</p>
-        <p>Tantun Medicare website is operated by Tantun Holdings...</p>
       </div>
-
-      {/* Floating "Go to Top" Button */}
-      {showButton && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primaryDark focus:outline-none"
-        >
-          <ArrowUp />
-        </button>
-      )}
-    </div>
+      <Disclaimer />
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ const AboutUsHero = () => {
           <h1 className="text-4xl font-bold text-primaryBlack mb-4">
             Who is Tantun?
           </h1>
-          <p className="text-lg text-primaryBlack">
+          <p className="text-base text-primaryBlack">
             Tantun Holdings is a licensed insurance agency that simplifies
             comparing and enrolling in top healthcare plans. Its user-friendly
             platform offers access to national and regional insurers, allowing

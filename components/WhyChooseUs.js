@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
                 {/* Text Section */}
                 <div className="w-full md:w-1/2 text-center md:text-left">
                   <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
-                  <p className="text-lg text-gray-600 text-justify">
+                  <p className="text-base text-gray-600 text-justify">
                     {section.description}
                   </p>
                 </div>
