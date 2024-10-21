@@ -1,11 +1,10 @@
 "use client"; // Ensure this is a client-side component
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DetailsPopup from "./DetailsPopup"; // Assuming DetailsPopup is correctly imported
 
 export default function HeroSection() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
-  const [carouselView, setCarouselView] = useState(0); // 0 for topic & image, 1 for text section
 
   const handleContactUsClick = () => {
     setShowDetailsPopup(true); // Show the popup when Contact Us is clicked
@@ -14,15 +13,6 @@ export default function HeroSection() {
   const closeDetailsPopup = () => {
     setShowDetailsPopup(false); // Close the popup
   };
-
-  // Carousel Effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselView((prev) => (prev === 0 ? 1 : 0)); // Toggle between 0 and 1
-    }, 5000); // Switch every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
 
   return (
     <>
@@ -36,69 +26,47 @@ export default function HeroSection() {
         }}
       >
         <div className="flex flex-col items-center md:flex-row">
-          {/* Mobile Carousel Section */}
-          <div className="md:hidden w-full flex items-center justify-center">
-            {/* Carousel container with a larger fixed height and transition */}
-            <div
-              className="relative w-full flex flex-col justify-center items-center transition-all duration-500 ease-in-out"
-              style={{
-                minHeight: "280px",
-                height: "280px",
-                overflow: "hidden",
-              }} // Increased height to fit both text and image
-            >
-              {/* Show Topic & Image on first view */}
-              {carouselView === 0 && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 opacity-100 text-center">
-                  <img
-                    alt="Placeholder image representing insurance information"
-                    className="rounded-lg h-40 w-60 mb-2"
-                    src="/assets/placeholder-image.jpg" // Correct placeholder image path
-                    width="100"
-                    height="100"
-                  />
-                  <h1 className="text-lg sm:text-xl font-bold leading-tight text-center px-4">
-                    Welcome to Insurance Advisor, where understanding insurance
-                    is simple and easy.
-                  </h1>
-                </div>
-              )}
-              {/* Show Text Section on second view */}
-              {carouselView === 1 && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 opacity-100">
-                  <p className="text-sm text-center px-4">
-                    Discover a wealth of information tailored to guide you
-                    through the complexities of insurance, ensuring you make
-                    informed decisions with confidence. Our comprehensive
-                    resources break down various insurance types.
-                  </p>
-                </div>
-              )}
+          {/* For mobile, the image appears at the top */}
+          <div className="md:hidden mb-4 flex items-center">
+            <img
+              alt="Placeholder image representing insurance information"
+              className="rounded-lg h-24 w-24 mr-4" // Added margin-right (mr-4) for space between the image and text
+              src="/assets/placeholder-image.jpg" // Correct placeholder image path
+            />
+            <div className="text-left">
+              <h1 className="text-base sm:text-xl font-bold mb-4 leading-tight">
+                {" "}
+                {/* Adjusted text size for small screens */}
+                Welcome to Insurance Advisor, where understanding insurance is
+                simple and easy.
+              </h1>
             </div>
           </div>
 
-          {/* Text Section for larger screens */}
-          <div className="hidden md:block md:w-2/3 text-left">
-            <h1 className="md:block text-xl md:text-2xl lg:text-3xl font-bold mb-4 leading-tight px-2">
+          {/* Text Section */}
+          <div className="md:w-2/3 text-left">
+            <h1 className="hidden md:block text-base md:text-2xl lg:text-3xl font-bold mb-4 leading-tight px-2">
               Welcome to Insurance Advisor, where understanding insurance is
               simple and easy.
             </h1>
-            <p className="text-sm md:text-base mb-6 px-2">
+
+            <p className="text-xs md:text-base mb-6 px-2">
               Discover a wealth of information tailored to guide you through the
               complexities of insurance, ensuring you make informed decisions
               with confidence. Our comprehensive resources break down various
               insurance types.
             </p>
             <div className="flex space-x-4 px-2">
-              <button
+            <button
                 className="bg-primary hover:bg-green-600 text-white font-semibold py-2 px-4 rounded w-32"
                 onClick={handleContactUsClick}
               >
                 Contact us
               </button>
-              <button className="bg-secondary hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-32">
+              <a href="tel:2334-5666-667">
+              <button className="bg-secondary hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-32 md:hidden">
                 Call us
-              </button>
+              </button></a>
             </div>
           </div>
 
