@@ -3,6 +3,7 @@ import AboutUsHero from "../../components/AboutUsHero";
 import HowWeHelp from "../../components/HowWeHelp";
 import WhyChooseUs from "../../components/WhyChooseUs";
 import Disclaimer from "../../components/Disclaimer";
+import TawkMessengerReact from "@/components/TawkMessengerReact";
 export default function About() {
   return (
     <>
@@ -13,6 +14,7 @@ export default function About() {
       <WhyChooseUs />
       </div>
       <Disclaimer />
+      <TawkMessengerReact />
     </>
   );
 }
