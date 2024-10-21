@@ -236,7 +236,7 @@ const ChatPopup = () => {
   };
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full ">
       <div>
         {/* Carousel for small screens */}
         <div className="block md:hidden">
