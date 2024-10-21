@@ -4,8 +4,8 @@
     {
       "name": "medicare-web",
       "image": "521896913840.dkr.ecr.us-east-1.amazonaws.com/medicare/website:0d654b3d8ff4c4fe402b746f8f3798a18f8a5391",
-      "cpu": 2048,
-      "memory": 4096,
+      "cpu": 1024,
+      "memory": 2048,
       "memoryReservation": 1024,
       "portMappings": [
         {
