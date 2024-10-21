@@ -22,6 +22,7 @@ export default function BlogPage() {
   const [tags, setTags] = useState(["All", "Latest"]); // Initialize with "All"
 
   const router = useRouter(); // Use the router from next/navigation
+  const perPage = 6; // Number of blogs per page
 
   // Function to extract unique tags from blog posts
   const extractTags = (posts) => {
@@ -36,7 +37,7 @@ export default function BlogPage() {
     setLoading(true); // Set loading to true before fetching data
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=${page}&page_size=6`
+        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=${page}&page_size=${perPage}`
       );
       const data = await response.json();
       setBlogs(data.posts);
@@ -117,7 +118,7 @@ export default function BlogPage() {
 
         {/* Blog Cards */}
         {loading ? (
-          <BlogSkeleton /> // Show the skeleton loader while loading
+          <BlogSkeleton perPage={perPage} /> // Show the skeleton loader while loading
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBlogs.map((blog, index) => (

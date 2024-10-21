@@ -40,10 +40,10 @@ const PaginationComponent = ({ totalPages, activePage, setActivePage }) => {
       setLoading(true); // Set loading to true to disable interaction
 
       // Simulate page loading with a 2-second delay
-      setTimeout(() => {
+     
         setActivePage(page); // Trigger the page change
         setLoading(false); // Re-enable interaction after 2 seconds
-      }, 2000); // 2-second delay
+      
     }
   };
 
