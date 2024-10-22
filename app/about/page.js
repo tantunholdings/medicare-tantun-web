@@ -14,7 +14,7 @@ export default function About() {
       <WhyChooseUs />
       </div>
       <Disclaimer />
-      <TawkMessengerReact />
+      
     </>
   );
 }

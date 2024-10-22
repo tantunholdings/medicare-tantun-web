@@ -33,7 +33,7 @@ export default function InsuranceAdvisor() {
       <main className="container mx-auto my-8 px-6 min-h-screen">
         <HeroSection />
         <AssistanceSection />
-        <TawkMessengerReact />
+        
         
       </main>
       <Disclaimer />

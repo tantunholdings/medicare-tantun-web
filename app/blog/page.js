@@ -75,7 +75,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <TawkMessengerReact />
+      
       <div className="container mx-auto my-8 px-6  min-h-screen">
         {/* Search Box */}
         <div className="relative mt-6 md:mt-0 w-full md:w-1/3 lg:w-1/4 md:ml-auto">

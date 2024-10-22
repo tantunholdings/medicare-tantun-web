@@ -13,7 +13,7 @@ export default function FAQ() {
   return (
     <>
       <Navbar />
-      <TawkMessengerReact />
+      
       <main className="container mx-auto my-8 px-6 min-h-screen">
         <h1 className="text-3xl font-bold text-primaryBlack mb-10">
           Frequently Asked Questions
