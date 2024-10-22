@@ -47,7 +47,7 @@ async function getRecentPosts(currentBlogId) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_FASTAPI_URL}/blogs?page=1&page_size=3`,
-      { cache: "no-store" }
+      { next: { revalidate: 3600 } }
     );
     const data = await response.json();
     if (data && data.posts) {

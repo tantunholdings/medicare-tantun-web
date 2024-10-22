@@ -29,16 +29,16 @@ async function fetchAllFaqsInChunks() {
   while (moreFaqsAvailable) {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/faqs?page=${currentPage}&page_size=1`,
-        { cache: "no-store" }
+        `${process.env.NEXT_PUBLIC_FASTAPI_URL}/faqs?page=${currentPage}&page_size=5`,
+        { next: { revalidate: 3600 } }
       );
       const data = await response.json();
 
       if (data.faqs && data.faqs.length > 0) {
-        allFaqs = [...allFaqs, ...data.faqs]; // Append received FAQs to the list
+        allFaqs = [...allFaqs, ...data.faqs]; 
         currentPage++;
       } else {
-        moreFaqsAvailable = false; // Stop fetching if no more FAQs are available
+        moreFaqsAvailable = false;
       }
     } catch (error) {
       console.error(`Error fetching FAQs on page ${currentPage}:`, error);
