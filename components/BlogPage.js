@@ -13,7 +13,7 @@ export default function BlogPage({ blogData, recentPosts }) {
         <div className="w-full lg:w-2/3 p-6 relative">
           <div className="relative">
             
-            <div className="bg-white relative left-0 right-0 top-[90%] px-6 py-4 mx-auto rounded-3xl ">
+            <div className="bg-white relative left-0 right-0 top-[90%] px-6 pb-4 mx-auto rounded-3xl ">
               <h1 className="text-3xl font-bold mb-2 text-primaryBlack">{title}</h1>
               <h2 className="text-xl  mb-2 text-primaryBlack leading-none">{subtitle}</h2>
               <img
