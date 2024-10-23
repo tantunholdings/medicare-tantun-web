@@ -12,17 +12,18 @@ export default function BlogPage({ blogData, recentPosts }) {
       <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-col lg:flex-row">
         <div className="w-full lg:w-2/3 p-6 relative">
           <div className="relative">
-            <img
+            
+            <div className="bg-white relative left-0 right-0 top-[90%] px-6 py-4 mx-auto rounded-3xl ">
+              <h1 className="text-3xl font-bold mb-2 text-primaryBlack">{title}</h1>
+              <h2 className="text-xl  mb-2 text-primaryBlack leading-none">{subtitle}</h2>
+              <img
               src={
                 image_url ||
                 "https://static.toiimg.com/thumb/width-600,height-400,msid-45454098.cms"
               }
               alt={title}
-              className="w-full h-96 object-cover rounded-3xl"
+              className="w-full h-96 object-cover my-5 mt-8"
             />
-            <div className="bg-white relative left-0 right-0 top-[90%] px-6 py-4 mx-auto rounded-3xl shadow-lg">
-              <h1 className="text-3xl font-bold mb-2 text-primaryBlack">{title}</h1>
-              <h2 className="text-xl font-semibold mb-2 text-primaryBlack">{subtitle}</h2>
               <div className="flex justify-between items-center pb-4">
                 <div className="flex space-x-2 overflow-x-auto mt-auto">
                   {tags.map((tag, index) => (
