@@ -15,7 +15,7 @@ export default function BlogPage({ blogData, recentPosts }) {
             
             <div className="bg-white relative left-0 right-0 top-[90%] px-6 pb-4 mx-auto rounded-3xl ">
               <h1 className="text-3xl font-bold mb-2 text-primaryBlack">{title}</h1>
-              <h2 className="text-xl  mb-2 text-primaryBlack leading-none">{subtitle}</h2>
+              <h2 className="text-xl font-light  mb-2 text-primaryBlack leading-none">{subtitle}</h2>
               <img
               src={
                 image_url ||
