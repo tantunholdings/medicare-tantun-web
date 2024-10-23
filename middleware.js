@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function middleware(req) {
   const token = req.cookies.get('authToken'); // Get token from cookies
-  const protectedRoutes = ['/admin', '/blog/new'];
+  const protectedRoutes = ['/admin', '/blog/new', '/blog/edit', '/faw/new', '/faq/edit'];
 
   if (!token && protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
     return NextResponse.redirect(new URL('/login', req.url));
