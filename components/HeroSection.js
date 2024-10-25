@@ -37,18 +37,17 @@ export default function HeroSection() {
               <h1 className="text-sm sm:text-xl font-bold mb-4 leading-tight">
                 {" "}
                 {/* Adjusted text size for small screens */}
-                Welcome to Insurance Advisor, where understanding insurance is
-                simple and easy.
+                Medicare Insurance Assistance - Find the Best Medicare Plan
               </h1>
             </div>
           </div>
 
           {/* Text Section */}
           <div className="md:w-2/3 text-left">
-            <h1 className="hidden md:block text-base md:text-2xl lg:text-3xl font-bold mb-4 leading-tight px-2">
-              Welcome to Insurance Advisor, where understanding insurance is
+            <h2 className="hidden md:block text-base md:text-2xl lg:text-3xl font-bold mb-4 leading-tight px-2">
+              Welcome to Medicare Advisor, where understanding Medicare plans is
               simple and easy.
-            </h1>
+            </h2>
 
             <p className="text-xs md:text-base mb-6 px-2">
               Discover a wealth of information tailored to guide you through the
