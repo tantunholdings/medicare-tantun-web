@@ -47,9 +47,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
+           <header>
+          <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/faq">FAQ</a>
+            <a href="/blog">Medicare Blogs</a>
+          </nav>
+        </header>
         <main>{children}</main>
-        
+        <footer>
+          <p>&copy; {new Date().getFullYear()} [Agency Name]. All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
