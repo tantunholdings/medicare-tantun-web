@@ -50,21 +50,7 @@ export default function InsuranceAdvisor() {
           `}
         </script>
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-        <style>{`
-          body {
-            font-family: 'Nunito', sans-serif;
-          }
-        `}</style>
-   
+        
       <Navbar />
       <main className="container mx-auto my-8 px-6 min-h-screen">
         <HeroSection />
