@@ -27,17 +27,10 @@ export default function InsuranceAdvisor() {
               "url": "https://www.tantunai.com",
               "image": "https://www.tantunai.com/assets/Logo.png",
               "description": "Get free, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
-              "potentialAction": [
-                {
-                  "@type": "SearchAction",
-                  "target": "https://www.tantunai.com/about",
-                  "name": "Contact Us"
-                },
-                {
-                  "@type": "SearchAction",
-                  "target": "https://www.tantunai.com/blog",
-                  "name": "Medicare Blogs"
-                }
+              "sameAs": [
+                "https://www.tantunai.com/blog",
+                "https://www.tantunai.com/about"
+              ],
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
