@@ -30,7 +30,7 @@ export default function InsuranceAdvisor() {
               "sameAs": [
                 "https://www.tantunai.com/blog",
                 "https://www.tantunai.com/about"
-              ],
+             
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
