@@ -46,6 +46,45 @@ export default function InsuranceAdvisor() {
                 "description": "Welcome to Medicare Insurance Assistance. Get expert guidance for your Medicare needs.",
                 "image": "https://www.tantunai.com/assets/Logo.png", // Optional: Image representing the homepage content
                 
+              },
+              "service": {
+                "@type": "Service",
+                "serviceType": "Medicare Enrollment Assistance",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Tantun Holdings",
+                  "url": "https://www.tantunai.com"
+                },
+                "description": "Assistance with Medicare enrollment based on individual health needs."
+              },
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.tantunai.com"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://www.tantunai.com/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "About Us",
+                    "item": "https://www.tantunai.com/about"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "FAQ",
+                    "item": "https://www.tantunai.com/faq"
+                  }
+                ]
               }
             }
           `}
