@@ -44,7 +44,7 @@ export default function InsuranceAdvisor() {
                 "name": "Home",
                 "url": "https://www.tantunai.com",
                 "description": "Welcome to Medicare Insurance Assistance. Get expert guidance for your Medicare needs.",
-                "image": "https://www.tantunai.com/assets/Logo.png",
+                "image": "https://www.tantunai.com/assets/Logo.png"
                 
               },
               "service": {
