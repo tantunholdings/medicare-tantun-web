@@ -38,6 +38,14 @@ export default function InsuranceAdvisor() {
                 "contactType": "Customer Service",
                 "areaServed": "US",
                 "availableLanguage": "English"
+              },
+              "mainEntity": {
+                "@type": "WebPage",
+                "name": "Home",
+                "url": "https://www.tantunai.com",
+                "description": "Welcome to Medicare Insurance Assistance. Get expert guidance for your Medicare needs.",
+                "image": "https://www.tantunai.com/assets/Logo.png", // Optional: Image representing the homepage content
+                
               }
             }
           `}
