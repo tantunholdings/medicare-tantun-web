@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -18,9 +22,27 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/FaqList.js", "components/FaqList.js", "app/blog/new/page.js", "app/blog/page.js", "app/blog/page.js", "app/faq/page.js", "app/blog/new/EditorConvertToHTML.js", "app/blog/[id]/page.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/FaqList.js",
+    "components/FaqList.js",
+    "app/blog/new/page.js",
+    "app/blog/page.js",
+    "app/blog/page.js",
+    "app/faq/page.js",
+    "app/blog/new/EditorConvertToHTML.js",
+    "app/blog/[id]/page.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
