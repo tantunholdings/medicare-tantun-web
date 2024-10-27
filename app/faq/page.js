@@ -2,12 +2,36 @@ import Navbar from "@/components/Navbar";
 import FaqList from "@/components/FaqList";
 import Disclaimer from "@/components/Disclaimer";
 
+// Metadata for the FAQ page
+export const metadata = {
+  title: "Frequently Asked Questions - Medicare Insurance Assistance",
+  description: "Find answers to common questions about Medicare enrollment, plans, and services.",
+};
+
 // Server-rendered FAQ page with chunked requests (5 FAQs per request)
 export default async function FAQ() {
   const allFaqs = await fetchAllFaqsInChunks(); // Fetch all FAQs in chunks
 
+  // Generate schema markup from fetched FAQs
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.title, // Ensure this matches your data structure
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer, // Ensure this matches your data structure
+      }
+    })),
+  };
+
   return (
     <>
+    
+       {/* FAQ Schema Markup - placed outside <Head> for correct rendering */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> 
+            
       <Navbar />
       <main className="container mx-auto my-8 px-6 min-h-screen">
         <h1 className="text-3xl font-bold text-primaryBlack mb-10">
