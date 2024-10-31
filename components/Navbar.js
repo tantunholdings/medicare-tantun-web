@@ -226,7 +226,7 @@ export default function Navbar() {
         </div>
       )}
 
-      <TawkMessengerReact />
+      {/* <TawkMessengerReact /> */}
     </>
   );
 }

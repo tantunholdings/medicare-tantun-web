@@ -11,7 +11,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 import Card from "./Card"; // Import the Card component from the new file
 
-import "./main.css";
+import "../main.css";
 
 const ChatPopup = () => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
@@ -366,7 +366,7 @@ const ChatPopup = () => {
           <div className="flex justify-center">
             <FontAwesomeIcon
               icon={faSpinner}
-              className="text-primary animate-spin"
+              className="text-blue-600 animate-spin"
             />
           </div>
         )}
@@ -375,7 +375,7 @@ const ChatPopup = () => {
           <div className="flex justify-center">
             <FontAwesomeIcon
               icon={faSpinner}
-              className="text-primary animate-spin"
+              className="text-blue-600 animate-spin"
               size="2x"
             />
           </div>
@@ -385,11 +385,11 @@ const ChatPopup = () => {
       <div className="flex flex-col w-full mb-4 relative">
         <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative">
           {/* Paperclip Button */}
-          <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0">
+          <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full flex-shrink-0">
             <label htmlFor="file-upload" className="cursor-pointer">
               <FontAwesomeIcon
                 icon={faPaperclip}
-                className="text-primary text-lg sm:text-sm"
+                className="text-blue-600 text-lg sm:text-sm"
               />
               <input
                 id="file-upload"
@@ -452,14 +452,14 @@ const ChatPopup = () => {
 
           {/* Microphone Button */}
           <div
-            className={`flex items-center justify-center w-10 h-10 mx-2 bg-green-100 rounded-full flex-shrink-0 ${
+            className={`flex items-center justify-center w-10 h-10 mx-2 bg-blue-100 rounded-full flex-shrink-0 ${
               isRecording ? "bg-red-100" : ""
             }`}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
           >
             <FontAwesomeIcon
               icon={faMicrophone}
-              className={`text-primary text-lg sm:text-sm ${
+              className={`text-blue-600 text-lg sm:text-sm ${
                 isRecording ? "text-red-500" : ""
               }`}
             />
@@ -470,7 +470,7 @@ const ChatPopup = () => {
             className={
               "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
               (message
-                ? "cursor-pointer bg-green-100"
+                ? "cursor-pointer bg-blue-100"
                 : "cursor-not-allowed bg-gray-50")
             }
             onClick={handleSendMessage}
@@ -479,7 +479,7 @@ const ChatPopup = () => {
               icon={faPlay}
               className={
                 "text-lg sm:text-sm" +
-                (message ? " text-primary" : " text-gray-300")
+                (message ? " text-blue-600" : " text-gray-300")
               }
             />
           </div>

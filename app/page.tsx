@@ -1,8 +1,10 @@
 // pages/index.js
 import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
-import AssistanceSection from "../components/AssistanceSection";
-import TawkMessengerReact from "../components/TawkMessengerReact";
+import HeroSection from "../components/home/HeroSection";
+import AssistanceSection from "../components/home/AssistanceSection";
+import ServicesSection from "../components/home/ServicesSection";
+import MiddleSection from "../components/home/MiddleSection";
+import BlogPreview from "../components/home/BlogPreview";
 import Disclaimer from "../components/Disclaimer";
 import Script from "next/script";
 
@@ -17,7 +19,7 @@ export default function InsuranceAdvisor() {
     <>
       
 
-         {/* Schema Markup */}
+         {/* Schema Markup
          <script type="application/ld+json">
           {`
             {
@@ -88,16 +90,19 @@ export default function InsuranceAdvisor() {
               }
             }
           `}
-        </script>
+        </script> */}
 
         
       <Navbar />
-      <main className="container mx-auto my-8 px-6 min-h-screen">
-        <HeroSection />
+      <HeroSection />
+      <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
+        
+        <ServicesSection />
         <AssistanceSection />
+        <MiddleSection />
+        <BlogPreview />       
         
-        
-      </main>
+      </div>
       <Disclaimer />
     </>
   );
