@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import icons
 import Image from "next/image"; // Import Next.js Image component
 import logo from "/public/assets/Logo.png"; // Import the logo
+import TawkMessengerReact from "./TawkMessengerReact";
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
@@ -225,7 +226,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* <TawkMessengerReact /> */}
+      <TawkMessengerReact />
     </>
   );
 }
