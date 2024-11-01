@@ -1,5 +1,7 @@
 import React from "react";
 import { Phone, FileText, UserCheck } from "lucide-react";
+import Image from "next/image";
+import titleShape from "../../public/assets/title-shape.svg";
 
 const ServicesSection = () => {
   // Update the tiles array with proper icons
@@ -11,9 +13,10 @@ const ServicesSection = () => {
 
   return (
     <section className="container mx-auto py-12 px-4 max-w-7xl">
-      <h2 className="md:text-center md:text-3xl font-bold mb-8 mx-auto">
+      <h2 className="md:text-center md:text-3xl font-bold  mx-auto">
         Need Medical Guidance? Call Us for Personalized Support
       </h2>
+      <div className="flex justify-center mb-8 my-5"><Image src={titleShape} alt="Title Shape" /></div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {tiles.map(([title, Icon], index) => (
           <div

@@ -157,8 +157,8 @@ const TermsOfUse = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto my-8 px-6  min-h-screen">
-        <div className="mx-12 text-sm text-justify p-6 bg-white">
+      <div className="container md:mx-auto my-8 md:px-6  min-h-screen">
+        <div className="md:mx-12 text-sm text-justify p-6 bg-white">
           <h1 className="text-3xl font-bold text-primary mb-6">Terms of Use</h1>
           <p className="text-primaryBlack mb-4">Updated Oct 12, 2024</p>
 

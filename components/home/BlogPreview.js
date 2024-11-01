@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import titleShape from "../../public/assets/title-shape.svg";
 import Link from "next/link";
 
 const BlogPreview = () => {
@@ -25,6 +26,7 @@ const BlogPreview = () => {
   return (
     <section className="container mx-auto py-12 px-4">
       <h2 className="text-center text-3xl font-bold">Our Blog</h2>
+      <div className="flex justify-center mt-5"><Image src={titleShape} alt="Title Shape" /></div>
       <div className="mt-12 grid gap-8 md:grid-cols-2">
         <div className="relative aspect-square overflow-hidden rounded-lg">
           <img

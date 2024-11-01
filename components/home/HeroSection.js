@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative bg-gray-100 mx-5 md:mx-0 w-auto md:w-screen px-0 text-white">
+      <section className="relative bg-gray-100 mx-5 md:mx-0  px-0 text-white">
         <div className="block md:hidden bg-white text-black py-2">
           <div className="font-semibold">
             Free Medicare Enrollment Help - Quick & Easy
@@ -55,7 +55,8 @@ export default function HeroSection() {
 
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-blue-600 px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
-            Call Now for Free Help!
+            <a href="tel:2334-5666-667">
+            Call Now for Free Help!</a>
           </button>
         </div>
         <div
