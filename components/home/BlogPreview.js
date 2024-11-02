@@ -36,7 +36,7 @@ const BlogPreview = () => {
       src={
         blogPosts[0]?.image_url
           ? blogPosts[0]?.image_url
-          : "https://via.placeholder.com/600x400?text=No+Image"
+          : "https://fakeimg.pl/600x400?text=TantunAI"
       }
       alt={blogPosts[0]?.title}
       className="object-cover rounded-lg"
@@ -59,9 +59,7 @@ const BlogPreview = () => {
                 <Link href={`/blog/${post.id}`} passHref className="flex gap-4">
                   <img
                     src={
-                      post.image_url
-                        ? post.image_url
-                        : "https://via.placeholder.com/600x400?text=No+Image"
+                      post?.image_url
                     }
                     alt={post.title}
                     className="object-cover rounded-lg w-36 h-24"

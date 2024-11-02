@@ -23,7 +23,7 @@ export default function BlogCard({
             src={
               image_url
                 ? image_url
-                : "https://via.placeholder.com/600x400?text=No+Image" // Fallback if no image is provided
+                : "https://fakeimg.pl/600x400?text=TantunAI" // Fallback if no image is provided
             }
             alt={title}
             className="object-cover rounded-lg w-full h-[240px]" // Sets a fixed height for the image

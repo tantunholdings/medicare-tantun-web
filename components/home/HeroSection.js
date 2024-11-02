@@ -123,15 +123,16 @@ export default function HeroSection() {
         {/* Blinking and Centered Button with Higher z-index */}
         {isVisible && ( // Conditionally render the button
           <button
-            onClick={scrollToChatArea}
-            className="fixed top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
-          >
-            {arrowDirection === "down" ? (
-              <ChevronDown className="h-6 w-6" />
-            ) : (
-              <ChevronUp className="h-6 w-6" />
-            )}
-          </button>
+          onClick={scrollToChatArea}
+          className="fixed bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
+        >
+          {arrowDirection === "down" ? (
+            <ChevronDown className="h-6 w-6" />
+          ) : (
+            <ChevronUp className="h-6 w-6" />
+          )}
+        </button>
+        
         )}
       </section>
 
