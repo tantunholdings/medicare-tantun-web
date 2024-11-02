@@ -1,12 +1,9 @@
 // pages/index.js
-import Navbar from "../components/Navbar";
 import HeroSection from "../components/home/HeroSection";
 import AssistanceSection from "../components/home/AssistanceSection";
 import ServicesSection from "../components/home/ServicesSection";
 import MiddleSection from "../components/home/MiddleSection";
 import BlogPreview from "../components/home/BlogPreview";
-import Disclaimer from "../components/Disclaimer";
-import Script from "next/script";
 
 // Metadata for the main page
 export const metadata = {
@@ -93,7 +90,6 @@ export default function InsuranceAdvisor() {
         </script> */}
 
         
-      <Navbar />
       <HeroSection />
       <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
         
@@ -103,7 +99,6 @@ export default function InsuranceAdvisor() {
         <BlogPreview />       
         
       </div>
-      <Disclaimer />
     </>
   );
 }

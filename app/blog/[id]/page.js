@@ -1,6 +1,4 @@
-import Navbar from "@/components/Navbar";
 import BlogPage from "@/components/BlogPage";
-import Disclaimer from "@/components/Disclaimer";
 
 // This component is an async server component
 export default async function BlogDetails({ params }) {
@@ -12,11 +10,9 @@ export default async function BlogDetails({ params }) {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen">
         <BlogPage blogData={blogData} recentPosts={recentPosts} />
       </div>
-      <Disclaimer />
     </>
   );
 }

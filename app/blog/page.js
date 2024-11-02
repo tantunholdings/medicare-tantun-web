@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // Use useRouter from next/navigation
-import Navbar from "../../components/Navbar";
 import BlogCard from "../../components/BlogCard";
 import PaginationComponent from "../../components/Pagination";
 import BlogSkeleton from "../../components/skeleton/BlogSkeleton"; // Import the skeleton loader
@@ -10,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TawkMessengerReact from "@/components/TawkMessengerReact";
 import "../../components/main.css";
-import Disclaimer from "@/components/Disclaimer";
 
 export default function BlogPage() {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -74,8 +72,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Navbar />
-      
+     
       <div className="container mx-auto my-8 px-6  min-h-screen">
         {/* Search Box */}
         <div className="relative mt-6 md:mt-0 w-full md:w-1/3 lg:w-1/4 md:ml-auto">
@@ -152,7 +149,6 @@ export default function BlogPage() {
           </div>
         )}
       </div>
-      <Disclaimer />
     </>
   );
 }
