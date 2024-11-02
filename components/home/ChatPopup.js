@@ -9,11 +9,10 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons"; // Add faSpinner for loading icon
 import { useState, useEffect, useRef } from "react";
-import Card from "./Card"; // Import the Card component from the new file
 
 import "../main.css";
 
-const ChatPopup = ({setTrigger, trigger}) => {
+const ChatPopup = ({ setTrigger, trigger }) => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
@@ -245,64 +244,6 @@ const ChatPopup = ({setTrigger, trigger}) => {
 
   return (
     <div className="flex flex-col h-full w-full ">
-      <div>
-        {/* Carousel for small screens */}
-        <div className="block md:hidden">
-          <div className="carousel flex overflow-x-scroll snap-x snap-mandatory gap-4 mb-6 scrollbar-hide">
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Company Search"
-                description="Which company is providing the best Services?"
-                onClick={() =>
-                  handleCardClick(
-                    "Which company is providing the best services?"
-                  )
-                }
-              />
-            </div>
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Policy Guidance"
-                description="What type of insurance is right for me?"
-                onClick={() =>
-                  handleCardClick("What type of insurance is right for me?")
-                }
-              />
-            </div>
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Premium Estimates"
-                description="How much will I need to pay?"
-                onClick={() => handleCardClick("How much will I need to pay?")}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Grid for medium and larger screens */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <Card
-            title="Company Search"
-            description="Which company is providing the best Services?"
-            onClick={() =>
-              handleCardClick("Which company is providing the best services?")
-            }
-          />
-          <Card
-            title="Policy Guidance"
-            description="What type of insurance is right for me?"
-            onClick={() =>
-              handleCardClick("What type of insurance is right for me?")
-            }
-          />
-          <Card
-            title="Premium Estimates"
-            description="How much will I need to pay?"
-            onClick={() => handleCardClick("How much will I need to pay?")}
-          />
-        </div>
-      </div>
-
       <div className="flex-grow p-4 space-y-2">
         {" "}
         {/* Added space between messages */}
@@ -447,7 +388,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
 
             {/* Text Input */}
             <textarea
-            id="chat-textarea"
+              id="chat-textarea"
               ref={textareaRef}
               placeholder="Ask anything about Medicare"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"

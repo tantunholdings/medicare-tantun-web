@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ChatPopup from "./ChatPopup";
 import ServicesSection from "./ServicesSection";
+import CardsSection from "./CardsSection" 
 
 export default function AssistanceSection() {
   const [trigger, setTrigger] = useState("");
@@ -13,6 +14,8 @@ export default function AssistanceSection() {
         <h2 className="text-xl font-semibold mb-4">
           Ask our Medicare AI Assistant
         </h2>
+
+        <CardsSection setTrigger={setTrigger}/>  
 
         <ChatPopup setTrigger={setTrigger} trigger={trigger} />
       </section>
