@@ -1,6 +1,5 @@
 "use client"; // Ensure this is a client-side component
 import { PHONE_NUMBER } from "@/utils/constants";
-
 import { useEffect, useState } from "react";
 import DetailsPopup from "../DetailsPopup"; // Assuming DetailsPopup is correctly imported
 import { Phone, ChevronDown, ChevronUp } from "lucide-react"; // Import both arrow icons
@@ -11,6 +10,7 @@ export default function HeroSection() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
   const [bg, setBg] = useState("");
   const [arrowDirection, setArrowDirection] = useState("down");
+  const [isVisible, setIsVisible] = useState(true); // New state to control button visibility
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,25 +27,32 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Check if the "chat-textarea" element is above or below the current view
+  // Check if the "chat-textarea" element is in view and adjust arrow direction and visibility
   useEffect(() => {
-    const checkArrowDirection = () => {
+    const checkElementVisibility = () => {
       const chatArea = document.getElementById("chat-textarea");
       if (chatArea) {
-        const chatAreaPosition = chatArea.getBoundingClientRect().top;
-        if (chatAreaPosition < window.innerHeight / 2) {
-          setArrowDirection("up");
+        const chatAreaPosition = chatArea.getBoundingClientRect();
+        // Check if the element is in view
+        if (chatAreaPosition.top >= 0 && chatAreaPosition.bottom <= window.innerHeight) {
+          setIsVisible(false); // Hide the button if the element is in view
         } else {
-          setArrowDirection("down");
+          setIsVisible(true); // Show the button if the element is not in view
+          // Adjust the arrow direction based on the element's position
+          if (chatAreaPosition.top < window.innerHeight / 2) {
+            setArrowDirection("up");
+          } else {
+            setArrowDirection("down");
+          }
         }
       }
     };
 
-    // Check direction on load and when scrolling
-    window.addEventListener("scroll", checkArrowDirection);
-    checkArrowDirection(); // Initial check
+    // Check on load and when scrolling
+    window.addEventListener("scroll", checkElementVisibility);
+    checkElementVisibility(); // Initial check
 
-    return () => window.removeEventListener("scroll", checkArrowDirection);
+    return () => window.removeEventListener("scroll", checkElementVisibility);
   }, []);
 
   const handleContactUsClick = () => {
@@ -114,16 +121,18 @@ export default function HeroSection() {
         </div>
 
         {/* Blinking and Centered Button with Higher z-index */}
-        <button
-          onClick={scrollToChatArea}
-          className="fixed top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
-        >
-          {arrowDirection === "down" ? (
-            <ChevronDown className="h-6 w-6" />
-          ) : (
-            <ChevronUp className="h-6 w-6" />
-          )}
-        </button>
+        {isVisible && ( // Conditionally render the button
+          <button
+            onClick={scrollToChatArea}
+            className="fixed top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
+          >
+            {arrowDirection === "down" ? (
+              <ChevronDown className="h-6 w-6" />
+            ) : (
+              <ChevronUp className="h-6 w-6" />
+            )}
+          </button>
+        )}
       </section>
 
       {/* Render DetailsPopup as a modal if showDetailsPopup is true */}
