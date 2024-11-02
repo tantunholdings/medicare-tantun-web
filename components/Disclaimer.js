@@ -38,11 +38,17 @@ const Footer = () => {
       </div>
 
       <div className="absolute inset-1 text-white">
-      <div className="flex justify-end mt-16 mr-5"><Image src={titleShape} alt="Title Shape" style={{ transform: "rotate(45deg)" }} /></div>
+        <div className="flex justify-end mt-16 mr-5">
+          <Image
+            src={titleShape}
+            alt="Title Shape"
+            style={{ transform: "rotate(45deg)" }}
+          />
+        </div>
       </div>
 
       <div className="relative z-10  container mx-auto py-8 px-4 text-white">
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-4">
           <div>
             <Image src={logo} alt="Logo" width={40} height={40} />
             <div className="mt-4 space-y-2">
@@ -63,38 +69,63 @@ const Footer = () => {
           <div className="hidden md:block pt-8">
             <Image src={footerShape} alt="Logo" width={200} height={200} />
           </div>
-          <div className="mt-4">
-            <h3 className="text-xl font-bold">Get Us in Your Inbox</h3>
-            <div className="text-xs md:text-base mt-4 flex items-center rounded-3xl border bg-white text-black">
-              <input
-                className="flex-1 border-none outline-none pl-4 pr-2 rounded-3xl"
-                placeholder="Enter your email"
-                type="email"
-              />
-              <button className="rounded-3xl bg-blue-600 m-px px-4 py-2 text-white hover:bg-blue-700">
-                Submit
-              </button>
+          <div className="mt-4 col-span-2">
+            <div className="text-3xs md:text-2xs 2xl:text-xs text-white font-thin mb-4 space-y-0 text-justify">
+              <p>
+                The Medicare plans represented are PDP, HMO, PPO, or PFFS plans
+                with a Medicare contract. Enrollment in plans depends on
+                contract renewal. Enrollment in a plan may be limited to certain
+                times. Eligibility may require a Special or Initial Enrollment
+                Period. TantunAI and Medicare supplement insurance plans are not
+                connected with or endorsed by the U.S. government or the federal
+                Medicare program.
+              </p>
+              <p>
+                We do not offer every plan available in your area. Please
+                contact Medicare.gov, 1-800-MEDICARE, or your local State Health
+                Insurance Program (SHIP) to get information on all of your
+                options.
+              </p>
+              <p>
+                The chatbot on this website uses Generative AI technology,
+                powered by the OpenAI API, to provide responses. Please note
+                that the information provided by the chatbot is for general
+                purposes only and should not be considered professional advice.
+                It is not a substitute for consultation with our insurance
+                specialists. For personalized guidance and expert advice, we
+                recommend contacting our insurance agents directly.
+              </p>
+              <p>
+                By initiating a chat or scheduling a call, you agree to be
+                contacted by a licensed sales agent by email, text message, or
+                phone call to discuss Medicare insurance plans. This is a
+                solicitation for insurance. Standard messaging rates may apply.
+              </p>
+              <p>
+                Tantun's website is operated by Tantun Holdings, Inc., a
+                licensed health insurance agency doing business as TantunAI. The
+                purpose of this site is the solicitation of insurance. Contact
+                may be made by an insurance agent/producer or insurance company.
+                TantunAI is a free service with no obligation to enroll. Your
+                information and use of this site are governed by our most recent{" "}
+                <Link
+                  href="/terms-of-use"
+                  className="hover:underline text-primary"
+                >
+                  Terms of Use
+                </Link>
+                {" and "}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html"
+                  className="hover:underline text-primary"
+                >
+                  Privacy Policy
+                </a>
+                .
+              </p>
             </div>
-
-            <p className="mt-2 text-sm ">
-              By entering email you are agree to our{" "}
-              <Link
-                href="/terms-of-use"
-                className="hover:underline text-blue-600"
-              >
-                Terms of Use
-              </Link>
-              {" and "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html"
-                className="hover:underline text-blue-600"
-              >
-                Privacy Policy
-              </a>
-              .
-            </p>
           </div>
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
