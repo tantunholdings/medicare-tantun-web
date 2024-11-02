@@ -10,7 +10,10 @@ export default function HeroSection() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
   const [bg, setBg] = useState("");
   const [arrowDirection, setArrowDirection] = useState("down");
-  const [isVisible, setIsVisible] = useState(true); // New state to control button visibility
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
+  // Section IDs to navigate between
+  const sections = ["top", "chat-section", "blog-section", "bottom"];
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,47 +30,24 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Check if the "chat-textarea" element is in view and adjust arrow direction and visibility
-  useEffect(() => {
-    const checkElementVisibility = () => {
-      const chatArea = document.getElementById("chat-textarea");
-      if (chatArea) {
-        const chatAreaPosition = chatArea.getBoundingClientRect();
-        // Check if the element is in view
-        if (chatAreaPosition.top >= 0 && chatAreaPosition.bottom <= window.innerHeight) {
-          setIsVisible(false); // Hide the button if the element is in view
-        } else {
-          setIsVisible(true); // Show the button if the element is not in view
-          // Adjust the arrow direction based on the element's position
-          if (chatAreaPosition.top < window.innerHeight / 2) {
-            setArrowDirection("up");
-          } else {
-            setArrowDirection("down");
-          }
-        }
-      }
-    };
+  // Function to handle scrolling to the next section
+  const handleScroll = () => {
+    let nextIndex;
+    if (arrowDirection === "down") {
+      nextIndex = currentSectionIndex < sections.length - 1 ? currentSectionIndex + 1 : 0;
+    } else {
+      nextIndex = 0;
+    }
 
-    // Check on load and when scrolling
-    window.addEventListener("scroll", checkElementVisibility);
-    checkElementVisibility(); // Initial check
+    setCurrentSectionIndex(nextIndex);
+    const target = sections[nextIndex];
 
-    return () => window.removeEventListener("scroll", checkElementVisibility);
-  }, []);
-
-  const handleContactUsClick = () => {
-    setShowDetailsPopup(true); // Show the popup when Contact Us is clicked
-  };
-
-  const closeDetailsPopup = () => {
-    setShowDetailsPopup(false); // Close the popup
-  };
-
-  // Function to scroll to the "chat-area"
-  const scrollToChatArea = () => {
-    const chatArea = document.getElementById("chat-textarea");
-    if (chatArea) {
-      chatArea.scrollIntoView({
+    if (target === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (target === "bottom") {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    } else {
+      document.getElementById(target)?.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "nearest",
@@ -75,17 +55,38 @@ export default function HeroSection() {
     }
   };
 
+  // Check if the user is at the bottom of the page and update the arrow direction
+  useEffect(() => {
+    const handleScrollCheck = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+        setArrowDirection("up");
+        setCurrentSectionIndex(sections.length - 1);
+      } else if (window.scrollY === 0) {
+        setArrowDirection("down");
+        setCurrentSectionIndex(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollCheck);
+    handleScrollCheck();
+
+    return () => window.removeEventListener("scroll", handleScrollCheck);
+  }, []);
+
+  const handleContactUsClick = () => {
+    setShowDetailsPopup(true);
+  };
+
+  const closeDetailsPopup = () => {
+    setShowDetailsPopup(false);
+  };
+
   return (
     <>
-      <section className="relative bg-gray-100 mx-5 md:mx-0 px-0 text-white">
+      <section id="top" className="relative bg-gray-100 mx-5 md:mx-0 px-0 text-white">
         <div className="block md:hidden bg-white text-black py-2">
-          <div className="font-semibold">
-            Free Medicare Enrollment Help - Quick & Easy
-          </div>
-          <div className="font-thin">
-            Call now for free assistance and guidance from our licensed experts.
-          </div>
-
+          <div className="font-semibold">Free Medicare Enrollment Help - Quick & Easy</div>
+          <div className="font-thin">Call now for free assistance and guidance from our licensed experts.</div>
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
             <a href={`tel:${PHONE_NUMBER}`}>Call Now for Free Help!</a>
@@ -93,19 +94,15 @@ export default function HeroSection() {
         </div>
         <div
           className="relative z-0 w-full md:px-20 rounded-lg md:rounded-none h-48 md:h-auto"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-          }}
+          style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}
         >
-          <div className="flex flex-col justify-end h-full ">
-            <div className="backdrop-blur-md bg-black/20 md:bg-transparent md:backdrop-blur-none px-2 py-2 md:px-5 md:py-20 rounded-md ">
+          <div className="flex flex-col justify-end h-full">
+            <div className="backdrop-blur-md bg-black/20 md:bg-transparent md:backdrop-blur-none px-2 py-2 md:px-5 md:py-20 rounded-md">
               <h1 className="text-sm font-bold tracking-tight md:text-5xl md:max-w-xl">
                 Need Help with Medicare? We're Just a Call Away!
               </h1>
               <p className="md:mt-6 text-xs md:text-lg font-light">
-                Medicare can be confusing, but our licensed experts make it
-                easy.
+                Medicare can be confusing, but our licensed experts make it easy.
                 <br className="hidden md:block" />
                 Call now for FREE help enrolling today.
               </p>
@@ -120,39 +117,26 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Blinking and Centered Button with Higher z-index */}
-        {isVisible && ( // Conditionally render the button
-          <button
-          onClick={scrollToChatArea}
+        {/* Blinking and Centered Button */}
+        <button
+          onClick={handleScroll}
           className="fixed bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
         >
-          {arrowDirection === "down" ? (
-            <ChevronDown className="h-6 w-6" />
-          ) : (
-            <ChevronUp className="h-6 w-6" />
-          )}
+          {arrowDirection === "down" ? <ChevronDown className="h-6 w-6" /> : <ChevronUp className="h-6 w-6" />}
         </button>
-        
-        )}
       </section>
 
-      {/* Render DetailsPopup as a modal if showDetailsPopup is true */}
+
       {showDetailsPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <DetailsPopup closePopup={closeDetailsPopup} />
         </div>
       )}
 
-      {/* Styles for Blinking Animation */}
       <style jsx>{`
         @keyframes blink {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0;
-          }
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
         }
         .animate-blink {
           animation: blink 1.5s infinite;

@@ -24,7 +24,7 @@ const BlogPreview = () => {
   }, []);
 
   return (
-    <section className="container mx-auto py-12 px-4">
+    <section className="container mx-auto py-12 px-4" id="blog-section">
       <h2 className="text-center text-3xl font-bold">Our Blog</h2>
       <div className="flex justify-center mt-5">
         <Image src={titleShape} alt="Title Shape" />
