@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Disclaimer from "../components/Disclaimer";
+import { TawkProvider } from "@/context/TawkContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,10 +18,12 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Medicare Insurance Assistance - Find the Best Medicare Plan",
-  description: "Get free, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
+  description:
+    "Get free, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
   openGraph: {
     title: "Medicare Insurance Assistance - Find the Best Medicare Plan",
-    description: "Free Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
+    description:
+      "Free Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
     url: "https://tantunai.com",
     images: [
       {
@@ -49,9 +52,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <Navbar />
-        <main>{children}</main>
-       <Disclaimer />
+        <Navbar />
+        <main>
+          <TawkProvider>{children}</TawkProvider>
+        </main>
+        <Disclaimer />
       </body>
     </html>
   );

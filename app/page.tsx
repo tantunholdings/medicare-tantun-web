@@ -1,7 +1,6 @@
 // pages/index.js
 import HeroSection from "../components/home/HeroSection";
 import AssistanceSection from "../components/home/AssistanceSection";
-import ServicesSection from "../components/home/ServicesSection";
 import MiddleSection from "../components/home/MiddleSection";
 import BlogPreview from "../components/home/BlogPreview";
 
@@ -93,7 +92,6 @@ export default function InsuranceAdvisor() {
       <HeroSection />
       <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
         
-        <ServicesSection />
         <AssistanceSection />
         <MiddleSection />
         <BlogPreview />       

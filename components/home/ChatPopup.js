@@ -13,7 +13,7 @@ import Card from "./Card"; // Import the Card component from the new file
 
 import "../main.css";
 
-const ChatPopup = () => {
+const ChatPopup = ({setTrigger, trigger}) => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
@@ -25,6 +25,14 @@ const ChatPopup = () => {
   const textareaRef = useRef(null); // Reference to the textarea for dynamic resizing
   const recognitionTimeout = useRef(null); // For handling the delay to send the message
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
+
+  useEffect(() => {
+    console.log("Trigger:", trigger);
+    if (trigger) {
+      handleSendMessage(trigger);
+      setTrigger("");
+    }
+  }, [trigger]);
 
   // Initialize speech recognition
   useEffect(() => {
@@ -439,6 +447,7 @@ const ChatPopup = () => {
 
             {/* Text Input */}
             <textarea
+            id="chat-textarea"
               ref={textareaRef}
               placeholder="Ask anything about Medicare"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"

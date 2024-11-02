@@ -1,4 +1,5 @@
 "use client"; // Ensure this is a client-side component
+import {PHONE_NUMBER} from "@/utils/constants";
 
 import { useEffect, useState } from "react";
 import DetailsPopup from "../DetailsPopup"; // Assuming DetailsPopup is correctly imported
@@ -55,7 +56,7 @@ export default function HeroSection() {
 
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-blue-600 px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
-            <a href="tel:2334-5666-667">
+            <a href={`tel:${PHONE_NUMBER}`}>
             Call Now for Free Help!</a>
           </button>
         </div>

@@ -7,7 +7,6 @@ import PaginationComponent from "../../components/Pagination";
 import BlogSkeleton from "../../components/skeleton/BlogSkeleton"; // Import the skeleton loader
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import TawkMessengerReact from "@/components/TawkMessengerReact";
 import "../../components/main.css";
 
 export default function BlogPage() {
