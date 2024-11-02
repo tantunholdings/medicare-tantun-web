@@ -440,7 +440,7 @@ const ChatPopup = () => {
             {/* Text Input */}
             <textarea
               ref={textareaRef}
-              placeholder="Ask ..."
+              placeholder="Ask anything about Medicare"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
