@@ -16,7 +16,7 @@ export default function QuestionCard({ question, answer, initiallyVisible }) {
     <div
       onClick={handleToggle} // Handle toggle on click
       className={`p-4 rounded-lg border border-line w-full transition-all duration-100 ${
-        isVisible ? "bg-green-100" : "bg-white"
+        isVisible ? "bg-third" : "bg-white"
       }`}
     >
       <div className="flex justify-between items-center mb-2">

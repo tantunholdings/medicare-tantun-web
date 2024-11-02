@@ -1,4 +1,5 @@
 "use client"; // Ensure this is a client-side component
+import { PHONE_NUMBER } from "@/utils/constants";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -8,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import icons
 import Image from "next/image"; // Import Next.js Image component
 import logo from "/public/assets/Logo.png"; // Import the logo
-import TawkMessengerReact from "./TawkMessengerReact";
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
@@ -60,7 +60,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white border-b border-gray-200 relative">
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-0">
           {/* Logo (Visible on all views) */}
           <div className="flex items-center">
@@ -120,7 +120,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button - Aligned to the Right */}
           <div className="md:hidden flex items-center ml-auto">
-            <button onClick={toggleMobileMenu}>
+            <button onClick={toggleMobileMenu} type="button">
               <FontAwesomeIcon icon={faBars} className="text-primary text-xl" />
             </button>
           </div>
@@ -134,11 +134,12 @@ export default function Navbar() {
               <div>
                 <div className="text-xs text-gray-500">CALL US</div>
                 <div className="text-lg font-semibold text-gray-800">
-                  2334 5666 667
+                  {PHONE_NUMBER}
                 </div>
               </div>
             </div>
             <button
+              type="button"
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 rounded"
             >
@@ -201,15 +202,16 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faPhone} className="text-white" />
               </div>
               <div>
-              <a href="tel:2334-5666-667">
-                <div className="text-xs text-gray-500">CALL US</div>
-                <div className="text-lg font-semibold text-gray-800">
-                  2334 5666 667
-                </div>
-              </a>
+                <a href={`tel:${PHONE_NUMBER}`}>
+                  <div className="text-xs text-gray-500">CALL US</div>
+                  <div className="text-lg font-semibold text-gray-800">
+                    {PHONE_NUMBER}
+                  </div>
+                </a>
               </div>
             </div>
             <button
+              type="button"
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 mt-4 w-full text-center rounded"
             >
@@ -225,8 +227,6 @@ export default function Navbar() {
           <DetailsPopup closePopup={closeDetailsPopup} />
         </div>
       )}
-
-      <TawkMessengerReact />
     </>
   );
 }

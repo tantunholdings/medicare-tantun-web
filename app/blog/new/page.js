@@ -258,7 +258,7 @@ const BlogEditorPage = () => {
               <div className="flex justify-between mt-4">
                 <button
                   onClick={cropImage}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-primary"
                 >
                   Crop and Upload
                 </button>
@@ -278,7 +278,7 @@ const BlogEditorPage = () => {
           <div className="flex justify-between mt-4">
             <button
               onClick={() => savePost(false)}  // Save as published post
-              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-primary"
               disabled={loading}  // Disable button while loading
             >
               {loading ? 'Posting...' : id ? 'Update Post' : 'Post'}

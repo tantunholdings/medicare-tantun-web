@@ -9,11 +9,10 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons"; // Add faSpinner for loading icon
 import { useState, useEffect, useRef } from "react";
-import Card from "./Card"; // Import the Card component from the new file
 
-import "./main.css";
+import "../main.css";
 
-const ChatPopup = () => {
+const ChatPopup = ({ setTrigger, trigger }) => {
   const [message, setMessage] = useState(""); // Removed default from initialMessage
   const [chatMessages, setChatMessages] = useState([]); // Store chat messages
   const [isRecording, setIsRecording] = useState(false);
@@ -25,6 +24,14 @@ const ChatPopup = () => {
   const textareaRef = useRef(null); // Reference to the textarea for dynamic resizing
   const recognitionTimeout = useRef(null); // For handling the delay to send the message
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
+
+  useEffect(() => {
+    console.log("Trigger:", trigger);
+    if (trigger) {
+      handleSendMessage(trigger);
+      setTrigger("");
+    }
+  }, [trigger]);
 
   // Initialize speech recognition
   useEffect(() => {
@@ -237,64 +244,6 @@ const ChatPopup = () => {
 
   return (
     <div className="flex flex-col h-full w-full ">
-      <div>
-        {/* Carousel for small screens */}
-        <div className="block md:hidden">
-          <div className="carousel flex overflow-x-scroll snap-x snap-mandatory gap-4 mb-6 scrollbar-hide">
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Company Search"
-                description="Which company is providing the best Services?"
-                onClick={() =>
-                  handleCardClick(
-                    "Which company is providing the best services?"
-                  )
-                }
-              />
-            </div>
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Policy Guidance"
-                description="What type of insurance is right for me?"
-                onClick={() =>
-                  handleCardClick("What type of insurance is right for me?")
-                }
-              />
-            </div>
-            <div className="flex-shrink-0 w-64 snap-center">
-              <Card
-                title="Premium Estimates"
-                description="How much will I need to pay?"
-                onClick={() => handleCardClick("How much will I need to pay?")}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Grid for medium and larger screens */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <Card
-            title="Company Search"
-            description="Which company is providing the best Services?"
-            onClick={() =>
-              handleCardClick("Which company is providing the best services?")
-            }
-          />
-          <Card
-            title="Policy Guidance"
-            description="What type of insurance is right for me?"
-            onClick={() =>
-              handleCardClick("What type of insurance is right for me?")
-            }
-          />
-          <Card
-            title="Premium Estimates"
-            description="How much will I need to pay?"
-            onClick={() => handleCardClick("How much will I need to pay?")}
-          />
-        </div>
-      </div>
-
       <div className="flex-grow p-4 space-y-2">
         {" "}
         {/* Added space between messages */}
@@ -385,7 +334,7 @@ const ChatPopup = () => {
       <div className="flex flex-col w-full mb-4 relative">
         <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative">
           {/* Paperclip Button */}
-          <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full flex-shrink-0">
+          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0">
             <label htmlFor="file-upload" className="cursor-pointer">
               <FontAwesomeIcon
                 icon={faPaperclip}
@@ -428,7 +377,7 @@ const ChatPopup = () => {
                 <div className="absolute bottom-[-8px] left-0 w-full">
                   <div className="w-10 bg-gray-200 rounded-full h-1 mx-auto">
                     <div
-                      className="bg-blue-600 h-1 rounded-full"
+                      className="bg-primary h-1 rounded-full"
                       style={{
                         width: `${Math.min(...uploadProgress)}%`,
                       }}
@@ -439,8 +388,9 @@ const ChatPopup = () => {
 
             {/* Text Input */}
             <textarea
+              id="chat-textarea"
               ref={textareaRef}
-              placeholder="Ask ..."
+              placeholder="Ask anything about Medicare"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -452,7 +402,7 @@ const ChatPopup = () => {
 
           {/* Microphone Button */}
           <div
-            className={`flex items-center justify-center w-10 h-10 mx-2 bg-green-100 rounded-full flex-shrink-0 ${
+            className={`flex items-center justify-center w-10 h-10 mx-2 bg-third rounded-full flex-shrink-0 ${
               isRecording ? "bg-red-100" : ""
             }`}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
@@ -470,7 +420,7 @@ const ChatPopup = () => {
             className={
               "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
               (message
-                ? "cursor-pointer bg-green-100"
+                ? "cursor-pointer bg-third"
                 : "cursor-not-allowed bg-gray-50")
             }
             onClick={handleSendMessage}

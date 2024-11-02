@@ -3,7 +3,7 @@
 export default function Card({ title, description, onClick }) {
   return (
     <div
-      className="border border-green-500 p-4 rounded-md cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out"
+      className="border border-primary p-4 rounded-md cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out"
       onClick={onClick}
       role="button"
       tabIndex={0}

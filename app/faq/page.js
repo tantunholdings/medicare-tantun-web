@@ -1,7 +1,4 @@
-import Navbar from "@/components/Navbar";
 import FaqList from "@/components/FaqList";
-import Disclaimer from "@/components/Disclaimer";
-
 // Metadata for the FAQ page
 export const metadata = {
   title: "Frequently Asked Questions - Medicare Insurance Assistance",
@@ -31,15 +28,13 @@ export default async function FAQ() {
     
        {/* FAQ Schema Markup - placed outside <Head> for correct rendering */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> 
-            
-      <Navbar />
+
       <main className="container mx-auto my-8 px-6 min-h-screen">
         <h1 className="text-3xl font-bold text-primaryBlack mb-10">
           Frequently Asked Questions
         </h1>
         <FaqList faqs={allFaqs} /> {/* Pass all received FAQs to FaqList */}
       </main>
-      <Disclaimer />
     </>
   );
 }

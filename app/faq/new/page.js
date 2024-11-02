@@ -136,7 +136,7 @@ const FAQEditorPage = () => {
           <div className="flex justify-between mt-4">
             <button
               onClick={() => saveFaq(false)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow hover:bg-primary"
               disabled={loading}
             >
               {loading ? "Loading..." : "Post FAQ"}

@@ -1,10 +1,8 @@
 // pages/index.js
-import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
-import AssistanceSection from "../components/AssistanceSection";
-import TawkMessengerReact from "../components/TawkMessengerReact";
-import Disclaimer from "../components/Disclaimer";
-import Script from "next/script";
+import HeroSection from "../components/home/HeroSection";
+import AssistanceSection from "../components/home/AssistanceSection";
+import MiddleSection from "../components/home/MiddleSection";
+import BlogPreview from "../components/home/BlogPreview";
 
 // Metadata for the main page
 export const metadata = {
@@ -17,7 +15,7 @@ export default function InsuranceAdvisor() {
     <>
       
 
-         {/* Schema Markup */}
+         {/* Schema Markup
          <script type="application/ld+json">
           {`
             {
@@ -88,17 +86,17 @@ export default function InsuranceAdvisor() {
               }
             }
           `}
-        </script>
+        </script> */}
 
         
-      <Navbar />
-      <main className="container mx-auto my-8 px-6 min-h-screen">
-        <HeroSection />
+      <HeroSection />
+      <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
+        
         <AssistanceSection />
+        <MiddleSection />
+        <BlogPreview />       
         
-        
-      </main>
-      <Disclaimer />
+      </div>
     </>
   );
 }
