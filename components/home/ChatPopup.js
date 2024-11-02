@@ -374,7 +374,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
           <div className="flex justify-center">
             <FontAwesomeIcon
               icon={faSpinner}
-              className="text-blue-600 animate-spin"
+              className="text-primary animate-spin"
             />
           </div>
         )}
@@ -383,7 +383,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
           <div className="flex justify-center">
             <FontAwesomeIcon
               icon={faSpinner}
-              className="text-blue-600 animate-spin"
+              className="text-primary animate-spin"
               size="2x"
             />
           </div>
@@ -393,11 +393,11 @@ const ChatPopup = ({setTrigger, trigger}) => {
       <div className="flex flex-col w-full mb-4 relative">
         <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative">
           {/* Paperclip Button */}
-          <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full flex-shrink-0">
+          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0">
             <label htmlFor="file-upload" className="cursor-pointer">
               <FontAwesomeIcon
                 icon={faPaperclip}
-                className="text-blue-600 text-lg sm:text-sm"
+                className="text-primary text-lg sm:text-sm"
               />
               <input
                 id="file-upload"
@@ -436,7 +436,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
                 <div className="absolute bottom-[-8px] left-0 w-full">
                   <div className="w-10 bg-gray-200 rounded-full h-1 mx-auto">
                     <div
-                      className="bg-blue-600 h-1 rounded-full"
+                      className="bg-primary h-1 rounded-full"
                       style={{
                         width: `${Math.min(...uploadProgress)}%`,
                       }}
@@ -461,14 +461,14 @@ const ChatPopup = ({setTrigger, trigger}) => {
 
           {/* Microphone Button */}
           <div
-            className={`flex items-center justify-center w-10 h-10 mx-2 bg-blue-100 rounded-full flex-shrink-0 ${
+            className={`flex items-center justify-center w-10 h-10 mx-2 bg-third rounded-full flex-shrink-0 ${
               isRecording ? "bg-red-100" : ""
             }`}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
           >
             <FontAwesomeIcon
               icon={faMicrophone}
-              className={`text-blue-600 text-lg sm:text-sm ${
+              className={`text-primary text-lg sm:text-sm ${
                 isRecording ? "text-red-500" : ""
               }`}
             />
@@ -479,7 +479,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
             className={
               "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
               (message
-                ? "cursor-pointer bg-blue-100"
+                ? "cursor-pointer bg-third"
                 : "cursor-not-allowed bg-gray-50")
             }
             onClick={handleSendMessage}
@@ -488,7 +488,7 @@ const ChatPopup = ({setTrigger, trigger}) => {
               icon={faPlay}
               className={
                 "text-lg sm:text-sm" +
-                (message ? " text-blue-600" : " text-gray-300")
+                (message ? " text-primary" : " text-gray-300")
               }
             />
           </div>

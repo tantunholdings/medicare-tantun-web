@@ -111,7 +111,7 @@ const DetailsPopup = ({ closePopup }) => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-green-600"
+              className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-primary"
               disabled={loading}
             >
               {loading ? "Sending..." : "Send Message"}

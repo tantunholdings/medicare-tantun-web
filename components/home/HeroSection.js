@@ -54,7 +54,7 @@ export default function HeroSection() {
             Call now for free assistance and guidance from our licensed experts.
           </div>
 
-          <button className="w-full md:hidden flex my-4 items-center justify-center bg-blue-600 px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
+          <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
             <a href={`tel:${PHONE_NUMBER}`}>
             Call Now for Free Help!</a>
@@ -78,7 +78,7 @@ export default function HeroSection() {
                 <br className="hidden md:block" />
                 Call now for FREE help enrolling today.
               </p>
-              <button onClick={handleContactUsClick} className="max-w-max hidden md:flex mt-8 items-center bg-blue-600 px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl">
+              <button onClick={handleContactUsClick} className="max-w-max hidden md:flex mt-8 items-center bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl">
                 <Phone className="mr-2 h-5 w-5" />
                 Call Now for Free Help!
               </button>

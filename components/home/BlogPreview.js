@@ -75,7 +75,7 @@ const BlogPreview = () => {
             ))}
             <Link
               href="/blog"
-              className="flex rounded-3xl border border-blue-600 px-4 py-2 text-blue-600 hover:bg-blue-50 font-bold max-w-max"
+              className="flex rounded-3xl border border-primary px-4 py-2 text-primary hover:bg-blue-50 font-bold max-w-max"
             >
               View More →
             </Link>

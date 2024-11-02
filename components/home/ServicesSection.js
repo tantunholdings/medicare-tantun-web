@@ -69,9 +69,9 @@ const ServicesSection = ({ setTrigger }) => {
           type="button"
           onClick={Call}
             key={index + title}
-            className="group flex flex-row md:flex-col items-center justify-center md:items-center md:justify-center text-left md:text-center rounded-lg border p-1 md:p-6 shadow-sm transition-colors duration-300 hover:bg-blue-600 hover:text-white border-blue-600"
+            className="group flex flex-row md:flex-col items-center justify-center md:items-center md:justify-center text-left md:text-center rounded-lg border p-1 md:p-6 shadow-sm transition-colors duration-300 hover:bg-primary hover:text-white border-primary"
           >
-            <div className="flex-shrink-0 mr-4 md:mr-0 mb-0 md:mb-4 rounded-full p-3 transition-colors duration-100 text-blue-600 group-hover:text-white">
+            <div className="flex-shrink-0 mr-4 md:mr-0 mb-0 md:mb-4 rounded-full p-3 transition-colors duration-100 text-primary group-hover:text-white">
               <Icon className="md:h-10 md:w-10" />
             </div>
             <h3 className="font-semibold transition-colors duration-100">

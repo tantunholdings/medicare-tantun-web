@@ -97,7 +97,7 @@ export default function BlogPage() {
                 key={index}
                 className={`px-5 py-2 bg-gray-200 text-gray-600 text-xs rounded-full whitespace-nowrap flex-shrink-0 border ${
                   selectedTag === tag
-                    ? "bg-green-100 text-gray-500 border-primary"
+                    ? "bg-third text-gray-500 border-primary"
                     : "bg-white text-gray-500 border-gray-300"
                 } hover:border-primary hover:text-primary`}
                 onClick={() => setSelectedTag(tag)}

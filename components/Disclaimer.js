@@ -23,15 +23,15 @@ const Footer = () => {
     <footer className="relative py-10">
       <div className="absolute inset-0 bg-gray-900 flex justify-around pt-10 z-0">
         <div className="grid grid-cols-2 gap-10 w-60 h-60">
-          <div className="bg-blue-600 w-28 h-28 blur-3xl" />
-          <div className="bg-green-600 w-28 h-28 blur-3xl" />
+          <div className="bg-primary w-28 h-28 blur-3xl" />
+          <div className="bg-primary w-28 h-28 blur-3xl" />
           <div className="bg-blue-300 w-28 h-28 blur-3xl" />
           <div className="bg-yellow-600 w-28 h-28 blur-3xl" />
         </div>
 
         <div className="hidden md:grid  grid-cols-2 gap-10 w-60 h-60">
-          <div className="bg-blue-600 w-28 h-28 blur-3xl" />
-          <div className="bg-green-600 w-28 h-28 blur-3xl" />
+          <div className="bg-primary w-28 h-28 blur-3xl" />
+          <div className="bg-primary w-28 h-28 blur-3xl" />
           <div className="bg-blue-300 w-28 h-28 blur-3xl" />
           <div className="bg-yellow-600 w-28 h-28 blur-3xl" />
         </div>
@@ -131,13 +131,13 @@ const Footer = () => {
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <div className="text-sm text-gray-600" />
           <div className="flex gap-4">
-            <Link href="/" className="hover:text-blue-600">
+            <Link href="/" className="hover:text-primary">
               Home
             </Link>
-            <Link href="/faq" className="hover:text-blue-600">
+            <Link href="/faq" className="hover:text-primary">
               FAQs
             </Link>
-            <Link href="/about" className="hover:text-blue-600">
+            <Link href="/about" className="hover:text-primary">
               About Us
             </Link>
           </div>
@@ -147,16 +147,16 @@ const Footer = () => {
           <hr className=" border-t border-gray-600 w-screen" />
           <div className="text-sm text-gray-600">© All right reserve 2024</div>
           <div className="flex gap-4">
-            <Link href="#" className="text-gray-600 hover:text-blue-600">
+            <Link href="#" className="text-gray-600 hover:text-primary">
               <Twitter className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-blue-600">
+            <Link href="#" className="text-gray-600 hover:text-primary">
               <Facebook className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-blue-600">
+            <Link href="#" className="text-gray-600 hover:text-primary">
               <Instagram className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-blue-600">
+            <Link href="#" className="text-gray-600 hover:text-primary">
               <Phone className="h-5 w-5" />
             </Link>
           </div>

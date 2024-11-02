@@ -72,7 +72,7 @@ const PaginationComponent = ({ totalPages, activePage, setActivePage }) => {
             <button
               className={`px-3 py-1 rounded-lg ${
                 activePage === page
-                  ? "bg-green-100 text-primary font-medium"
+                  ? "bg-third text-primary font-medium"
                   : "hover:bg-gray-200"
               }`}
               onClick={() => handlePageChange(page)}
