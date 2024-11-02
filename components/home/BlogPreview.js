@@ -26,52 +26,59 @@ const BlogPreview = () => {
   return (
     <section className="container mx-auto py-12 px-4">
       <h2 className="text-center text-3xl font-bold">Our Blog</h2>
-      <div className="flex justify-center mt-5"><Image src={titleShape} alt="Title Shape" /></div>
+      <div className="flex justify-center mt-5">
+        <Image src={titleShape} alt="Title Shape" />
+      </div>
       <div className="mt-12 grid gap-8 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-lg">
-          <img
-            src={
-              blogPosts[0]?.image_url
-                ? blogPosts[0]?.image_url
-                : "https://via.placeholder.com/600x400?text=No+Image"
-            }
-            alt={blogPosts[0]?.title}
-            className="object-cover rounded-lg"
-          />
-          <h3 className="text-2xl font-bold mt-4">
-            {blogPosts[0]?.title || "Lorem ipsumdolor sit amet"}
-          </h3>
-          <p className="text-gray-600">
-            {blogPosts[0]?.excerpt ||
-              blogPosts[0]?.subtitle ||
-              "Lorem ipsum dolor sit amet consectetur. Tincidunt nisi a est tellus id ultrices viverra quis justo. Ut leo tellus tortor non ipsum quis imperdiet senectus urna. Nulla ac neque aliquet amet. Pharetra neque ut est cras morbi."}
-          </p>
-        </div>
+      <Link href={`/blog/${blogPosts[0]?.id}`} passHref>
+  <div className="relative aspect-square overflow-hidden rounded-lg">
+    <img
+      src={
+        blogPosts[0]?.image_url
+          ? blogPosts[0]?.image_url
+          : "https://via.placeholder.com/600x400?text=No+Image"
+      }
+      alt={blogPosts[0]?.title}
+      className="object-cover rounded-lg"
+    />
+    <h3 className="text-2xl font-bold mt-4">
+      {blogPosts[0]?.title || "Lorem ipsum dolor sit amet"}
+    </h3>
+    <p className="text-gray-600">
+      {blogPosts[0]?.excerpt ||
+        blogPosts[0]?.subtitle ||
+        "Lorem ipsum dolor sit amet consectetur. Tincidunt nisi a est tellus id ultrices viverra quis justo. Ut leo tellus tortor non ipsum quis imperdiet senectus urna. Nulla ac neque aliquet amet. Pharetra neque ut est cras morbi."}
+    </p>
+  </div>
+</Link>
+
         <div className="space-y-6">
           <div className="space-y-4">
             {blogPosts.map((post) => (
               <div key={post.id} className="flex gap-4">
-                <img
-                  src={
-                    post.image_url
-                      ? post.image_url
-                      : "https://via.placeholder.com/600x400?text=No+Image"
-                  }
-                  alt={post.title}
-                  className="object-cover rounded-lg w-36 h-24"
-                />
-                <div>
-                  <h4 className="font-semibold">{post.title}</h4>
-                  <p className="text-sm text-gray-600">{post.subtitle}</p>
-                </div>
+                <Link href={`/blog/${post.id}`} passHref className="flex gap-4">
+                  <img
+                    src={
+                      post.image_url
+                        ? post.image_url
+                        : "https://via.placeholder.com/600x400?text=No+Image"
+                    }
+                    alt={post.title}
+                    className="object-cover rounded-lg w-36 h-24"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{post.title}</h4>
+                    <p className="text-sm text-gray-600">{post.subtitle}</p>
+                  </div>
+                </Link>
               </div>
             ))}
             <Link
-            href="/blog"
-            className="flex rounded-3xl border border-blue-600 px-4 py-2 text-blue-600 hover:bg-blue-50 font-bold max-w-max"
-          >
-            View More →
-          </Link>
+              href="/blog"
+              className="flex rounded-3xl border border-blue-600 px-4 py-2 text-blue-600 hover:bg-blue-50 font-bold max-w-max"
+            >
+              View More →
+            </Link>
           </div>
         </div>
       </div>
