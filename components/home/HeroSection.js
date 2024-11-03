@@ -5,8 +5,6 @@ import DetailsPopup from "../DetailsPopup"; // Assuming DetailsPopup is correctl
 import { Phone, ChevronDown, ChevronUp, PhoneCall } from "lucide-react"; // Import both arrow icons
 import webBg from "../../public/assets/40a038eed81bf9f58ccaf0e3eecf548a.jpeg";
 import mobileBg from "../../public/assets/f05bcbe3b42b9c4b34e983517e340eb9.jpeg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export default function HeroSection() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
@@ -94,12 +92,7 @@ export default function HeroSection() {
         className="relative bg-gray-100 mx-5 md:mx-0 px-0 text-white"
       >
         <div className="block md:hidden bg-white text-black py-2">
-          <a href={`tel:${PHONE_NUMBER}`}>
-            <div className="flex justify-end text-primary gap-2 mb-2">
-              <div className="underline">{PHONE_NUMBER}</div>
-              <FontAwesomeIcon icon={faPhone} className="" />
-            </div>
-          </a>
+          
           <div className="font-semibold">
             Free Medicare Enrollment Help - Quick & Easy
           </div>

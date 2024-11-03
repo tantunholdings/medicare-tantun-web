@@ -148,6 +148,13 @@ export default function Navbar() {
           </div>
         </div>
 
+        <a href={`tel:${PHONE_NUMBER}`} className="px-4 block md:hidden">
+          <div className="flex justify-end text-primary gap-2 mb-2">
+            <div className="underline">{PHONE_NUMBER}</div>
+            <FontAwesomeIcon icon={faPhone} className="" />
+          </div>
+        </a>
+
         {/* Mobile Menu Links */}
         {isMobileMenuOpen && (
           <div className="mobile-menu fixed top-0 right-0 w-2/3 bg-white shadow-md rounded-bl-lg md:hidden flex flex-col items-start py-4 px-6 z-50">
