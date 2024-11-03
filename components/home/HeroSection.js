@@ -2,7 +2,7 @@
 import { PHONE_NUMBER } from "@/utils/constants";
 import { useEffect, useState } from "react";
 import DetailsPopup from "../DetailsPopup"; // Assuming DetailsPopup is correctly imported
-import { Phone, ChevronDown, ChevronUp } from "lucide-react"; // Import both arrow icons
+import { Phone, ChevronDown, ChevronUp, PhoneCall } from "lucide-react"; // Import both arrow icons
 import webBg from "../../public/assets/40a038eed81bf9f58ccaf0e3eecf548a.jpeg";
 import mobileBg from "../../public/assets/f05bcbe3b42b9c4b34e983517e340eb9.jpeg";
 
@@ -34,7 +34,8 @@ export default function HeroSection() {
   const handleScroll = () => {
     let nextIndex;
     if (arrowDirection === "down") {
-      nextIndex = currentSectionIndex < sections.length - 1 ? currentSectionIndex + 1 : 0;
+      nextIndex =
+        currentSectionIndex < sections.length - 1 ? currentSectionIndex + 1 : 0;
     } else {
       nextIndex = 0;
     }
@@ -58,7 +59,10 @@ export default function HeroSection() {
   // Check if the user is at the bottom of the page and update the arrow direction
   useEffect(() => {
     const handleScrollCheck = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 10
+      ) {
         setArrowDirection("up");
         setCurrentSectionIndex(sections.length - 1);
       } else if (window.scrollY === 0) {
@@ -83,10 +87,18 @@ export default function HeroSection() {
 
   return (
     <>
-      <section id="top" className="relative bg-gray-100 mx-5 md:mx-0 px-0 text-white">
+      <section
+        id="top"
+        className="relative bg-gray-100 mx-5 md:mx-0 px-0 text-white"
+      >
         <div className="block md:hidden bg-white text-black py-2">
-          <div className="font-semibold">Free Medicare Enrollment Help - Quick & Easy</div>
-          <div className="font-thin">Call now for free assistance and guidance from our licensed experts.</div>
+          
+          <div className="font-semibold">
+            Free Medicare Enrollment Help - Quick & Easy
+          </div>
+          <div className="font-thin">
+            Call now for free assistance and guidance from our licensed experts.
+          </div>
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
             <a href={`tel:${PHONE_NUMBER}`}>Call Now for Free Help!</a>
@@ -102,7 +114,8 @@ export default function HeroSection() {
                 Need Help with Medicare? We're Just a Call Away!
               </h1>
               <p className="md:mt-6 text-xs md:text-lg font-light">
-                Medicare can be confusing, but our licensed experts make it easy.
+                Medicare can be confusing, but our licensed experts make it
+                easy.
                 <br className="hidden md:block" />
                 Call now for FREE help enrolling today.
               </p>
@@ -122,10 +135,13 @@ export default function HeroSection() {
           onClick={handleScroll}
           className="fixed bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary text-white p-4 rounded-full shadow-lg animate-blink z-50"
         >
-          {arrowDirection === "down" ? <ChevronDown className="h-6 w-6" /> : <ChevronUp className="h-6 w-6" />}
+          {arrowDirection === "down" ? (
+            <ChevronDown className="h-6 w-6" />
+          ) : (
+            <ChevronUp className="h-6 w-6" />
+          )}
         </button>
       </section>
-
 
       {showDetailsPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -135,8 +151,13 @@ export default function HeroSection() {
 
       <style jsx>{`
         @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
         }
         .animate-blink {
           animation: blink 1.5s infinite;
