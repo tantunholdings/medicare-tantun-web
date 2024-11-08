@@ -54,15 +54,11 @@ const Footer = () => {
             <div className="mt-4 space-y-2">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                abc 123 road, Isreal
+                986 Dartmouth lane, Woodmere, NY 11598
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                +123456789
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                abc@gmail.com
+                (888)537-1364
               </div>
             </div>
           </div>

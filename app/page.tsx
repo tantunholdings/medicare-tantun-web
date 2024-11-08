@@ -15,10 +15,8 @@ export default function InsuranceAdvisor() {
     <>
       
 
-         {/* Schema Markup
-         <script type="application/ld+json">
-          {`
-            {
+         {/* Schema Markup*/}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ 
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Medicare Insurance Assistance",
@@ -32,7 +30,7 @@ export default function InsuranceAdvisor() {
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+1-917-517-6104", 
+                "telephone": "(888)537-1364", 
                 "contactType": "Customer Service",
                 "areaServed": "US",
                 "availableLanguage": "English"
@@ -84,11 +82,11 @@ export default function InsuranceAdvisor() {
                   }
                 ]
               }
-            }
-          `}
-        </script> */}
-
-        
+              })
+          
+        }} />
+              
+    
       <HeroSection />
       <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
         
