@@ -99,9 +99,10 @@ export default function HeroSection() {
           <div className="font-thin">
             Call now for free assistance and guidance from our licensed experts.
           </div>
-          <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
+          <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center" data-gtm="call-us-button">
             <Phone className="mr-2 h-5 w-5" />
             <a href={`tel:${PHONE_NUMBER}`}>Call Now for Free Help!</a>
+            
           </button>
         </div>
         <div
@@ -122,6 +123,7 @@ export default function HeroSection() {
               <button
                 onClick={handleContactUsClick}
                 className="max-w-max hidden md:flex mt-8 items-center bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl"
+                data-gtm="contact-us-button"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Contact us for Free Help!
