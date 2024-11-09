@@ -388,7 +388,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
 
             {/* Text Input */}
             <textarea
-              id="chat-textarea"
+              id="chatgpt-keypressed"
               ref={textareaRef}
               placeholder="Ask anything about Medicare"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"
@@ -402,6 +402,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
 
           {/* Microphone Button */}
           <div
+            id="ChaGPT Microphone message"
             className={`flex items-center justify-center w-10 h-10 mx-2 bg-third rounded-full flex-shrink-0 ${
               isRecording ? "bg-red-100" : ""
             }`}
@@ -417,6 +418,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
 
           {/* Send Button */}
           <div
+            id="ChaGPT send message"
             className={
               "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
               (message
