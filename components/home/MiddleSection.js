@@ -24,7 +24,7 @@ const MiddleSection = () => {
 
         <div className="flex justify-center mt-5"><Image src={titleShape} alt="Title Shape" /></div>
         <p className="mt-4 text-gray-600">
-          Call now for free assistance & guidance from our licensed experts.
+          Contact now for free assistance & guidance from our licensed experts.
         </p>
         <button className="mt-8 rounded-3xl bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700" onClick={handleContactUsClick}>
           Contact Us
