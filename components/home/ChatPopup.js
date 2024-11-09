@@ -26,7 +26,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
   const [recognition, setRecognition] = useState(null); // Speech recognition instance
 
   useEffect(() => {
-    console.log("Trigger:", trigger);
+    
     if (trigger) {
       handleSendMessage(trigger);
       setTrigger("");
@@ -83,7 +83,6 @@ const ChatPopup = ({ setTrigger, trigger }) => {
 
   const handleSendMessage = async (msg) => {
     const userMessage = message || msg;
-    console.log("Sending message:", userMessage);
     if (userMessage.trim() || files.length > 0) {
       const newMessage = {
         text: userMessage.trim(),
