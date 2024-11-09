@@ -55,7 +55,6 @@ export default function LoginForm() {
   };
 
   const handleNewPassword = async () => {
-    console.log(session);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_FASTAPI_URL}/new-password?username=${encodeURIComponent(username)}&new_password=${encodeURIComponent(newPassword)}&session=${encodeURIComponent(session)}`,

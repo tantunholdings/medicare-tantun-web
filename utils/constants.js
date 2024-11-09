@@ -3,18 +3,19 @@ export const PHONE_NUMBER = "(888)537-1364";
 
 export const CHAT_CARDS = [
   {
-    title: "Company Search",
-    description: "Which company is providing the best Services?",
-    triggerText: "Which company is providing the best services?",
+    title: "Medicare Plans",
+    description: "Can you explain Medicare plans?",
+    triggerText: "Can you explain Medicare plans?",
   },
   {
-    title: "Policy Guidance",
-    description: "What type of insurance is right for me?",
-    triggerText: "What type of insurance is right for me?",
+    title: "Medicare Dental Cover",
+    description: "Does Medicare covers Dental Services",
+    triggerText: "Does Medicare covers Dental Services",
   },
   {
-    title: "Premium Estimates",
-    description: "How much will I need to pay?",
-    triggerText: "How much will I need to pay?",
+    title: "Medicare Insurance Providers",
+    description: "Which Health Insurance providers offers Medicare ",
+    triggerText: "Which Health Insurance providers offers Medicare ",
   },
+  
 ];
