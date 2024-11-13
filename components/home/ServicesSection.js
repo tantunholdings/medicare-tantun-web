@@ -41,7 +41,7 @@ const ServicesSection = ({ setTrigger }) => {
 
   function openChat() {
     // Scroll to the chat section with id "chat-textarea"
-    document.getElementById("chat-textarea").scrollIntoView({
+    document.getElementById("chatgpt-keypressed").scrollIntoView({
       behavior: "smooth",
       block: "center",
       inline: "nearest",
