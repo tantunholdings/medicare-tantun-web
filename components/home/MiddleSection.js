@@ -18,13 +18,13 @@ const MiddleSection = () => {
     <>
       <section className="container mx-auto py-12 px-4 text-center">
         <h2 className="text-3xl font-bold">
-          Free Medicare Enrollment Help
+          Medicare Enrollment Help
           <br />- Quick & Easy
         </h2>
 
         <div className="flex justify-center mt-5"><Image src={titleShape} alt="Title Shape" /></div>
         <p className="mt-4 text-gray-600">
-          Contact now for free assistance & guidance from our licensed experts.
+          Contact now for Medicare assistance & guidance from our licensed experts.
         </p>
         <button className="mt-8 rounded-3xl bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700" onClick={handleContactUsClick}>
           Contact Us

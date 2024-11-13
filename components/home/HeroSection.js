@@ -94,14 +94,14 @@ export default function HeroSection() {
         <div className="block md:hidden bg-white text-black py-2">
           
           <div className="font-semibold">
-            Free Medicare Enrollment Help - Quick & Easy
+            Medicare Enrollment Help - Quick & Easy
           </div>
           <div className="font-thin">
-            Call now for free assistance and guidance from our licensed experts.
+            Call now for Medicare assistance and guidance from our licensed experts.
           </div>
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
-            <a href={`tel:${PHONE_NUMBER}`}>Call Now for Free Help!</a>
+            <a href={`tel:${PHONE_NUMBER}`}>Call Now for Expert Guidance!</a>
             
           </button>
         </div>
@@ -118,14 +118,14 @@ export default function HeroSection() {
                 Medicare can be confusing, but our licensed experts make it
                 easy.
                 <br className="hidden md:block" />
-                Call now for FREE help enrolling today.
+                Call now for help with enrolling today.
               </p>
               <button
                 onClick={handleContactUsClick}
                 className="max-w-max hidden md:flex mt-8 items-center bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                Contact us for Free Help!
+                Contact us for Medcicare Help!
               </button>
             </div>
           </div>

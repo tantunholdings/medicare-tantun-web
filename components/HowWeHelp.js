@@ -29,7 +29,7 @@ const steps = [
     icon: <FontAwesomeIcon icon={faUsers} className="w-8 h-8 text-primary" />,
   },
   {
-    title: "Step 4: Enroll for Free",
+    title: "Step 4: Enroll",
     description:
       "Once you’ve chosen a plan, enroll online or by phone at the same price as the insurer offers. *Our services are free of charge*, and advisors offer unbiased guidance with the same compensation for any plan you select.",
     icon: <FontAwesomeIcon icon={faPhone} className="w-8 h-8 text-primary" />,

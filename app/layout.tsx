@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Medicare Insurance Assistance - Find the Best Medicare Plan",
     description:
-      "Free Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
+      "Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
     url: "https://tantunai.com",
     images: [
       {
