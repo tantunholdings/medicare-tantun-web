@@ -333,7 +333,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
       <div className="flex flex-col w-full mb-4 relative">
         <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative bg-white shadow-md">
           {/* Paperclip Button */}
-          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0 hover:bg-gray-200 transition-colors duration-200">
+          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0 hover:bg-gray-200 transition-colors duration-200"  style={{ display: 'none' }}>
             <label htmlFor="file-upload" className="cursor-pointer">
               <FontAwesomeIcon
                 icon={faPaperclip}
