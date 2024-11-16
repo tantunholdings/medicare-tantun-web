@@ -1,9 +1,9 @@
 "use client"; // Mark this as a client component
 
-export default function Card({ title, description, onClick }) {
+export default function Card({ title, description, onClick, className  }) {
   return (
     <div
-      className="border border-primary p-4 rounded-md cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out"
+      className={`border border-primary p-4 rounded-md cursor-pointer hover:bg-gray-200 transition duration-300 ease-in-out ${className}`}
       onClick={onClick}
       role="button"
       tabIndex={0}

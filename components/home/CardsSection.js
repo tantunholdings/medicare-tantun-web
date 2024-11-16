@@ -13,6 +13,7 @@ export default function CHAT_CARDSSection({ setTrigger }) {
                 title={card.title}
                 description={card.description}
                 onClick={() => setTrigger(card.triggerText)}
+                className="bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-lg p-4 hover:bg-blue-50 transition duration-300"
               />
             </div>
           ))}
@@ -27,6 +28,7 @@ export default function CHAT_CARDSSection({ setTrigger }) {
             title={card.title}
             description={card.description}
             onClick={() => setTrigger(card.triggerText)}
+            className="bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-lg p-4 hover:bg-blue-50 transition duration-300"
           />
         ))}
       </div>

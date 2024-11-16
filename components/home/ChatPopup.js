@@ -242,7 +242,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
   };
 
   return (
-    <div className="flex flex-col h-full w-full ">
+    <div className="flex flex-col h-full w-full bg-gradient-to-r from-white to-blue-50 shadow-lg rounded-xl p-4 border border-gray-200 ">
       <div className="flex-grow p-4 space-y-2">
         {" "}
         {/* Added space between messages */}
@@ -263,7 +263,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
             <div
               className={
                 (msg.isFromBackend ? "bg-gray-100" : "bg-gray-200") +
-                " p-2 rounded-lg max-w-full lg:max-w-2/3 break-words"
+                " p-2 rounded-lg max-w-full lg:max-w-2/3 break-words shadow-md"
               }
             >
               {" "}
@@ -277,7 +277,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
                         <img
                           src={file.url}
                           alt={file.name}
-                          className="max-w-xs rounded-lg mb-1"
+                          className="max-w-xs rounded-lg mb-1 hover:scale-105 transition-transform duration-200"
                         />
                       ) : (
                         <span
@@ -331,9 +331,9 @@ const ChatPopup = ({ setTrigger, trigger }) => {
       </div>
 
       <div className="flex flex-col w-full mb-4 relative">
-        <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative">
+        <div className="flex items-center border border-line-400 rounded-3xl p-2 w-full mx-auto relative bg-white shadow-md">
           {/* Paperclip Button */}
-          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0">
+          <div className="flex items-center justify-center w-10 h-10 bg-third rounded-full flex-shrink-0 hover:bg-gray-200 transition-colors duration-200">
             <label htmlFor="file-upload" className="cursor-pointer">
               <FontAwesomeIcon
                 icon={faPaperclip}
@@ -356,7 +356,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
                 {files.map((file, index) => (
                   <div
                     key={index}
-                    className="flex items-center text-sm text-gray-700 bg-gray-200 rounded-full px-2 py-1 mr-2 mb-2 pl-4 ml-4"
+                    className="flex items-center text-sm text-gray-700 bg-gray-200 rounded-full px-2 py-1 mr-2 mb-2 pl-4 ml-4 shadow-sm hover:shadow-md transition-shadow duration-150"
                   >
                     <span className="mr-2">{file.name}</span>
                     <button
@@ -386,23 +386,25 @@ const ChatPopup = ({ setTrigger, trigger }) => {
               )}
 
             {/* Text Input */}
+            <div>
             <textarea
               id="chatgpt-keypressed"
               ref={textareaRef}
               placeholder="Ask anything about Medicare"
-              className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4"
+              className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4 bg-gray-100 rounded-xl shadow-inner"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               rows={1} // Initial number of rows, adjusts dynamically
               style={{ minHeight: "40px", maxHeight: "200px" }}
             />
+            </div>
           </div>
 
           {/* Microphone Button */}
           <div
             id="ChaGPT Microphone message"
-            className={`flex items-center justify-center w-10 h-10 mx-2 bg-third rounded-full flex-shrink-0 ${
+            className={`flex items-center justify-center w-10 h-10 mx-2 bg-third rounded-full flex-shrink-0 hover:bg-gray-200 transition-colors duration-200 ${
               isRecording ? "bg-red-100" : ""
             }`}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
@@ -421,7 +423,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
             className={
               "flex items-center justify-center w-10 h-10  rounded-full flex-shrink-0 " +
               (message
-                ? "cursor-pointer bg-third"
+                ? "cursor-pointer bg-third hover:bg-gray-200 transition-colors duration-200"
                 : "cursor-not-allowed bg-gray-50")
             }
             onClick={handleSendMessage}
