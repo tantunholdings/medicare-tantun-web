@@ -36,23 +36,40 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
         </div>
       </div>
 
-      {/* Blog Carousel */}
-      <div className="my-4 bg-gradient-to-r from-gray-100 to-blue-50 border border-blue-300 rounded-lg py-4 px-4 md:py-3 md:px-8 shadow-lg md:shadow-2xl animate-fade-in w-full mx-auto relative mb-1">
-        <h2 className="flex items-center justify-center font-bold text-lg md:text-2xl mb-4 md:mb-6 text-blue-900 tracking-wide">
-          <Lightbulb className="text-blue-900 h-5 w-5 md:h-6 md:w-6 mr-2" />
-          Latest Medicare Insights
-        </h2>
-        <div className="px-4 py-3 bg-white rounded-md md:rounded-lg shadow-md md:hover:shadow-xl transition-shadow duration-300 relative">
-          <a href={blogPosts[currentBlogIndex].link} className="block hover:underline">
-            <h3 className="text-blue-900 font-bold text-lg md:text-xl mt-2 mb-1 hover:text-blue-700 text-center text-shadow-lg">
-              {blogPosts[currentBlogIndex].title}
-            </h3>
-            <p className="text-gray-600 text-sm md:text-md italic text-center mb-3">
-              Explore key topics and insights to help you make informed decisions about Medicare.
-            </p>
-          </a>
+        {/* Blog Carousel */}
+        <div className="my-1 bg-gradient-to-r from-gray-100 to-blue-50 border border-blue-300 rounded-lg py-2 px-4 md:py-2 md:px-8 shadow-lg md:shadow-2xl animate-fade-in w-full mx-auto relative mb-0">
+            <h2 className="flex items-center justify-center font-bold text-lg md:text-2xl mb-2 md:mb-2 text-blue-900 tracking-wide">
+                <Lightbulb className="text-blue-900 h-5 w-5 md:h-6 md:w-6 mr-2" />
+                Latest Medicare Insights
+            </h2>
+            <div className="px-4 py-3 bg-white rounded-md md:rounded-lg shadow-md md:hover:shadow-xl transition-shadow duration-300 relative">
+                <a href={blogPosts[currentBlogIndex].link} className="block hover:underline">
+                    <h3 className="flex items-center justify-center text-blue-900 font-bold text-lg md:text-xl mt-2 mb-1 hover:text-blue-700 text-center text-shadow-lg">
+                        {blogPosts[currentBlogIndex].title}
+                        {/* Clickable icon */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-5 h-5 ml-2 text-blue-700"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                        </svg>
+                    </h3>
+                    <p className="text-gray-600 text-sm md:text-md italic text-center mb-3">
+                        Explore key topics and insights to help you make informed decisions about Medicare.
+                    </p>
+                </a>
+            </div>
         </div>
-      </div>
+
+      
       {/* Blinking and Centered Button */}
       <button
           onClick={handleScroll}
