@@ -35,11 +35,11 @@
     ".next/types/**/*.ts",
     "components/FaqList.js",
     "components/FaqList.js",
-    "app/blog/new/page.js",
+    "app/admin/blog/new/page.js",
     "app/blog/page.js",
     "app/blog/page.js",
     "app/faq/page.js",
-    "app/blog/new/EditorConvertToHTML.js",
+    "app/admin/blog/new/EditorConvertToHTML.js",
     "app/blog/[id]/page.js"
   ],
   "exclude": [

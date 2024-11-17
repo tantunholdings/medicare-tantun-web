@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import AdminSideBar from "../../../components/AdminSideBar";
-import DataTable from "../../../components/DataTable";
+import AdminSideBar from "../../../../components/AdminSideBar";
+import DataTable from "../../../../components/DataTable";
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 const FAQListPage = () => {
@@ -37,7 +37,7 @@ const FAQListPage = () => {
   }, [currentPage]);
 
   const handleEdit = (faqId) => {
-    router.push(`/faq/new?id=${faqId}`);
+    router.push(`/admin/faq/new?id=${faqId}`);
   };
 
   const handleDelete = async (faqId) => {

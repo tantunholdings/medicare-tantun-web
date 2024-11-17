@@ -15,6 +15,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Manage mobile menu state
   const pathname = usePathname(); // Get the current path
 
+  if (pathname.includes("admin")){
+    return <></>
+  }
+
   const handleContactUsClick = () => {
     setShowDetailsPopup(true); // Show the popup when Contact Us is clicked
   };

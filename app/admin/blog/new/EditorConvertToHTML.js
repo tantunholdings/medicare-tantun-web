@@ -39,21 +39,21 @@ class EditorConvertToHTML extends Component {
     );
   };
 
-  componentDidUpdate(prevProps) {
-    if (this.props.content !== prevProps.content) {
-      const blocksFromHtml = htmlToDraft(this.props.content);
-      const { contentBlocks, entityMap } = blocksFromHtml;
-      const contentState = ContentState.createFromBlockArray(
-        contentBlocks,
-        entityMap
-      );
-      const newEditorState = EditorState.createWithContent(contentState);
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.content !== prevProps.content) {
+  //     const blocksFromHtml = htmlToDraft(this.props.content);
+  //     const { contentBlocks, entityMap } = blocksFromHtml;
+  //     const contentState = ContentState.createFromBlockArray(
+  //       contentBlocks,
+  //       entityMap
+  //     );
+  //     const newEditorState = EditorState.createWithContent(contentState);
 
-      // Ensure cursor position is maintained
-      const updatedEditorState = EditorState.moveFocusToEnd(newEditorState);
-      this.setState({ editorState: updatedEditorState });
-    }
-  }
+  //     // Ensure cursor position is maintained
+  //     const updatedEditorState = EditorState.moveFocusToEnd(newEditorState);
+  //     this.setState({ editorState: updatedEditorState });
+  //   }
+  // }
 
   render() {
     const { editorState } = this.state;
