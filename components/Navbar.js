@@ -152,12 +152,14 @@ export default function Navbar() {
           </div>
         </div>
 
-        <a href={`tel:${PHONE_NUMBER}`} className="px-4 block md:hidden">
-          <div className="flex justify-end text-primary gap-2 mb-2">
-            <div className="underline">{PHONE_NUMBER}</div>
-            <FontAwesomeIcon icon={faPhone} className="" />
-          </div>
-        </a>
+        <div className="flex justify-center">
+          <a href={`tel:${PHONE_NUMBER}`} className="px-4 block md:hidden">
+            <div className="flex items-center justify-center bg-primary text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-blue-700">
+              <FontAwesomeIcon icon={faPhone} className="mr-2" />
+             Call Now: {PHONE_NUMBER}
+            </div>
+          </a>
+        </div>
 
         {/* Mobile Menu Links */}
         {isMobileMenuOpen && (

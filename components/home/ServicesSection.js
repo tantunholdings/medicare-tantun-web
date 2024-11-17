@@ -41,7 +41,7 @@ const ServicesSection = ({ setTrigger }) => {
 
   function openChat() {
     // Scroll to the chat section with id "chat-textarea"
-    document.getElementById("chat-textarea").scrollIntoView({
+    document.getElementById("chatgpt-keypressed").scrollIntoView({
       behavior: "smooth",
       block: "center",
       inline: "nearest",
@@ -52,9 +52,10 @@ const ServicesSection = ({ setTrigger }) => {
   
 
   const tiles = [
+    
+    ["Start Your Enrollment Today", UserCheck, isMobile? openDialer : expandTawkMessenger], // Reusing "UserCheck" for consistent advising theme
     ["Speak to an Advisor", UserCheck, expandTawkMessenger], // "UserCheck" gives a solid, confident advisor look
     ["Find Medicare Plan", FileText, openChat], // "FileText" for a clearer document icon
-    ["Free Medicare Enrollment", UserCheck, isMobile? openDialer : expandTawkMessenger], // Reusing "UserCheck" for consistent advising theme
   ];
 
   return (
@@ -69,7 +70,8 @@ const ServicesSection = ({ setTrigger }) => {
           type="button"
           onClick={Call}
             key={index + title}
-            className="group flex flex-row md:flex-col items-center justify-center md:items-center md:justify-center text-left md:text-center rounded-lg border p-1 md:p-6 shadow-sm transition-colors duration-300 hover:bg-primary hover:text-white border-primary"
+            //className="group flex flex-row md:flex-col items-center justify-center md:items-center md:justify-center text-left md:text-center rounded-lg border p-1 md:p-6 shadow-sm transition-colors duration-300 hover:bg-primary hover:text-white border-primary"
+            className="group flex flex-row items-center text-left md:flex-col md:items-center md:justify-center md:text-center rounded-lg border p-1 md:p-6 shadow-sm transition-colors duration-300 hover:bg-primary hover:text-white border-primary"
           >
             <div className="flex-shrink-0 mr-4 md:mr-0 mb-0 md:mb-4 rounded-full p-3 transition-colors duration-100 text-primary group-hover:text-white">
               <Icon className="md:h-10 md:w-10" />

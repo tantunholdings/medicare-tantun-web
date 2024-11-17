@@ -49,6 +49,7 @@ const DetailsPopup = ({ closePopup }) => {
   };
 
   return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl h-[500px] flex flex-col relative mx-4">
       <div className="flex justify-between items-center p-4">
         <div className="text-gray-800 font-semibold">
@@ -126,6 +127,7 @@ const DetailsPopup = ({ closePopup }) => {
         </form>
       </div>
     </div>
+  </div>
   );
 };
 

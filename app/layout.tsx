@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Medicare Insurance Assistance - Find the Best Medicare Plan",
     description:
-      "Free Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
+      "Medicare help to find the right plan for your healthcare needs. Contact our team for personalized assistance.",
     url: "https://tantunai.com",
     images: [
       {
@@ -48,10 +48,37 @@ export default function RootLayout({
         {/* This ensures metadata is injected correctly */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://tantunai.com" />
+       
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5S3RQDLV')
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
+
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+       
+        {/* Google Tag Manager (noscript) for body */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=GTM-5S3RQDLV`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager */}
+
         <Navbar />
         <main>
           <TawkProvider>{children}</TawkProvider>
