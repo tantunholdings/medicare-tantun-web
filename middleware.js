@@ -4,9 +4,10 @@ export async function middleware(req) {
   const token = req.cookies.get('authToken'); // Get token from cookies
   const protectedRoutes = ['/admin', '/blog/new', '/blog/edit', '/faw/new', '/faq/edit'];
 
-  if (!token && protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
-    return NextResponse.redirect(new URL('/login', req.url));
-  }
+  if (!token && !req.nextUrl.pathname.includes('login') && protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
+    return NextResponse.redirect(new URL('/admin/login', req.url));
+}
+
 
   if (token  && protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
     try {
@@ -20,14 +21,14 @@ export async function middleware(req) {
       });
 
       if (!response.ok) {
-        return NextResponse.redirect(new URL('/login', req.url));
+        return NextResponse.redirect(new URL('/admin/login', req.url));
       }
 
 
       return NextResponse.next();
     } catch (error) {
       console.error('Error validating token:', error);
-      return NextResponse.redirect(new URL('/login', req.url));
+      return NextResponse.redirect(new URL('/admin/login', req.url));
     }
   }
 
