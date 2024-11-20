@@ -17,8 +17,15 @@ import {
   MapPin,
   Send,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname(); // Get the current path
+
+  if (pathname.includes("admin")){
+    return <></>
+  }
+
   return (
     <footer className="relative py-10">
       <div className="absolute inset-0 bg-gray-900 flex justify-around pt-10 z-0">

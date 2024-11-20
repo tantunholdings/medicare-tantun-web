@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import AdminSideBar from "../../../components/AdminSideBar";
-import DataTable from "../../../components/DataTable";
+import AdminSideBar from "../../../../components/AdminSideBar";
+import DataTable from "../../../../components/DataTable";
 import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie';
 const BlogListPage = () => {
@@ -37,7 +37,7 @@ const BlogListPage = () => {
   }, [currentPage]);
 
   const handleEdit = (blogId) => {
-    router.push(`/blog/new?id=${blogId}`);
+    router.push(`/admin/blog/new?id=${blogId}`);
   };
 
   const handleDelete = async (blogId) => {

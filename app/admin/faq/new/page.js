@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import AdminSideBar from "../../../components/AdminSideBar";
+import AdminSideBar from "../../../../components/AdminSideBar";
 import { v4 as uuidv4 } from "uuid";
 import { useSearchParams } from 'next/navigation';
 import Cookies from 'js-cookie';

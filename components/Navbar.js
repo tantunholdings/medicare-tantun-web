@@ -58,6 +58,10 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
+  if (pathname.includes("admin")){
+    return <></>
+  }
+
   return (
     <>
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">

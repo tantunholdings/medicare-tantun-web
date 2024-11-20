@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import AdminSideBar from '../../../components/AdminSideBar';
+import AdminSideBar from '../../../../components/AdminSideBar';
 import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from 'next/navigation';
 import Cropper from 'react-easy-crop';
@@ -193,7 +193,7 @@ const BlogEditorPage = () => {
             </div>
 
             {/* Blog Body Editor */}
-            <div className="mb-4">
+            <div className="mb-4 z-10">
               <label htmlFor="blogBody" className="block text-gray-700 mb-1">Body</label>
               <EditorConvertToHTML content={editorContent} setContent={setEditorContent} />
             </div>
