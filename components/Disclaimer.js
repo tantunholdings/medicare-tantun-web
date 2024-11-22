@@ -105,11 +105,14 @@ const Footer = () => {
                 solicitation for insurance. Standard messaging rates may apply.
               </p>
               <p>
+              This is a solicitation for insurance
+              </p>
+              <p>
                 Tantun's website is operated by Tantun Holdings, Inc., a
                 licensed health insurance agency doing business as TantunAI. The
                 purpose of this site is the solicitation of insurance. Contact
                 may be made by an insurance agent/producer or insurance company.
-                TantunAI is a free service with no obligation to enroll. Your
+                TantunAI is a no cost service with no obligation to enroll. Your
                 information and use of this site are governed by our most recent{" "}
                 <Link
                   href="/terms-of-use"

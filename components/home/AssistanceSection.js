@@ -12,7 +12,7 @@ export default function AssistanceSection() {
       <ServicesSection setTrigger={setTrigger} />
       <section className="mt-4 bg-white rounded-lg shadow-sm  max-w-7xl mx-auto p-5" id="chat-section">
         <h2 className="text-xl font-semibold mb-4">
-          Ask our Medicare AI Assistant
+          Ask our Medicare Plans AI Assistant
         </h2>
 
         <CardsSection setTrigger={setTrigger}/>  

@@ -6,8 +6,8 @@ import BlogPreview from "../components/home/BlogPreview";
 
 // Metadata for the main page
 export const metadata = {
-  title: "Insurance Advisor - Medicare Insurance Assistance",
-  description: "Get free, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
+  title: "Insurance Licensed Agent - Medicare Insurance Assistance",
+  description: "Get at no cost, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
 };
 
 export default function InsuranceAdvisor() {
@@ -22,7 +22,7 @@ export default function InsuranceAdvisor() {
               "name": "Medicare Insurance Assistance",
               "url": "https://www.tantunai.com",
               "image": "https://www.tantunai.com/assets/Logo.png",
-              "description": "Get free, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
+              "description": "Get at no cost, expert Medicare enrollment guidance based on your preferred doctors, prescriptions, and dental coverage. Contact us today!",
               "sameAs": [
                 "https://www.tantunai.com/blog",
                 "https://www.tantunai.com/about"

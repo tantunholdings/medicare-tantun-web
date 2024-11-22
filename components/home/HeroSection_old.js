@@ -111,10 +111,10 @@ export default function HeroSection() {
         <div className="block md:hidden bg-white text-black py-2">
           
           <div className="font-semibold">
-            Medicare Enrollment Help - Quick & Easy
+            Medicare Plans Enrollment Help - Quick & Easy
           </div>
           <div className="font-thin">
-            Call now for Medicare assistance and guidance from our licensed experts.
+            Call now for Medicare Plans assistance and guidance from our licensed experts.
           </div>
           <button className="w-full md:hidden flex my-4 items-center justify-center bg-primary px-6 py-3 text-md font-semibold text-white hover:bg-blue-700 rounded-lg text-center">
             <Phone className="mr-2 h-5 w-5" />
@@ -129,7 +129,7 @@ export default function HeroSection() {
           <div className="flex flex-col justify-end h-full">
             <div className="backdrop-blur-md bg-black/20 md:bg-transparent md:backdrop-blur-none px-2 py-2 md:px-5 md:py-20 rounded-md">
               <h1 className="text-sm font-bold tracking-tight md:text-5xl md:max-w-xl">
-                Need Help with Medicare? We're Just a Call Away!
+                Need Help with Medicare Plans? We're Just a Call Away!
               </h1>
               <p className="md:mt-6 text-xs md:text-lg font-light">
                 Medicare can be confusing, but our licensed experts make it

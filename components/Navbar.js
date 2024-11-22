@@ -152,8 +152,11 @@ export default function Navbar() {
           </div>
         </div>
 
+        <div className="flex justify-center md:hidden">
+        <h2>To speak with a licensed agent</h2>
+        </div>
         <div className="flex justify-center">
-          <a href={`tel:${PHONE_NUMBER}`} className="px-4 block md:hidden">
+            <a href={`tel:${PHONE_NUMBER}`} className="px-4 block md:hidden">
             <div className="flex items-center justify-center bg-primary text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-blue-700">
               <FontAwesomeIcon icon={faPhone} className="mr-2" />
              Call Now: {PHONE_NUMBER}
