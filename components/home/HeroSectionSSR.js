@@ -37,7 +37,7 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
       </div>
 
         {/* Blog Carousel */}
-        <div className="my-1 bg-gradient-to-r from-gray-100 to-blue-50 border border-blue-300 rounded-lg py-2 px-4 md:py-2 md:px-8 shadow-lg md:shadow-2xl animate-fade-in w-full mx-auto relative mb-0">
+        <div className="my-1 bg-gradient-to-r from-gray-100 to-blue-50 border border-blue-300 rounded-lg py-2 px-4 md:py-2 md:px-8 shadow-lg md:shadow-2xl animate-fade-in w-full mx-auto relative mb-2">
             <h2 className="flex items-center justify-center font-bold text-lg md:text-2xl mb-2 md:mb-2 text-blue-900 tracking-wide">
                 <Lightbulb className="text-blue-900 h-5 w-5 md:h-6 md:w-6 mr-2" />
                 Latest Medicare Plans Insights

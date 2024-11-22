@@ -59,7 +59,7 @@ const ServicesSection = ({ setTrigger }) => {
   ];
 
   return (
-    <section className="container mx-auto py-12 px-4 max-w-7xl">
+    <section className="container mx-auto py-4 px-4 max-w-7xl">
       {/* <h2 className="md:text-center md:text-3xl font-bold  mx-auto">
         Need Medical Guidance? Call Us for Personalized Support
       </h2>
