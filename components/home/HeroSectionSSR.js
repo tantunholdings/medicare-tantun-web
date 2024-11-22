@@ -18,10 +18,10 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
         <div className="flex flex-col justify-end h-full">
           <div className="backdrop-blur-md bg-black/20 md:bg-transparent md:backdrop-blur-none px-2 py-2 md:px-5 md:py-20 rounded-md">
             <h1 className="text-sm font-bold tracking-tight md:text-5xl md:max-w-xl">
-              Need Help with Medicare? We're Just a Call Away!
+              Need Help with Medicare Plans? We're Just a Call Away!
             </h1>
             <p className="md:mt-6 text-xs md:text-lg font-light">
-              Medicare can be confusing, but our licensed experts make it easy.
+              Medicare Plans can be confusing, but our licensed experts make it easy.
               <br className="hidden md:block" />
               Call now for help with enrolling today.
             </p>
@@ -30,7 +30,7 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
                 className="max-w-max hidden md:flex mt-8 items-center bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Contact us for Medicare Help!
+              Contact us for Medicare Plans Help!
             </button>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
         <div className="my-1 bg-gradient-to-r from-gray-100 to-blue-50 border border-blue-300 rounded-lg py-2 px-4 md:py-2 md:px-8 shadow-lg md:shadow-2xl animate-fade-in w-full mx-auto relative mb-0">
             <h2 className="flex items-center justify-center font-bold text-lg md:text-2xl mb-2 md:mb-2 text-blue-900 tracking-wide">
                 <Lightbulb className="text-blue-900 h-5 w-5 md:h-6 md:w-6 mr-2" />
-                Latest Medicare Insights
+                Latest Medicare Plans Insights
             </h2>
             <div className="px-4 py-3 bg-white rounded-md md:rounded-lg shadow-md md:hover:shadow-xl transition-shadow duration-300 relative">
                 <a href={blogPosts[currentBlogIndex].link} className="block hover:underline">
@@ -63,7 +63,7 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
                         </svg>
                     </h3>
                     <p className="text-gray-600 text-sm md:text-md italic text-center mb-3">
-                        Explore key topics and insights to help you make informed decisions about Medicare.
+                        Explore key topics and insights to help you make informed decisions about Medicare Plans.
                     </p>
                 </a>
             </div>

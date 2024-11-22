@@ -7,14 +7,20 @@ const DetailsPopup = ({ closePopup }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [verification, setVerification] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent form refresh
+    if (!verification) {
+      setError("You must verify your contact information to proceed.");
+      return;
+    }
     setLoading(true);
     setError(null);
     setSuccess(false);
+    
 
     try {
       const response = await fetch(
@@ -37,6 +43,7 @@ const DetailsPopup = ({ closePopup }) => {
         setName("");
         setEmail("");
         setMessage("");
+        setVerification(false);
       } else {
         const data = await response.json();
         setError("Failed to send message. Please try again.");
@@ -50,7 +57,15 @@ const DetailsPopup = ({ closePopup }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl h-[500px] flex flex-col relative mx-4">
+    
+
+  <div
+    className="bg-white rounded-3xl shadow-lg w-full max-w-lg p-4 flex flex-col relative mx-4"
+    style={{
+      height: "auto", // Let the height adjust dynamically
+      maxHeight: "85vh", // Prevent overflow on smaller screens
+    }}
+  >
       <div className="flex justify-between items-center p-4">
         <div className="text-gray-800 font-semibold">
           Leave Your Details
@@ -78,7 +93,7 @@ const DetailsPopup = ({ closePopup }) => {
                 placeholder="Type here"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
                 required
               />
             </div>
@@ -91,7 +106,7 @@ const DetailsPopup = ({ closePopup }) => {
                 placeholder="Type here"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
                 required
               />
             </div>
@@ -104,11 +119,38 @@ const DetailsPopup = ({ closePopup }) => {
               placeholder="Type here"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
               rows="4"
               required
             ></textarea>
           </div>
+
+            {/* Verification Checkbox */}
+            <div className="flex items-start space-x-2">
+              <input
+                type="checkbox"
+                id="verification"
+                checked={verification}
+                onChange={(e) => setVerification(e.target.checked)}
+                className="mt-1"
+                required
+              />
+              <label htmlFor="verification" className="text-gray-700">
+                I verify that the contact information entered is correct and is
+                my personal information and that I am over 18 years of age.
+              </label>
+            </div>
+
+            {/* PTC */}
+            <div className="text-gray-600 text-xs mt-2">
+              By providing your name and contact information, you are consenting
+              to receive calls, text messages, and/or emails from a licensed
+              insurance agent about Medicare Plans at the number provided, and
+              you agree such calls and/or text messages may use an auto-dialer
+              or robocall, even if you are on a government do-not-call registry.
+              This agreement is not a condition of enrollment.
+            </div>
+
           <div className="flex justify-center">
             <button
               type="submit"

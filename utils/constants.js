@@ -8,14 +8,14 @@ export const CHAT_CARDS = [
     triggerText: "Can you explain Medicare plans?",
   },
   {
-    title: "Medicare Dental Cover",
-    description: "Does Medicare covers Dental Services",
-    triggerText: "Does Medicare covers Dental Services",
+    title: "Medicare Plans Dental Cover",
+    description: "Does Medicare Plans covers Dental Services",
+    triggerText: "Does Medicare Plans covers Dental Services",
   },
   {
-    title: "Medicare Insurance Providers",
-    description: "Which Health Insurance providers offers Medicare ",
-    triggerText: "Which Health Insurance providers offers Medicare ",
+    title: "Medicare Plans Insurance Providers",
+    description: "Which Health Insurance providers offers Medicare Plans ",
+    triggerText: "Which Health Insurance providers offers Medicare Plans ",
   },
   
 ];

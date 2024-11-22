@@ -25,7 +25,7 @@ const AboutUsHero = () => {
             users to filter plans based on their doctors, specialists, and
             prescriptions. Customers can compare plans online or receive
             personalized, unbiased recommendations over the phone from licensed
-            agents. The service is free with no obligation to enroll.
+            agents. The service is at no cost with no obligation to enroll.
           </p>
         </div>
       </div>

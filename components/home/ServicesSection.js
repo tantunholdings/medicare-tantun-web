@@ -54,7 +54,7 @@ const ServicesSection = ({ setTrigger }) => {
   const tiles = [
     
     ["Start Your Enrollment Today", UserCheck, isMobile? openDialer : expandTawkMessenger], // Reusing "UserCheck" for consistent advising theme
-    ["Speak to an Advisor", UserCheck, expandTawkMessenger], // "UserCheck" gives a solid, confident advisor look
+    ["Speak to a Licensed Agent", UserCheck, expandTawkMessenger], // "UserCheck" gives a solid, confident advisor look
     ["Find Medicare Plan", FileText, openChat], // "FileText" for a clearer document icon
   ];
 

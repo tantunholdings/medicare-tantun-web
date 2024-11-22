@@ -16,9 +16,9 @@ const sections = [
     reverse: false,
   },
   {
-    title: "Free Service, No Obligation",
+    title: "No cost Service, No Obligation",
     description:
-      "Enroll online or by phone at no extra cost. Our service is free, with no obligation to enroll. Advisors receive equal compensation regardless of the plan you choose, so you'll get honest, unbiased advice every time.",
+      "Enroll online or by phone at no extra cost. Our service is at no cost, with no obligation to enroll. Licensed Agents receive equal compensation regardless of the plan you choose, so you'll get honest, unbiased advice every time.",
     imageSrc: "/assets/3.png", // Image from public/assets folder
     reverse: true,
   },

@@ -390,7 +390,7 @@ const ChatPopup = ({ setTrigger, trigger }) => {
             <textarea
               id="chatgpt-keypressed"
               ref={textareaRef}
-              placeholder="Ask anything about Medicare"
+              placeholder="Ask anything about Medicare Plans"
               className="flex-grow text-gray-500 focus:outline-none resize-none overflow-hidden p-2 w-full sm:w-3/4 bg-gray-100 rounded-xl shadow-inner"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
