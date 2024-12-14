@@ -5,11 +5,13 @@ import Image from "next/image";
 import titleShape from "../../public/assets/title-shape.svg";
 import { useTawkMessengerRef } from "@/context/TawkContext";
 import {PHONE_NUMBER} from "@/utils/constants";
+import PopUp from "./PopUp";
 
 
 const ServicesSection = ({ setTrigger }) => {
   const tawkMessengerRef = useTawkMessengerRef();
   const [isMobile, setIsMobile] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,7 +55,7 @@ const ServicesSection = ({ setTrigger }) => {
 
   const tiles = [
     
-    ["Start Your Enrollment Today", UserCheck, isMobile? openDialer : expandTawkMessenger], // Reusing "UserCheck" for consistent advising theme
+    ["Start Your Enrollment Today", UserCheck, isMobile? openDialer : () => setShowPopup(true)], // Reusing "UserCheck" for consistent advising theme
     ["Speak to a Licensed Agent", UserCheck, expandTawkMessenger], // "UserCheck" gives a solid, confident advisor look
     ["Find Medicare Plan", FileText, openChat], // "FileText" for a clearer document icon
   ];
@@ -82,6 +84,7 @@ const ServicesSection = ({ setTrigger }) => {
           </button>
         ))}
       </div>
+      {showPopup && <PopUp onClose={() => setShowPopup(false)} />}
     </section>
   );
 };

@@ -30,7 +30,7 @@ export default function HeroSectionSSR({ bg, currentBlogIndex, handleContactUsCl
                 className="max-w-max hidden md:flex mt-8 items-center bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700 rounded-3xl"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Contact us for Medicare Plans Help!
+              Contact us for Medicare Plans Enrollment Help!
             </button>
           </div>
         </div>

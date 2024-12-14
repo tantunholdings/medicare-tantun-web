@@ -29,55 +29,62 @@ const BlogPreview = () => {
       <div className="flex justify-center mt-5">
         <Image src={titleShape} alt="Title Shape" />
       </div>
-      <div className="mt-12 grid gap-8 md:grid-cols-2">
-      <Link href={`/blog/${blogPosts[0]?.id}`} passHref>
-  <div className="relative aspect-square overflow-hidden rounded-lg">
-    <img
-      src={
-        blogPosts[0]?.image_url
-          ? blogPosts[0]?.image_url
-          : "https://fakeimg.pl/600x400?text=TantunAI"
-      }
-      alt={blogPosts[0]?.title}
-      className="object-cover rounded-lg"
-    />
-    <h3 className="text-2xl font-bold mt-4">
-      {blogPosts[0]?.title || "Lorem ipsum dolor sit amet"}
-    </h3>
-    <p className="text-gray-600">
-      {blogPosts[0]?.excerpt ||
-        blogPosts[0]?.subtitle ||
-        "Lorem ipsum dolor sit amet consectetur. Tincidunt nisi a est tellus id ultrices viverra quis justo. Ut leo tellus tortor non ipsum quis imperdiet senectus urna. Nulla ac neque aliquet amet. Pharetra neque ut est cras morbi."}
-    </p>
-  </div>
-</Link>
-
-        <div className="space-y-6">
-          <div className="space-y-4">
-            {blogPosts.map((post) => (
-              <div key={post.id} className="flex gap-4">
-                <Link href={`/blog/${post.id}`} passHref className="flex gap-4">
-                  <img
-                    src={
-                      post?.image_url
-                    }
-                    alt={post.title}
-                    className="object-cover rounded-lg w-36 h-24"
-                  />
-                  <div>
-                    <h4 className="font-semibold">{post.title}</h4>
-                    <p className="text-sm text-gray-600">{post.subtitle}</p>
-                  </div>
-                </Link>
+      <div className="mt-12">
+        {/* Featured Blog */}
+        {blogPosts[0] && (
+          <Link href={`/blog/${blogPosts[0]?.id}`} passHref>
+            <div className="relative rounded-lg overflow-hidden">
+              <img
+                src={
+                  blogPosts[0]?.image_url ||
+                  "https://fakeimg.pl/600x400?text=TantunAI"
+                }
+                alt={blogPosts[0]?.title}
+                className="object-cover w-full h-64 rounded-lg"
+              />
+              <div className="mt-4">
+                <h3 className="text-xl font-bold">{blogPosts[0]?.title}</h3>
+                <p className="text-gray-600 mt-2">
+                  {blogPosts[0]?.excerpt ||
+                    blogPosts[0]?.subtitle ||
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quasi."}
+                </p>
               </div>
-            ))}
+            </div>
+          </Link>
+        )}
+
+        {/* Blog List */}
+        <div className="mt-8 space-y-4">
+          {blogPosts.slice(1).map((post) => (
             <Link
-              href="/blog"
-              className="flex rounded-3xl border border-primary px-4 py-2 text-primary hover:bg-blue-50 font-bold max-w-max"
+              key={post.id}
+              href={`/blog/${post.id}`}
+              passHref
+              className="flex gap-4 items-center"
             >
-              View More →
+              <img
+                src={
+                  post?.image_url ||
+                  "https://fakeimg.pl/150x100?text=Placeholder"
+                }
+                alt={post.title}
+                className="object-cover rounded-lg w-24 h-16 flex-shrink-0"
+              />
+              <div>
+                <h4 className="font-semibold text-base">{post.title}</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  {post.subtitle || "Short description not available."}
+                </p>
+              </div>
             </Link>
-          </div>
+          ))}
+          <Link
+            href="/blog"
+            className="block text-center rounded-3xl border border-primary px-4 py-2 text-primary hover:bg-blue-50 font-bold mt-4"
+          >
+            View More →
+          </Link>
         </div>
       </div>
     </section>

@@ -88,11 +88,16 @@ export default function InsuranceAdvisor() {
               
     
       <HeroSection />
-      <div className="container mb-8 min-h-screen justify-center w-full mx-auto">
+      <div className="container mb-8 min-h-screen flex flex-col lg:flex-row w-full mx-auto">
         
-        <AssistanceSection />
-        <MiddleSection />
-        <BlogPreview />       
+      <div className="flex-grow lg:mr-8">
+          <AssistanceSection />
+          <MiddleSection />
+      </div>
+
+      <div className="w-full lg:w-1/4 lg:sticky lg:top-0">
+          <BlogPreview />
+      </div>    
         
       </div>
     </>
