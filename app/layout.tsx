@@ -83,7 +83,9 @@ export default function RootLayout({
         <main>
           <TawkProvider>{children}</TawkProvider>
         </main>
-        <Disclaimer />
+        <div className="bg-white py-4">
+          <Disclaimer />
+        </div>
       </body>
     </html>
   );

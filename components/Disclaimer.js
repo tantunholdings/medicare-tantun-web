@@ -27,22 +27,8 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative py-10">
-      <div className="absolute inset-0 bg-gray-900 flex justify-around pt-10 z-0">
-        <div className="grid grid-cols-2 gap-10 w-60 h-60">
-          <div className="bg-primary w-28 h-28 blur-3xl" />
-          <div className="bg-primary w-28 h-28 blur-3xl" />
-          <div className="bg-blue-300 w-28 h-28 blur-3xl" />
-          <div className="bg-yellow-600 w-28 h-28 blur-3xl" />
-        </div>
-
-        <div className="hidden md:grid  grid-cols-2 gap-10 w-60 h-60">
-          <div className="bg-primary w-28 h-28 blur-3xl" />
-          <div className="bg-primary w-28 h-28 blur-3xl" />
-          <div className="bg-blue-300 w-28 h-28 blur-3xl" />
-          <div className="bg-yellow-600 w-28 h-28 blur-3xl" />
-        </div>
-      </div>
+    <footer className="relative py-10 bg-white">
+      
 
       <div className="absolute inset-1 text-white">
         <div className="flex justify-end mt-16 mr-5">
@@ -54,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative z-10  container mx-auto py-8 px-4 text-white">
+      <div className="relative z-10  container mx-auto py-8 px-4 text-gray">
         <div className="grid gap-8 lg:grid-cols-4">
           <div>
             <Image src={logo} alt="Logo" width={40} height={40} />
@@ -73,7 +59,7 @@ const Footer = () => {
             <Image src={footerShape} alt="Logo" width={200} height={200} />
           </div>
           <div className="mt-4 col-span-2">
-            <div className="text-3xs md:text-2xs 2xl:text-xs text-white font-thin mb-4 space-y-0 text-justify">
+            <div className="text-xs md:text-2xs 2xl:text-xs text-gray-400 font-light mb-4 space-y-2 max-w-2xl mx-auto leading-relaxed text-center">
               <p>
                 The Medicare plans represented are PDP, HMO, PPO, or PFFS plans
                 with a Medicare contract. Enrollment in plans depends on
@@ -121,14 +107,12 @@ const Footer = () => {
                   Terms of Use
                 </Link>
                 {" and "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://medicare-blogs.s3.amazonaws.com/privacy-policy/Privacy-Policy.html"
+                <Link
+                  href="/privacy-policy"
                   className="hover:underline text-primary"
                 >
                   Privacy Policy
-                </a>
+                </Link>
                 .
               </p>
             </div>

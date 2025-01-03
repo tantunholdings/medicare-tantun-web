@@ -36,6 +36,8 @@ export default function Navbar() {
         return "FAQ";
       case "/about":
         return "About Us";
+      case "/aiassistant":
+        return "MedicareGPT";
       default:
         return "Home";
     }
@@ -119,6 +121,17 @@ export default function Navbar() {
               }`}
             >
               FAQ
+            </Link>
+            {/* Add MedicareGPT link */}
+            <Link
+              href="/aiassistant"
+              className={`${
+                pathname === "/aiassistant"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
+              MedicareGPT
             </Link>
           </div>
 
@@ -210,6 +223,19 @@ export default function Navbar() {
               onClick={toggleMobileMenu}
             >
               FAQ
+            </Link>
+
+            {/* Add MedicareGPT link in mobile menu */}
+            <Link
+              href="/aiassistant"
+              className={`w-full text-left py-2 border-b ${
+                pathname === "/aiassistant"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              MedicareGPT
             </Link>
 
             {/* Contact Information in Mobile Menu */}
