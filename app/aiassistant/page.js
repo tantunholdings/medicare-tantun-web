@@ -10,7 +10,7 @@ export default function AssistancePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Assistant Section */}
-      <main className="flex-grow flex justify-center items-center">
+      <main className="flex-grow flex justify-start flex-col pt-8">
         <section
           className="bg-white rounded-lg shadow-lg max-w-4xl w-full mx-auto p-6"
           id="chat-section"
