@@ -79,6 +79,12 @@ export default function InsuranceAdvisor() {
                     "position": 4,
                     "name": "FAQ",
                     "item": "https://www.tantunai.com/faq"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "Medicare AI Assistance",
+                    "item": "https://www.tantunai.com/aiassistant"
                   }
                 ]
               }
