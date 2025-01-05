@@ -19,7 +19,7 @@ const AboutUsHero = () => {
             Who is Tantun?
           </h1>
           <p className="text-base text-primaryBlack">
-            Tantun Holdings is a licensed insurance agency that simplifies
+            Tantun Holdings LLC is a licensed insurance agency that simplifies
             comparing and enrolling in top healthcare plans. Its user-friendly
             platform offers access to national and regional insurers, allowing
             users to filter plans based on their doctors, specialists, and

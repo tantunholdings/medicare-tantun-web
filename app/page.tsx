@@ -48,7 +48,7 @@ export default function InsuranceAdvisor() {
                 "serviceType": "Medicare Enrollment Assistance",
                 "provider": {
                   "@type": "Organization",
-                  "name": "Tantun Holdings",
+                  "name": "Tantun Holdings LLC",
                   "url": "https://www.tantunai.com"
                 },
                 "description": "Assistance with Medicare enrollment based on individual health needs."

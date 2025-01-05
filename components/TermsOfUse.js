@@ -45,7 +45,7 @@ const TermsOfUse = () => {
     {
       title: "7. Digital Millennium Copyright Act",
       content:
-        "      <p><strong>DMCA Notification.</strong> We comply with the provisions of the Digital Millennium Copyright Act applicable to Internet service providers (17 U.S.C. , as amended). If you have an intellectual property rights-related complaint about material posted on the Service, you may contact our Designated Agent at the following address:</p>      <p><strong>Tantun Holdings</strong></p>      <p><strong>ATTN: Legal Department (Copyright Notification)</strong></p>      <p>[Insert mailing address]</p>      <p>Email: [Insert email address]</p>            <p>Any notice alleging that materials hosted by or distributed through the Service infringe intellectual property rights must include the following information:</p>      <p>1. An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright or other right being infringed;</p>      <p>2. A description of the copyright-protected work or other intellectual property right that you claim has been infringed;</p>      <p>3. A description of the material that you claim is infringing and where it is located on the Service;</p>      <p>4. Your address, telephone number, and email address;</p>      <p>5. A statement by you that you have a good faith belief that the use of those materials on the Service is not authorized by the copyright owner, its agent, or the law;</p>      <p>6. A statement by you that the above information in your notice is accurate and that, under penalty of perjury, you are the copyright or intellectual property owner or authorized to act on the copyright or intellectual property owner behalf.</p>            <p><strong>Repeat Infringers.</strong> Tantun will promptly terminate without notice the accounts of users that are determined by Tantun to be Repeat Infringers. A Repeat Infringer is a user who has been notified of infringing activity or has had User Content removed from the Service at least twice.</p>            ",
+        "      <p><strong>DMCA Notification.</strong> We comply with the provisions of the Digital Millennium Copyright Act applicable to Internet service providers (17 U.S.C. , as amended). If you have an intellectual property rights-related complaint about material posted on the Service, you may contact our Designated Agent at the following address:</p>      <p><strong>Tantun Holdings LLC</strong></p>      <p><strong>ATTN: Legal Department (Copyright Notification)</strong></p>      <p>[Insert mailing address]</p>      <p>Email: [Insert email address]</p>            <p>Any notice alleging that materials hosted by or distributed through the Service infringe intellectual property rights must include the following information:</p>      <p>1. An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright or other right being infringed;</p>      <p>2. A description of the copyright-protected work or other intellectual property right that you claim has been infringed;</p>      <p>3. A description of the material that you claim is infringing and where it is located on the Service;</p>      <p>4. Your address, telephone number, and email address;</p>      <p>5. A statement by you that you have a good faith belief that the use of those materials on the Service is not authorized by the copyright owner, its agent, or the law;</p>      <p>6. A statement by you that the above information in your notice is accurate and that, under penalty of perjury, you are the copyright or intellectual property owner or authorized to act on the copyright or intellectual property owner behalf.</p>            <p><strong>Repeat Infringers.</strong> Tantun will promptly terminate without notice the accounts of users that are determined by Tantun to be Repeat Infringers. A Repeat Infringer is a user who has been notified of infringing activity or has had User Content removed from the Service at least twice.</p>            ",
     },
     {
       title: "8. Prohibited Conduct",
@@ -165,8 +165,8 @@ const TermsOfUse = () => {
             </div>
             <div className="pb-4 text-textGray mb-4 space-y-2">
               <p>
-                Welcome and thank you for your interest in Tantun Holdings
-                (Tantun, or us) and our websites at TantunHoldings.com, and
+                Welcome and thank you for your interest in Tantun Holdings LLC
+                (Tantun, or us) and our websites at www.tantunai.com, and
                 other websites where we post this document as the applicable
                 terms of use along with any related websites, networks,
                 applications, insurance agent and representative services, and
@@ -206,7 +206,7 @@ const TermsOfUse = () => {
               This website and its contents are for informational purposes
               only...
             </p>
-            <p>Tantun Medicare website is operated by Tantun Holdings...</p>
+            <p>Tantun Medicare website is operated by Tantun Holdings LLC...</p>
           </div>
 
           {/* Floating "Go to Top" Button */}

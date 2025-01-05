@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
 Date Last Updated: January 5, 2023
 1. Introduction
 If you are a California resident, please click here for more information about your specific privacy rights.
-Thank you for your interest in Tantun Holdings, Inc. (“Tantun Holdings,” ,”Tantun”, “we,” “us,” or “our”). We are committed to protecting the privacy of those with whom we interact. This Privacy Statement (“Statement”) contains details about how we collect, use, and share personal information about you (defined below) that we obtain from you when you interact with us via our websites (including those listed below), email, mobile application, social media accounts, insurance agent and representative services, communication channels (including online chat and telephone call centers), in other online and offline interactions and services, and from other sources (collectively, the “Service”).
+Thank you for your interest in Tantun Holdings LLC. (“Tantun Holdings,” ,”Tantun”, “we,” “us,” or “our”). We are committed to protecting the privacy of those with whom we interact. This Privacy Statement (“Statement”) contains details about how we collect, use, and share personal information about you (defined below) that we obtain from you when you interact with us via our websites (including those listed below), email, mobile application, social media accounts, insurance agent and representative services, communication channels (including online chat and telephone call centers), in other online and offline interactions and services, and from other sources (collectively, the “Service”).
 Please read this Statement carefully. It applies to the following websites owned and operated by Tantun Holdings, and our other websites where we post this document as the applicable Privacy Policy:
 https://www.medicare.com/
 https://www.tantunai.com/
@@ -104,7 +104,7 @@ To opt-out of receiving promotional email messages from us, please click on the 
 The Terms of Use for interactions with us is incorporated by reference into this Statement and can be found here.
 12. Contact
 If you have questions regarding this Statement or our privacy practices, please contact us at:
-Tantun Holdings, Inc.
+Tantun Holdings LLC.
 [Fill the address]
 13.  California Consumer Privacy Act
 As an insurance broker, Tantun Holdings rarely handles personal information that  is subject to the California Consumer Privacy Act (“CCPA”). In the very limited cases where we may collect information about certain California residents subject to the CCPA, this section applies.  This CCPA notice does not apply to the following information:

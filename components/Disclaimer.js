@@ -94,7 +94,7 @@ const Footer = () => {
               This is a solicitation for insurance
               </p>
               <p>
-                Tantun's website is operated by Tantun Holdings, Inc., a
+                Tantun's website is operated by Tantun Holdings LLC., a
                 licensed health insurance agency doing business as TantunAI. The
                 purpose of this site is the solicitation of insurance. Contact
                 may be made by an insurance agent/producer or insurance company.
@@ -140,7 +140,7 @@ const Footer = () => {
             <Link href="#" className="text-gray-600 hover:text-primary">
               <Twitter className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-primary">
+            <Link href="https://www.facebook.com/profile.php?id=61570554029354" className="text-gray-600 hover:text-primary">
               <Facebook className="h-5 w-5" />
             </Link>
             <Link href="#" className="text-gray-600 hover:text-primary">
