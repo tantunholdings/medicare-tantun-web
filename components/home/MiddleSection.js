@@ -27,7 +27,7 @@ const MiddleSection = () => {
           Contact now for Medicare Plans assistance & guidance from our licensed experts.
         </p>
         <button className="mt-8 rounded-3xl bg-primary px-6 py-3 text-lg font-semibold text-white hover:bg-blue-700" onClick={handleContactUsClick}>
-          Contact Us
+          Request a call
         </button>
       </section>
       {showDetailsPopup && (

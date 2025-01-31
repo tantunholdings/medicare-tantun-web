@@ -5,7 +5,7 @@ import { useState } from "react";
 const DetailsPopup = ({ closePopup }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState(""); // Renamed state for clarity but kept API key same
   const [loading, setLoading] = useState(false);
   const [verification, setVerification] = useState(false);
   const [error, setError] = useState(null);
@@ -20,7 +20,6 @@ const DetailsPopup = ({ closePopup }) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
-    
 
     try {
       const response = await fetch(
@@ -33,7 +32,7 @@ const DetailsPopup = ({ closePopup }) => {
           body: new URLSearchParams({
             name,
             email,
-            message,
+            message: phone, // Keeping the same key name for API compatibility
           }),
         }
       );
@@ -42,10 +41,9 @@ const DetailsPopup = ({ closePopup }) => {
         setSuccess(true); // Display success message
         setName("");
         setEmail("");
-        setMessage("");
+        setPhone("");
         setVerification(false);
       } else {
-        const data = await response.json();
         setError("Failed to send message. Please try again.");
       }
     } catch (err) {
@@ -57,73 +55,69 @@ const DetailsPopup = ({ closePopup }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    
+      <div
+        className="bg-white rounded-3xl shadow-lg w-full max-w-lg p-4 flex flex-col relative mx-4"
+        style={{
+          height: "auto", // Let the height adjust dynamically
+          maxHeight: "85vh", // Prevent overflow on smaller screens
+        }}
+      >
+        <div className="flex justify-between items-center p-4">
+          <div className="text-gray-800 font-semibold">Leave Your Details</div>
 
-  <div
-    className="bg-white rounded-3xl shadow-lg w-full max-w-lg p-4 flex flex-col relative mx-4"
-    style={{
-      height: "auto", // Let the height adjust dynamically
-      maxHeight: "85vh", // Prevent overflow on smaller screens
-    }}
-  >
-      <div className="flex justify-between items-center p-4">
-        <div className="text-gray-800 font-semibold">
-          Leave Your Details
+          {/* Close Button */}
+          <button
+            onClick={closePopup}
+            className="ml-4 w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full"
+          >
+            <span className="text-gray-500 text-xl">&times;</span>
+          </button>
         </div>
 
-        {/* Close Button */}
-        <button
-          onClick={closePopup}
-          className="ml-4 w-10 h-10 flex items-center justify-center border border-gray-300 rounded-full"
-        >
-          <span className="text-gray-500 text-xl">&times;</span>
-        </button>
-      </div>
-
-      {/* Form Section */}
-      <div className="p-4 flex-grow overflow-y-auto">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+        {/* Form Section */}
+        <div className="p-4 flex-grow overflow-y-auto">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Type here"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+            </div>
             <div>
               <label className="block text-gray-700 font-semibold mb-2">
-                Name
+                Phone Number
               </label>
               <input
-                type="text"
-                placeholder="Type here"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                type="tel"
+                placeholder="Enter your phone number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
                 required
               />
             </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="Type here"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Your Message
-            </label>
-            <textarea
-              placeholder="Type here"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg"
-              rows="4"
-              required
-            ></textarea>
-          </div>
 
             {/* Verification Checkbox */}
             <div className="flex items-start space-x-2">
@@ -141,7 +135,7 @@ const DetailsPopup = ({ closePopup }) => {
               </label>
             </div>
 
-            {/* PTC */}
+            {/* Privacy Notice */}
             <div className="text-gray-600 text-xs mt-2">
               By providing your name and contact information, you are consenting
               to receive calls, text messages, and/or emails from a licensed
@@ -151,25 +145,25 @@ const DetailsPopup = ({ closePopup }) => {
               This agreement is not a condition of enrollment.
             </div>
 
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-primary"
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Send Message"}
-            </button>
-          </div>
-          {error && <p className="text-red-500 text-center">{error}</p>}
-          {success && (
-            <p className="text-green-500 text-center">
-              Message sent successfully!
-            </p>
-          )}
-        </form>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="max-w-sm w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-primary"
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </button>
+            </div>
+            {error && <p className="text-red-500 text-center">{error}</p>}
+            {success && (
+              <p className="text-green-500 text-center">
+                Message sent successfully!
+              </p>
+            )}
+          </form>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 

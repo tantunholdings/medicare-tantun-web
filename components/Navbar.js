@@ -1,18 +1,22 @@
 "use client"; // Ensure this is a client-side component
 import { PHONE_NUMBER } from "@/utils/constants";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Use usePathname instead of useRouter
 import DetailsPopup from "./DetailsPopup"; // Ensure DetailsPopup is correctly imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons"; // Import icons
+import { faPhone, faBars,faChevronDown } from "@fortawesome/free-solid-svg-icons"; // Import icons
 import Image from "next/image"; // Import Next.js Image component
 import logo from "/public/assets/Logo.png"; // Import the logo
 
 export default function Navbar() {
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Manage mobile menu state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const mobileDropdownRef = useRef(null);
   const pathname = usePathname(); // Get the current path
 
   const handleContactUsClick = () => {
@@ -26,6 +30,8 @@ export default function Navbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu state
   };
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const toggleMobileDropdown = () => setIsMobileDropdownOpen(!isMobileDropdownOpen);
 
   // Define the page title based on the path
   const getPageTitle = () => {
@@ -60,6 +66,21 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+      if (mobileDropdownRef.current && !mobileDropdownRef.current.contains(event.target)) {
+        setIsMobileDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  
+  
+
   if (pathname.includes("admin")){
     return <></>
   }
@@ -92,26 +113,23 @@ export default function Navbar() {
             >
               Home
             </Link>
-            <Link
-              href="/about"
-              className={`${
-                pathname === "/about"
-                  ? "text-primary font-semibold"
-                  : "text-gray-500"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/blog"
-              className={`${
-                pathname === "/blog"
-                  ? "text-primary font-semibold"
-                  : "text-gray-500"
-              }`}
-            >
-              Blog
-            </Link>
+            {/* Learn About Medicare Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button onClick={toggleDropdown} className="text-gray-500 flex items-center">
+                Learn about Medicare <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute top-full mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden">
+                  <Link href="/medicare-advantage-enrollment" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Medicare advantage enrollment</Link>
+                  <Link href="/medicare-supplement" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Medicare Supplement Plans</Link>
+                  <Link href="/signup" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>How to sign up for Medicare</Link>
+                  <Link href="/blog" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Medicare Blog</Link>
+                  
+                </div>
+              )}
+            </div>
+          
+            
             <Link
               href="/faq"
               className={`${
@@ -133,8 +151,19 @@ export default function Navbar() {
             >
               MedicareGPT
             </Link>
-          </div>
+            <Link
+              href="/about"
+              className={`${
+                pathname === "/about"
+                  ? "text-primary font-semibold"
+                  : "text-gray-500"
+              }`}
+            >
+              About Us
+            </Link>
 
+            
+          </div>
           {/* Mobile Menu Button - Aligned to the Right */}
           <div className="md:hidden flex items-center ml-auto">
             <button onClick={toggleMobileMenu} type="button">
@@ -160,7 +189,7 @@ export default function Navbar() {
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 rounded"
             >
-              Contact us
+              Request a call
             </button>
           </div>
         </div>
@@ -179,7 +208,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Links */}
         {isMobileMenuOpen && (
-          <div className="mobile-menu fixed top-0 right-0 w-2/3 bg-white shadow-md rounded-bl-lg md:hidden flex flex-col items-start py-4 px-6 z-50">
+          <div className="mobile-menu fixed top-0 right-0 w-2/3 bg-white shadow-md rounded-bl-lg md:hidden flex flex-col items-start py-4 px-6 z-50" ref={mobileDropdownRef}>
             <Link
               href="/"
               className={`w-full text-left py-2 border-b ${
@@ -202,17 +231,7 @@ export default function Navbar() {
             >
               About Us
             </Link>
-            <Link
-              href="/blog"
-              className={`w-full text-left py-2 border-b ${
-                pathname === "/blog"
-                  ? "text-primary font-semibold"
-                  : "text-gray-500"
-              }`}
-              onClick={toggleMobileMenu}
-            >
-              Blog
-            </Link>
+         
             <Link
               href="/faq"
               className={`w-full text-left py-2 border-b ${
@@ -237,7 +256,18 @@ export default function Navbar() {
             >
               MedicareGPT
             </Link>
-
+            {/* Mobile Learn About Medicare Dropdown */}
+            <button onClick={toggleMobileDropdown} className="py-2 border-b flex justify-between w-full">
+              Learn about Medicare <FontAwesomeIcon icon={faChevronDown} />
+            </button>
+            {isMobileDropdownOpen && (
+              <div className="pl-4">
+                <Link href="/medicare-advantage-enrollment" className="block py-2" onClick={toggleMobileMenu}>Medicare advantage enrollment</Link>
+                <Link href="/medicare-supplement" className="block py-2" onClick={toggleMobileMenu}>Medicare Supplement Plans</Link>
+                <Link href="/signup" className="block py-2" onClick={toggleMobileMenu}>How to sign up for Medicare?</Link>
+                <Link href="/blog" className="block py-2" onClick={toggleMobileMenu}>Medicare Blog</Link>
+              </div>
+            )}
             {/* Contact Information in Mobile Menu */}
             <div className="flex items-center space-x-2 w-full py-2 border-b">
               <div className="bg-secondary p-2 rounded">
@@ -257,7 +287,7 @@ export default function Navbar() {
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 mt-4 w-full text-center rounded"
             >
-              Contact us
+              Request a call
             </button>
           </div>
         )}
