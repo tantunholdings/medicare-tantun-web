@@ -32,11 +32,39 @@ export default function MedicareSupplementPage() {
       <h1 className='text-3xl font-bold text-center text-primary mb-6'>Thinking of Changing Your Medicare Supplement (Medigap) Plan?</h1>
       <p className='text-center text-gray-600 mb-4'>Learn when and how to switch to a better Medicare Supplement (Medigap) plan for lower costs or better coverage.</p>
 
-      <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
-        <a href={`tel:${PHONE_NUMBER}`} className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full max-w-xs">
-          Talk to a licensed Medicare agent – Call {PHONE_NUMBER}
-        </a>
-      </div>
+        {/* ✅ Call to Action Section (Mobile & Desktop Optimized) */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
+
+            {/* 📱 Mobile Only: Click-to-Call Button */}
+            <div className="md:hidden w-full max-w-xs">
+                <a
+                    href={`tel:${PHONE_NUMBER}`}
+                    className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full max-w-xs md:hidden">
+                    Talk to a licensed Medicare agent – Call {PHONE_NUMBER}
+                </a>
+            </div>
+
+            {/* 💻 Desktop View: Call Text & Request Button Aligned */}
+            <div className="flex flex-col md:flex-row items-center gap-3 w-full max-w-2xl">
+
+                {/* Call Text with Icon (Desktop Only) */}
+                <div className="hidden md:flex items-center text-lg font-semibold text-gray-700">
+                    <span className="text-red-500 text-xl mr-2">📞</span>
+                    <span className="text-lg font-semibold text-blue-600">
+                        Have Questions? Call {PHONE_NUMBER}
+                    </span>
+                </div>
+
+                {/* 📝 Request a Call Button (Visible on Both Mobile & Desktop) */}
+                <div className="w-full max-w-xs">
+                    <button
+                        onClick={() => setShowDetailsPopup(true)}
+                        className="block text-center bg-green-600 text-white py-3 px-5 rounded-lg font-semibold hover:bg-green-700 shadow-md w-full">
+                        Request a Call
+                    </button>
+                </div>
+            </div>
+        </div>
 
       {/* ✅ Section 1: Understanding Medigap Plan Changes */}
       <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Can You Change Your Medicare Supplement Plan?</h2>

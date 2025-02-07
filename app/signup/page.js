@@ -76,14 +76,40 @@ export default function SignUpForMedicarePage() {
             <h1 className='text-3xl font-bold text-center text-primary mb-6'>Sign Up for Medicare – Fast & Easy Enrollment Assistance</h1>
             <p className='text-center text-gray-600 mb-4'>Need to Sign Up for Medicare? We’ll Help You Enroll Quickly & Find the Right Plan.</p>
             
-            <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
-              <a
-                href={`tel:${PHONE_NUMBER}`}
-                className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full max-w-xs sm:max-w-sm md:max-w-md text-[clamp(14px,4vw,18px)] leading-tight"
-              >
-                Sign Up for Medicare Now – Call {PHONE_NUMBER}
-              </a>
-            </div>
+              {/* ✅ Call to Action Section (Mobile & Desktop Optimized) */}
+              <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
+
+                {/* 📱 Mobile Only: Click-to-Call Button */}
+                <div className="md:hidden w-full max-w-xs">
+                  <a
+                    href={`tel:${PHONE_NUMBER}`}
+                    className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full max-w-xs md:hidden">
+                    Sign Up for Medicare Now – Call {PHONE_NUMBER}
+                  </a>
+                </div>
+
+                {/* 💻 Desktop View: Call Text & Request Button Aligned */}
+                <div className="flex flex-col md:flex-row items-center gap-3 w-full max-w-2xl">
+
+                  {/* Call Text with Icon (Desktop Only) */}
+                  <div className="hidden md:flex items-center text-lg font-semibold text-gray-700">
+                    <span className="text-red-500 text-xl mr-2">📞</span>
+                    <div className="leading-tight">
+                    <span> Sign Up for Medicare Now </span>
+                    <span className="block text-blue-600">Call {PHONE_NUMBER}</span>
+                    </div>
+                  </div>
+
+                  {/* 📝 Request a Call Button (Visible on Both Mobile & Desktop) */}
+                  <div className="w-full max-w-xs">
+                    <button
+                      onClick={() => setShowDetailsPopup(true)}
+                      className="block text-center bg-green-600 text-white py-3 px-5 rounded-lg font-semibold hover:bg-green-700 shadow-md w-full">
+                      Request a Call
+                    </button>
+                  </div>
+                </div>
+              </div>
 
 
             <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>How to Sign Up for Medicare?</h2>
