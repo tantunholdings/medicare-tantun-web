@@ -73,89 +73,8 @@ export default function MedicareAdvantagePage() {
         </div>
 
 
-        {/* Why Choose Medicare Advantage */}
-        <section className="mt-6 max-w-2xl mx-auto">
-            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Why Choose Medicare Advantage?</h3>
-            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed">
-                <li>✔ Prescription drug coverage</li>
-                <li>✔ Dental, vision, and hearing care</li>
-                <li>✔ Wellness programs and fitness memberships</li>
-                <li>✔ Out-of-pocket cost limits for better financial protection</li>
-            </ul>
-        </section>
-
-        {/* Medicare Advantage Providers */}
-        <section className="mt-6 max-w-2xl mx-auto">
-            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Medicare Advantage Providers</h3>
-            <p className="text-gray-700 mt-2">
-                Many trusted insurance carriers offer Medicare Advantage plans, giving you access to quality coverage and healthcare services.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
-                {[
-                    { name: "Healthfirst", color: "bg-[#009933] text-white" },
-                    { name: "UnitedHealthcare", color: "bg-[#0056A4] text-white" },
-                    { name: "Humana", color: "bg-[#6BBE44] text-white" },
-                    { name: "Fidelis Care", color: "bg-[#00A99D] text-white" },
-                    { name: "EmblemHealth", color: "bg-[#61269E] text-white" },
-                    { name: "ElderPlan", color: "bg-[#0033A0] text-white" },
-                    { name: "Cigna", color: "bg-[#F6821F] text-black" },
-                    { name: "Aetna", color: "bg-[#D20962] text-white" },
-                    { name: "Blue Cross Blue Shield", color: "bg-[#004A93] text-white" },
-                    { name: "WellCare", color: "bg-[#00A4A0] text-white" },
-                    { name: "VillageCare", color: "bg-[#ED1C24] text-white" },
-                    { name: "VNS Health", color: "bg-[#0072CE] text-white" },
-                ].map((provider, index) => (
-                    <span key={index} className={`flex items-center justify-center h-16 px-4 rounded-md text-lg font-bold  text-center border border-gray-300 shadow-sm whitespace-normal ${provider.color}`}>
-                        {provider.name}
-                    </span>
-                ))}
-            </div>
-        </section> 
-
-
-        {/* Medicare Advantage Enrollment Periods */}
-        <section className="mt-6 max-w-2xl mx-auto">
-            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
-                Medicare Advantage Enrollment Periods
-            </h3>
-            <div className="space-y-4">
-                {/* AEP */}
-                <div>
-                    <p className="flex items-center text-lg font-bold text-gray-900">
-                        <span className="mr-1 text-lg">📅</span>
-                        Annual Enrollment Period (AEP) – Oct 15 to Dec 7
-                    </p>
-                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
-                        Enroll in or switch to a Medicare Advantage plan during this time.
-                    </p>
-                </div>
-
-                {/* Medicare Advantage Open Enrollment */}
-                <div>
-                    <p className="flex items-center text-lg font-bold text-gray-900">
-                        <span className="mr-1 text-lg">📅</span>
-                        Medicare Advantage Open Enrollment – Jan 1 to Mar 31
-                    </p>
-                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
-                        Already in Medicare Advantage? You can switch to another plan or return to Original Medicare.
-                    </p>
-                </div>
-            </div>
-        </section>
-        {/* Special Enrollment Periods */}
-        <section className="mt-6 max-w-2xl mx-auto">
-            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-3">
-                Special Enrollment Periods (SEPs) – Can You Enroll?
-            </h3>
-            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed space-y-2">
-                <li><strong>Moving to a New Location</strong> – If you relocate, you can choose a new plan in your area.</li>
-                <li><strong>Losing Employer or Medicaid Coverage</strong> – You may be eligible to enroll in a Medicare Advantage plan.</li>
-                <li><strong>Enrolling in a 5-Star Medicare Plan</strong> – Switch once per year to a top-rated plan.</li>
-            </ul>
-        </section>
-
-        {/* How to Enroll - Step-by-Step Approach */}
-        <section className="mt-6 max-w-2xl mx-auto">
+         {/* How to Enroll - Step-by-Step Approach */}
+         <section className="mt-6 max-w-2xl mx-auto">
             <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-6">
                 How to Enroll in Medicare Advantage?
             </h3>
@@ -207,6 +126,87 @@ export default function MedicareAdvantagePage() {
             </div>
         </section>
 
+        {/* Why Choose Medicare Advantage */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Why Choose Medicare Advantage?</h3>
+            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed">
+                <li>✔ Prescription drug coverage</li>
+                <li>✔ Dental, vision, and hearing care</li>
+                <li>✔ Wellness programs and fitness memberships</li>
+                <li>✔ Out-of-pocket cost limits for better financial protection</li>
+            </ul>
+        </section>
+
+        {/* Medicare Advantage Enrollment Periods */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+                Medicare Advantage Enrollment Periods
+            </h3>
+            <div className="space-y-4">
+                {/* AEP */}
+                <div>
+                    <p className="flex items-center text-lg font-bold text-gray-900">
+                        <span className="mr-1 text-lg">📅</span>
+                        Annual Enrollment Period (AEP) – Oct 15 to Dec 7
+                    </p>
+                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
+                        Enroll in or switch to a Medicare Advantage plan during this time.
+                    </p>
+                </div>
+
+                {/* Medicare Advantage Open Enrollment */}
+                <div>
+                    <p className="flex items-center text-lg font-bold text-gray-900">
+                        <span className="mr-1 text-lg">📅</span>
+                        Medicare Advantage Open Enrollment – Jan 1 to Mar 31
+                    </p>
+                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
+                        Already in Medicare Advantage? You can switch to another plan or return to Original Medicare.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        {/* Special Enrollment Periods */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-3">
+                Special Enrollment Periods (SEPs) – Can You Enroll?
+            </h3>
+            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed space-y-2">
+                <li><strong>Moving to a New Location</strong> – If you relocate, you can choose a new plan in your area.</li>
+                <li><strong>Losing Employer or Medicaid Coverage</strong> – You may be eligible to enroll in a Medicare Advantage plan.</li>
+                <li><strong>Enrolling in a 5-Star Medicare Plan</strong> – Switch once per year to a top-rated plan.</li>
+            </ul>
+        </section>
+
+        {/* Medicare Advantage Providers */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Medicare Advantage Providers</h3>
+            <p className="text-gray-700 mt-2">
+                Many trusted insurance carriers offer Medicare Advantage plans, giving you access to quality coverage and healthcare services.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
+                {[
+                    { name: "Healthfirst", color: "bg-[#009933] text-white" },
+                    { name: "UnitedHealthcare", color: "bg-[#0056A4] text-white" },
+                    { name: "Humana", color: "bg-[#6BBE44] text-white" },
+                    { name: "Fidelis Care", color: "bg-[#00A99D] text-white" },
+                    { name: "EmblemHealth", color: "bg-[#61269E] text-white" },
+                    { name: "ElderPlan", color: "bg-[#0033A0] text-white" },
+                    { name: "Cigna", color: "bg-[#F6821F] text-black" },
+                    { name: "Aetna", color: "bg-[#D20962] text-white" },
+                    { name: "Blue Cross Blue Shield", color: "bg-[#004A93] text-white" },
+                    { name: "WellCare", color: "bg-[#00A4A0] text-white" },
+                    { name: "VillageCare", color: "bg-[#ED1C24] text-white" },
+                    { name: "VNS Health", color: "bg-[#0072CE] text-white" },
+                ].map((provider, index) => (
+                    <span key={index} className={`flex items-center justify-center h-16 px-4 rounded-md text-lg font-bold  text-center border border-gray-300 shadow-sm whitespace-normal ${provider.color}`}>
+                        {provider.name}
+                    </span>
+                ))}
+            </div>
+        </section> 
 
 
         {/* ✅ 4 CTA Buttons - Placed After Content */}
