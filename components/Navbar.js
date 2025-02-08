@@ -189,7 +189,7 @@ export default function Navbar() {
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 rounded"
             >
-              Request a call
+              Request a Call Back
             </button>
           </div>
         </div>
@@ -287,7 +287,7 @@ export default function Navbar() {
               onClick={handleContactUsClick}
               className="bg-primary text-white px-4 py-2 mt-4 w-full text-center rounded"
             >
-              Request a call
+              Request a Call Back
             </button>
           </div>
         )}

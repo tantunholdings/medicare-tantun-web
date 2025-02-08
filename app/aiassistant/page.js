@@ -37,10 +37,10 @@ export default function AssistancePage() {
                 </a>
               </div>
               <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                <h3 className='text-lg font-bold'>📝 Request a Call</h3>
+                <h3 className='text-lg font-bold'>📝 Request a Call Back</h3>
                 <p className='text-gray-600'>Let us call you at your convenience.</p>
                 <button onClick={() => setShowDetailsPopup(true)} className='block mt-4 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 shadow-md'>
-                  Request a Call
+                  Request a Call Back
                 </button>
               </div>
               <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>

@@ -31,10 +31,10 @@ export default function MedicareAdvantagePage() {
       
       {/* ✅ Hero Section */}
         <h1 className='text-3xl font-bold text-center text-primary mb-6'>
-            Thinking of Switching Your Medicare Plan? Here’s When & How!
+            Medicare Advantage: Comprehensive Coverage for Your Health Needs
         </h1>
-        <p className='text-center text-gray-600 mb-4'>
-            Find out when you can change your Medicare Advantage plan and how to enroll easily.
+        <p className='text-center text-gray-800 text-2xl mb-6 leading-relaxed'>
+            Explore the benefits of Medicare Advantage plans, understand your options, and enroll with confidence.
         </p>
 
         {/* ✅ Call to Action Section (Mobile & Desktop Optimized) */}
@@ -44,7 +44,7 @@ export default function MedicareAdvantagePage() {
             <div className="md:hidden w-full max-w-xs">
                 <a
                     href={`tel:${PHONE_NUMBER}`}
-                    className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full max-w-xs md:hidden">
+                    className="block text-center bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold text-2xl hover:bg-blue-700 shadow-md w-full max-w-xs md:hidden">
                     Talk to a licensed Medicare agent – Call {PHONE_NUMBER}
                 </a>
             </div>
@@ -53,67 +53,164 @@ export default function MedicareAdvantagePage() {
             <div className="flex flex-col md:flex-row items-center gap-3 w-full max-w-2xl">
 
                 {/* Call Text with Icon (Desktop Only) */}
-                <div className="hidden md:flex items-center text-lg font-semibold text-gray-700">
-                    <span className="text-red-500 text-xl mr-2">📞</span>
-                    <span className="text-lg font-semibold text-blue-600">
-                        Have Questions? Call {PHONE_NUMBER}
-                    </span>
+                <div className="hidden md:flex items-center space-x-3 text-lg font-semibold text-gray-700">
+                    <span className="text-red-500 text-2xl flex items-center">📞</span>
+                    <div className="text-blue-600 leading-tight text-2xl">
+                        Have Questions? Call <br />
+                        <span className="font-bold animate-pulse">{PHONE_NUMBER}</span>
+                    </div>
                 </div>
 
                 {/* 📝 Request a Call Button (Visible on Both Mobile & Desktop) */}
                 <div className="w-full max-w-xs">
                     <button
                         onClick={() => setShowDetailsPopup(true)}
-                        className="block text-center bg-green-600 text-white py-3 px-5 rounded-lg font-semibold hover:bg-green-700 shadow-md w-full">
-                        Request a Call
+                        className="block text-center bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 shadow-md w-full text-2xl">
+                        Request a Call Back
                     </button>
                 </div>
             </div>
         </div>
 
-      {/* ✅ Section 1: Understanding Enrollment Periods */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Medicare Advantage Enrollment Periods</h2>
-      <div className='space-y-6'>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>Annual Enrollment Period (AEP) – Oct 15 to Dec 7</h3>
-          <p className='text-gray-600'>This is the primary time when anyone can enroll in or switch Medicare Advantage plans.</p>
-        </div>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>Medicare Advantage Open Enrollment – Jan 1 to Mar 31</h3>
-          <p className='text-gray-600'>If you're already in a Medicare Advantage plan, you can switch to a different plan or return to Original Medicare.</p>
-        </div>
-      </div>
 
-      {/* ✅ Section 2: Special Enrollment Periods (SEPs) */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Special Enrollment Periods (SEPs) – Can You Qualify?</h2>
-      <p className='text-gray-600 mb-4'>You may be eligible to change your Medicare Advantage plan outside of the standard enrollment periods if you experience certain life events.</p>
+        {/* Why Choose Medicare Advantage */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Why Choose Medicare Advantage?</h3>
+            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed">
+                <li>✔ Prescription drug coverage</li>
+                <li>✔ Dental, vision, and hearing care</li>
+                <li>✔ Wellness programs and fitness memberships</li>
+                <li>✔ Out-of-pocket cost limits for better financial protection</li>
+            </ul>
+        </section>
 
-      <div className='space-y-6'>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>📍 Moving to a New Location</h3>
-          <p className='text-gray-600'>If you move to a different county or state where your current plan isn’t available, you can switch to a new plan.</p>
-        </div>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>🏥 Losing Employer or Medicaid Coverage</h3>
-          <p className='text-gray-600'>If you lose your job-based or Medicaid coverage, you qualify for a SEP to enroll in a Medicare Advantage plan.</p>
-        </div>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>⭐ Enrolling in a 5-Star Medicare Plan</h3>
-          <p className='text-gray-600'>You can switch to a top-rated 5-star Medicare Advantage or Part D plan once per year.</p>
-        </div>
-      </div>
+        {/* Medicare Advantage Providers */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">Medicare Advantage Providers</h3>
+            <p className="text-gray-700 mt-2">
+                Many trusted insurance carriers offer Medicare Advantage plans, giving you access to quality coverage and healthcare services.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
+                {[
+                    { name: "Healthfirst", color: "bg-[#009933] text-white" },
+                    { name: "UnitedHealthcare", color: "bg-[#0056A4] text-white" },
+                    { name: "Humana", color: "bg-[#6BBE44] text-white" },
+                    { name: "Fidelis Care", color: "bg-[#00A99D] text-white" },
+                    { name: "EmblemHealth", color: "bg-[#61269E] text-white" },
+                    { name: "ElderPlan", color: "bg-[#0033A0] text-white" },
+                    { name: "Cigna", color: "bg-[#F6821F] text-black" },
+                    { name: "Aetna", color: "bg-[#D20962] text-white" },
+                    { name: "Blue Cross Blue Shield", color: "bg-[#004A93] text-white" },
+                    { name: "WellCare", color: "bg-[#00A4A0] text-white" },
+                    { name: "VillageCare", color: "bg-[#ED1C24] text-white" },
+                    { name: "VNS Health", color: "bg-[#0072CE] text-white" },
+                ].map((provider, index) => (
+                    <span key={index} className={`flex items-center justify-center h-16 px-4 rounded-md text-lg font-bold  text-center border border-gray-300 shadow-sm whitespace-normal ${provider.color}`}>
+                        {provider.name}
+                    </span>
+                ))}
+            </div>
+        </section> 
 
-      {/* ✅ Section 3: Step-by-Step Guide */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Step-by-Step Guide to Changing Your Medicare Plan</h2>
-      <ul className="list-disc pl-6 text-gray-600">
-        <li><strong>Step 1:</strong> Compare available Medicare Advantage plans.</li>
-        <li><strong>Step 2:</strong> Check coverage for your doctors and prescriptions.</li>
-        <li><strong>Step 3:</strong> Enroll online or by phone with a licensed Medicare agent.</li>
-      </ul>
+
+        {/* Medicare Advantage Enrollment Periods */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+                Medicare Advantage Enrollment Periods
+            </h3>
+            <div className="space-y-4">
+                {/* AEP */}
+                <div>
+                    <p className="flex items-center text-lg font-bold text-gray-900">
+                        <span className="mr-1 text-lg">📅</span>
+                        Annual Enrollment Period (AEP) – Oct 15 to Dec 7
+                    </p>
+                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
+                        Enroll in or switch to a Medicare Advantage plan during this time.
+                    </p>
+                </div>
+
+                {/* Medicare Advantage Open Enrollment */}
+                <div>
+                    <p className="flex items-center text-lg font-bold text-gray-900">
+                        <span className="mr-1 text-lg">📅</span>
+                        Medicare Advantage Open Enrollment – Jan 1 to Mar 31
+                    </p>
+                    <p className="text-gray-800 text-lg ml-6 leading-relaxed">
+                        Already in Medicare Advantage? You can switch to another plan or return to Original Medicare.
+                    </p>
+                </div>
+            </div>
+        </section>
+        {/* Special Enrollment Periods */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-3">
+                Special Enrollment Periods (SEPs) – Can You Enroll?
+            </h3>
+            <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed space-y-2">
+                <li><strong>Moving to a New Location</strong> – If you relocate, you can choose a new plan in your area.</li>
+                <li><strong>Losing Employer or Medicaid Coverage</strong> – You may be eligible to enroll in a Medicare Advantage plan.</li>
+                <li><strong>Enrolling in a 5-Star Medicare Plan</strong> – Switch once per year to a top-rated plan.</li>
+            </ul>
+        </section>
+
+        {/* How to Enroll - Step-by-Step Approach */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-6">
+                How to Enroll in Medicare Advantage?
+            </h3>
+            <div className="space-y-8 md:space-y-6">
+                {/* Step 1 */}
+                <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+                    <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                        1
+                    </div>
+                    <div className="text-center md:text-left">
+                        <h4 className="text-2xl md:text-2xl font-semibold text-gray-900">
+                            Compare Medicare Advantage Plans
+                        </h4>
+                        <p className="text-gray-800 text-xl leading-relaxed">
+                            Review different plans and benefits to find one that fits your healthcare needs.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+                    <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                        2
+                    </div>
+                    <div className="text-center md:text-left">
+                        <h4 className="text-2xl font-semibold text-gray-900">
+                            Check Provider Networks & Drug Coverage
+                        </h4>
+                        <p className="text-gray-800 text-xl leading-relaxed">
+                            Ensure your doctors, hospitals, and prescriptions are covered under the plan.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+                    <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                        3
+                    </div>
+                    <div className="text-center md:text-left">
+                        <h4 className="text-2xl font-semibold text-gray-900">
+                            Enroll Online or with a Licensed Medicare Agent
+                        </h4>
+                        <p className="text-gray-800 text-xl leading-relaxed">
+                            Sign up through the official website or speak to a licensed agent for assistance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
         {/* ✅ 4 CTA Buttons - Placed After Content */}
-        <h2 className='text-xl font-semibold text-gray-700 mt-14 mb-6'>How Can We Help?</h2>
+        <h2 className='text-3xl font-semibold text-gray-900 mt-14 mb-6'>How Can We Help?</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center items-stretch h-full'>
                 
                   {/* Call Option (Mobile & Desktop) */}
@@ -136,10 +233,10 @@ export default function MedicareAdvantagePage() {
                
                 {/* Request a Call */}
                 <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                    <h3 className='text-lg font-bold'>📝 Request a Call</h3>
+                    <h3 className='text-lg font-bold'>📝 Request a Call Back</h3>
                     <p className='text-gray-600'>Let us call you at your convenience.</p>
                     <button onClick={() => setShowDetailsPopup(true)} className='block mt-4 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 shadow-md'>
-                    Request a Call
+                    Request a Call Back
                     </button>
                 </div>
                
