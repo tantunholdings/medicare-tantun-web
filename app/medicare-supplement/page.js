@@ -29,8 +29,8 @@ export default function MedicareSupplementPage() {
       <div className='w-full max-w-4xl bg-white rounded-lg shadow-md p-10 mt-14 mb-14'>
 
         {/* ✅ Hero Section */}
-      <h1 className='text-3xl font-bold text-center text-primary mb-6'>Thinking of Changing Your Medicare Supplement (Medigap) Plan?</h1>
-      <p className='text-center text-gray-600 mb-4'>Learn when and how to switch to a better Medicare Supplement (Medigap) plan for lower costs or better coverage.</p>
+      <h1 className='text-3xl font-bold text-center text-primary mb-6'>Find the Best Medicare Supplement (Medigap) Plan for You!</h1>
+      <p className='text-center text-gray-600 mb-4'>Get coverage for out-of-pocket expenses that Original Medicare doesn’t pay for.</p>
 
         {/* ✅ Call to Action Section (Mobile & Desktop Optimized) */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
@@ -66,58 +66,104 @@ export default function MedicareSupplementPage() {
             </div>
         </div>
 
-      {/* ✅ Section 1: Understanding Medigap Plan Changes */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Can You Change Your Medicare Supplement Plan?</h2>
-      <p className='text-gray-600 mb-4'>Unlike Medicare Advantage, Medicare Supplement (Medigap) plans do not have set annual enrollment periods. Instead, your ability to switch plans depends on certain rules.</p>
+     {/* ✅ How to Enroll - Step-by-Step Approach */}
+     <section className="mt-6 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-6">
+            How to Enroll in a Medicare Supplement (Medigap) Plan?
+          </h3>
+          <div className="space-y-8 md:space-y-6">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+                <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                    1
+                </div>
+                <div className="text-center md:text-left">
+                    <h4 className="text-2xl font-semibold text-gray-900">
+                        Compare Medigap Plans
+                    </h4>
+                    <p className="text-gray-800 text-xl leading-relaxed">
+                        Review available Medigap plans (A-N) and select the best one for your healthcare needs. Learn more <a href="https://www.tantunai.com/blog/e192e111-3275-42fe-ad40-fcb0d5afeafb" className="text-blue-600 underline">here</a>.
+                    </p>
+                </div>
+            </div>
 
-      <div className='space-y-6'>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>✅ Medigap Open Enrollment Period</h3>
-          <p className='text-gray-600'>If you're within **6 months** of enrolling in Medicare Part B, you can buy any Medigap plan **without medical underwriting** (no health screening).</p>
-        </div>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>🔄 Switching Anytime (But With Underwriting)</h3>
-          <p className='text-gray-600'>Outside your open enrollment period, you can apply to switch Medigap plans, but insurance companies can **deny coverage or charge higher rates** based on health history.</p>
-        </div>
-        <div className='border-l-4 border-primary pl-4'>
-          <h3 className='text-lg font-bold'>⚠️ State-Specific Rules</h3>
-          <p className='text-gray-600'>Some states, like New York and California, have **guaranteed issue rights** allowing you to switch Medigap plans at certain times without health questions.</p>
-        </div>
-      </div>
+            {/* Step 2 */}
+            <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+              <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                2
+              </div>
+              <div className="text-center md:text-left">
+                <h4 className="text-2xl font-semibold text-gray-900">
+                  Confirm Your Eligibility & Enrollment Period
+                </h4>
+                <p className="text-gray-800 text-xl leading-relaxed">
+                  The best time to enroll is during your **Medigap Open Enrollment Period** to avoid underwriting.
+                </p>
+              </div>
+            </div>
 
-      {/* ✅ Section 2: Comparing Medigap Plans */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Comparison of Medigap Plan Change Rules</h2>
-      <table className="w-full text-left border-collapse border border-gray-300">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border p-3">Medigap Plan Change Type</th>
-            <th className="border p-3">Guaranteed Issue?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="border p-3">During Medigap Open Enrollment</td>
-            <td className="border p-3 text-green-600">✅ Yes, No Health Questions</td>
-          </tr>
-          <tr>
-            <td className="border p-3">Outside Open Enrollment</td>
-            <td className="border p-3 text-red-600">⚠️ No, Subject to Underwriting</td>
-          </tr>
-          <tr>
-            <td className="border p-3">Live in a Guaranteed Issue State</td>
-            <td className="border p-3 text-green-600">✅ Yes, No Health Questions</td>
-          </tr>
-        </tbody>
-      </table>
+            {/* Step 3 */}
+            <div className="flex flex-col items-center md:flex-row md:items-start space-y-3 md:space-y-0 md:space-x-6">
+              <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-xl md:text-lg">
+                3
+              </div>
+              <div className="text-center md:text-left">
+                <h4 className="text-2xl font-semibold text-gray-900">
+                  Enroll with a Licensed Medicare Agent
+                </h4>
+                <p className="text-gray-800 text-xl leading-relaxed">
+                  Speak with a licensed agent to enroll in a Medigap plan and secure additional coverage.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* ✅ Section 3: Step-by-Step Guide */}
-      <h2 className='text-xl font-semibold text-gray-700 mt-12 mb-6'>Step-by-Step Guide to Switching Medigap Plans</h2>
-      <ul className="list-disc pl-6 text-gray-600">
-        <li><strong>Step 1:</strong> Check if your current Medigap plan still meets your needs.</li>
-        <li><strong>Step 2:</strong> Compare available Medigap plans in your state.</li>
-        <li><strong>Step 3:</strong> Apply for a new plan (may require medical underwriting).</li>
-        <li><strong>Step 4:</strong> Once approved, cancel your old Medigap plan.</li>
-      </ul>
+        {/* ✅ Why Choose Medigap? */}
+        <section className="mt-6 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+            Why Choose Medicare Supplement (Medigap)?
+          </h3>
+          <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed">
+            <li>✔ Covers out-of-pocket costs like **copayments, coinsurance, and deductibles**.</li>
+            <li>✔ **No network restrictions** – Visit any doctor that accepts Medicare.</li>
+            <li>✔ **Guaranteed renewable** – Your plan cannot be canceled if you pay premiums.</li>
+            <li>✔ **Foreign travel emergency coverage** (available in some plans).</li>
+          </ul>
+        </section>
+
+        {/* ✅ Medigap Enrollment Periods */}
+        <section className="mt-6 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+            Medicare Supplement Enrollment Periods
+          </h3>
+          <p className="text-gray-800 text-lg leading-relaxed">
+            The best time to enroll is during your **Medigap Open Enrollment Period** (OEP), which starts **the month you turn 65 and enroll in Part B**.
+          </p>
+        </section>
+
+              {/* ✅ Medicare Supplement Providers */}
+              <section className="mt-6 max-w-2xl mx-auto">
+                  <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+                      Medicare Supplement Providers
+                  </h3>
+                  <p className="text-gray-700 mt-2">
+                      Medigap plans are offered by trusted private insurance companies. Here are some of the leading providers:
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
+                      {[
+                          { name: "UnitedHealthcare", color: "bg-[#0056A4] text-white" },
+                          { name: "Humana", color: "bg-[#6BBE44] text-white" },
+                          { name: "Cigna", color: "bg-[#F6821F] text-black" },
+                          { name: "Aetna", color: "bg-[#D20962] text-white" },
+                          { name: "Blue Cross Blue Shield", color: "bg-[#004A93] text-white" }
+                      ].map((provider, index) => (
+                          <span key={index} className={`flex items-center justify-center h-16 px-4 rounded-md text-lg font-bold text-center border border-gray-300 shadow-sm whitespace-normal ${provider.color}`}>
+                              {provider.name}
+                          </span>
+                      ))}
+                  </div>
+              </section>
 
        {/* ✅ 4 CTA Buttons - Placed After Content */}
        <h2 className='text-xl font-semibold text-gray-700 mt-14 mb-6'>How Can We Help?</h2>
