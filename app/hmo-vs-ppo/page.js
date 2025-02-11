@@ -142,14 +142,17 @@ export default function HMOPPOPage() {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
               <h2 className="text-2xl font-bold text-primary mb-4">Wait! Don’t leave yet...</h2>
-              <p className="text-gray-600 mb-6">Need help choosing the right plan?</p>
+              <p className="text-gray-600 mb-6">Find the best Medicare plan for your needs today.</p>
               <a href={`tel:${PHONE_NUMBER}`} className="block bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full">
                 Call {PHONE_NUMBER} Now
               </a>
+              <button onClick={() => setShowExitPopup(false)} className="mt-4 text-gray-600 hover:text-gray-800 font-medium">
+                No Thanks, I’ll Decide Later
+              </button>
             </div>
           </div>
         )}
-
+        
       </div>
     </div>
   );
