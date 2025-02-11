@@ -82,7 +82,7 @@ export default function MedicareSupplementPage() {
                         Compare Medigap Plans
                     </h4>
                     <p className="text-gray-800 text-xl leading-relaxed">
-                        Review available Medigap plans (A-N) and select the best one for your healthcare needs. Learn more <a href="https://www.tantunai.com/blog/e192e111-3275-42fe-ad40-fcb0d5afeafb" className="text-blue-600 underline">here</a>.
+                        Review available Medigap plans (A-N) and select the best one for your healthcare needs. Learn more <a href="https://www.tantunai.com/blog/25e4751c-959f-46d5-ae39-3798a6623355" className="text-blue-600 underline">here</a>.
                     </p>
                 </div>
             </div>

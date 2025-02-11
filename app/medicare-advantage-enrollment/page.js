@@ -86,10 +86,10 @@ export default function MedicareAdvantagePage() {
                     </div>
                     <div className="text-center md:text-left">
                         <h4 className="text-2xl md:text-2xl font-semibold text-gray-900">
-                            Compare Medicare Advantage Plans
+                            Compare Medicare Advantage Plans. 
                         </h4>
                         <p className="text-gray-800 text-xl leading-relaxed">
-                            Review different plans and benefits to find one that fits your healthcare needs.
+                            Review different plans and benefits to find one that fits your healthcare needs. Learn more about Medicare Advantage Plans <a href="https://www.tantunai.com/blog/0ae80587-d7e0-45e2-87fc-3aa500349787" className="text-blue-600 underline">here</a>.
                         </p>
                     </div>
                 </div>
