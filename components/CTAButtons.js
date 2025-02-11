@@ -44,7 +44,7 @@ export default function CTAButtons({ position = 'top' }) {
       ) : (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center items-stretch h-full'>
           <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-            <h3 className='text-lg font-bold'>📞 Sign Up for Medicare Today</h3>
+            <h3 className='text-lg font-bold'>📞 Call Us For Medicare Help </h3>
             <p className='text-gray-600'>Talk to a licensed Medicare agent now.</p>
 
             {/* ✅ Show only phone number text on desktop */}

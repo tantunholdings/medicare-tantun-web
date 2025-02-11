@@ -124,6 +124,7 @@ export default function Navbar() {
                   <Link href="/medicare-supplement" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Medicare Supplement Plans</Link>
                   <Link href="/signup" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>How to sign up for Medicare</Link>
                   <Link href="/medicare-advantage-providers" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Companies Offer Medicare Advantage Plans</Link>
+                  <Link href="/hmo-vs-ppo" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>HMO or PPO Plans</Link>
                   <Link href="/blog" className="block px-4 py-2 hover:bg-gray-100" onClick={() => setIsDropdownOpen(false)}>Medicare Blog</Link>
                   
                 </div>
@@ -267,6 +268,7 @@ export default function Navbar() {
                 <Link href="/medicare-supplement" className="block py-2" onClick={toggleMobileMenu}>Medicare Supplement Plans</Link>
                 <Link href="/signup" className="block py-2" onClick={toggleMobileMenu}>How to sign up for Medicare?</Link>
                 <Link href="/medicare-advantage-providers" className="block py-2" onClick={toggleMobileMenu}>Companies Offer Medicare Advantage Plans</Link>
+                <Link href="/hmo-vs-ppo" className="block py-2" onClick={toggleMobileMenu}>HMO or PPO Plans</Link>
                 <Link href="/blog" className="block py-2" onClick={toggleMobileMenu}>Medicare Blog</Link>
               </div>
             )}

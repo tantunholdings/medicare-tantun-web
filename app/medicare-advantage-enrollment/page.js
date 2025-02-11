@@ -215,7 +215,7 @@ export default function MedicareAdvantagePage() {
                 
                   {/* Call Option (Mobile & Desktop) */}
                   <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                      <h3 className='text-lg font-bold'>📞 Sign Up for Medicare Today</h3>
+                      <h3 className='text-lg font-bold'>📞 Call Us For Medicare Help</h3>
                       <p className='text-gray-600'>Talk to a licensed Medicare agent now.</p>
 
                       {/* 📱 Mobile: Show Click-to-Call Button */}

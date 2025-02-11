@@ -169,7 +169,7 @@ export default function MedicareSupplementPage() {
        <h2 className='text-xl font-semibold text-gray-700 mt-14 mb-6'>How Can We Help?</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center items-stretch h-full'>
               <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                <h3 className='text-lg font-bold'>📞 Sign Up for Medicare Today</h3>
+                <h3 className='text-lg font-bold'>📞 Call Us For Medicare Help</h3>
                 <p className='text-gray-600'>Talk to a licensed Medicare agent now.</p>
                 <a href={`tel:${PHONE_NUMBER}`} className='block mt-4 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 shadow-md'>
                   Call {PHONE_NUMBER}

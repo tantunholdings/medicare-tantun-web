@@ -70,9 +70,9 @@ export default function MedicareAdvantageProvidersPage() {
           </h3>
           <ul className="list-disc list-inside text-gray-800 text-lg leading-relaxed">
             <li>✔ **Check provider networks** – Ensure your preferred doctors and hospitals are covered.</li>
-            <li>✔ **Compare costs** – Look at premiums, deductibles, and out-of-pocket maximums.</li>
-            <li>✔ **Review drug coverage** – Make sure your prescriptions are covered.</li>
-            <li>✔ **Consider extra benefits** – Some plans offer dental, vision, and hearing benefits.</li>
+            <li>✔ <strong>Compare costs</strong> – Look at premiums, deductibles, and out-of-pocket maximums.</li>
+            <li>✔ <strong>Review drug coverage</strong> – Make sure your prescriptions are covered.</li>
+            <li>✔ <strong>Consider extra benefits</strong> – Some plans offer dental, vision, and hearing benefits.</li>
           </ul>
         </section>
 
