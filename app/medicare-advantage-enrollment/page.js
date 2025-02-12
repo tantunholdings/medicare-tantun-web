@@ -72,6 +72,50 @@ export default function MedicareAdvantagePage() {
             </div>
         </div>
 
+        {/* ✅ Medicare Advantage Plan Types */}
+        <section className="mt-6 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-semibold text-gray-900 bg-blue-50 mb-4">
+                Types of Medicare Advantage Plans
+            </h3>
+            <p className="text-gray-800 text-lg leading-relaxed">
+                Medicare Advantage (Part C) plans offer comprehensive benefits, but they come in different types. Understanding each can help you choose the right plan for your needs.
+            </p>
+
+            <div className="mt-6 space-y-6">
+                {/* HMO */}
+                <div>
+                    <h4 className="text-2xl font-semibold text-gray-900">✔ Health Maintenance Organization (HMO)</h4>
+                    <p className="text-gray-800 text-lg leading-relaxed">
+                        Requires you to use a <strong>network of doctors and hospitals</strong> for coverage. You need a <strong>referral for specialists</strong>.
+                    </p>
+                </div>
+
+                {/* PPO */}
+                <div>
+                    <h4 className="text-2xl font-semibold text-gray-900">✔ Preferred Provider Organization (PPO)</h4>
+                    <p className="text-gray-800 text-lg leading-relaxed">
+                        Offers <strong>more flexibility</strong>—you can see <strong>any doctor</strong> but will pay less for <strong>in-network providers</strong>. <strong>No referrals needed</strong> for specialists.
+                    </p>
+                </div>
+
+                {/* SNP */}
+                <div>
+                    <h4 className="text-2xl font-semibold text-gray-900">✔ Special Needs Plan (SNP)</h4>
+                    <p className="text-gray-800 text-lg leading-relaxed">
+                        Designed for people with <strong>specific health conditions</strong> or <strong>low-income eligibility (Medicaid & Medicare dual enrollment)</strong>.
+                    </p>
+                </div>
+
+                {/* PFFS */}
+                <div>
+                    <h4 className="text-2xl font-semibold text-gray-900">✔ Private Fee-for-Service (PFFS)</h4>
+                    <p className="text-gray-800 text-lg leading-relaxed">
+                        Lets you see <strong>any doctor that accepts Medicare</strong> and <strong>agrees to the plan’s payment terms</strong>. May have <strong>fewer network restrictions</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
 
          {/* How to Enroll - Step-by-Step Approach */}
          <section className="mt-6 max-w-2xl mx-auto">
