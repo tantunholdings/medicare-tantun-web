@@ -166,47 +166,46 @@ export default function MedicareSupplementPage() {
               </section>
 
        {/* ✅ 4 CTA Buttons - Placed After Content */}
-       <h2 className='text-xl font-semibold text-gray-700 mt-14 mb-6'>How Can We Help?</h2>
+       <h2 className='text-3xl font-semibold text-gray-900 mt-14 mb-6'>How Can We Help?</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center items-stretch h-full'>
-              <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                <h3 className='text-lg font-bold'>📞 Call Us For Medicare Help</h3>
-                <p className='text-gray-600'>Talk to a licensed Medicare agent now.</p>
-                <a href={`tel:${PHONE_NUMBER}`} className='block mt-4 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 shadow-md'>
-                  Call {PHONE_NUMBER}
-                </a>
-              </div>
-              <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                <h3 className='text-lg font-bold'>📝 Request a Call</h3>
-                <p className='text-gray-600'>Let us call you at your convenience.</p>
-                <button onClick={() => setShowDetailsPopup(true)} className='block mt-4 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 shadow-md'>
-                  Request a Call
-                </button>
-              </div>
-              <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
-                <h3 className='text-lg font-bold'>💬 Start Live Chat</h3>
-                <p className='text-gray-600'>Get instant help from our Medicare experts.</p>
-                <button onClick={() => window.Tawk_API.maximize()} className='block mt-4 bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 shadow-md'>
-                  Start Live Chat
-                </button>
-              </div>
-            </div>
+                
+                  {/* Call Option (Mobile & Desktop) */}
+                  <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
+                      <h3 className='text-lg font-bold'>📞 Call Us For Medicare Help</h3>
+                      <p className='text-gray-600'>Talk to a licensed Medicare agent now.</p>
 
-        {/* ✅ Exit-Intent Popup */}
-        {showExitPopup && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
-              <h2 className="text-2xl font-bold text-primary mb-4">Wait! Don’t leave yet...</h2>
-              <p className="text-gray-600 mb-6">Find out if you can save on your Medigap plan today.</p>
-              <a href={`tel:${PHONE_NUMBER}`} className="block bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 shadow-md w-full">
-                Call {PHONE_NUMBER} Now
-              </a>
-              <button onClick={() => setShowExitPopup(false)} className="mt-4 text-gray-600 hover:text-gray-800 font-medium">
-                No Thanks, I’ll Decide Later
-              </button>
-            </div>
-          </div>
-        )}
+                      {/* 📱 Mobile: Show Click-to-Call Button */}
+                      <a
+                          href={`tel:${PHONE_NUMBER}`}
+                          className='block mt-4 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 shadow-md md:hidden'>
+                          Call {PHONE_NUMBER}
+                      </a>
 
+                      {/* 💻 Desktop: Show Phone Number as Text */}
+                      <p className="hidden md:block text-lg font-semibold text-blue-600 mt-4">
+                          📞 {PHONE_NUMBER}
+                      </p>
+                  </div>
+               
+                {/* Request a Call */}
+                <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
+                    <h3 className='text-lg font-bold'>📝 Request a Call Back</h3>
+                    <p className='text-gray-600'>Let us call you at your convenience.</p>
+                    <button onClick={() => setShowDetailsPopup(true)} className='block mt-4 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 shadow-md'>
+                    Request a Call Back
+                    </button>
+                </div>
+               
+                {/* Live Chat */}
+                <div className='border rounded-lg p-8 shadow-md flex flex-col justify-between h-full'>
+                    <h3 className='text-lg font-bold'>💬 Start Live Chat</h3>
+                    <p className='text-gray-600'>Get instant help from our Medicare experts.</p>
+                    <button onClick={() => window.Tawk_API.maximize()} className='block mt-4 bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 shadow-md'>
+                    Start Live Chat
+                    </button>
+                </div>
+            </div>
+       
         {/* ✅ Request a Call Popup */}
         {showDetailsPopup && <DetailsPopup closePopup={() => setShowDetailsPopup(false)} />}
       </div>
